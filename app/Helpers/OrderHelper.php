@@ -55,7 +55,7 @@ class OrderHelper
                 $order->taxes()->detach();
                 $order->services->each->delete();
             } else {
-                $order = Order::create($data);
+               // $order = Order::create($data);
             }
             foreach ($data['services'] as $item) {
                 $order->services()->create($item);
