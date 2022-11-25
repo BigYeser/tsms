@@ -59,8 +59,8 @@ class OrderHelper
             }
             foreach ($data['services'] as $item) {
                 error_log($item);
-
-            //    $order->services()->create($item);
+                error_log("Hello");
+            //  $order->services()->create($item);
             }
             if ($data['taxes'] && $data['taxes']->isNotEmpty()) {
                 $order->taxes()->sync($data['taxes']->toArray());
