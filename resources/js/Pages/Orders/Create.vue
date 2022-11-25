@@ -230,6 +230,7 @@
                   <tfoot>
                     <tr>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Total') }}</th>
+                      <th></th>
                       <th class="border-b px-4 py-2 bg-gray-200 text-center">
                         {{ $number(totalQuantity) }}
                       </th>
@@ -239,6 +240,7 @@
                     </tr>
                     <tr v-if="form.discount">
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Discount') }}</th>
+                      <th></th>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                         {{ $number(discountAmount) }}
                       </th>
@@ -246,12 +248,14 @@
                     <template v-if="form.taxes.length">
                       <tr v-for="(tax, ti) in nonCompoundTaxes" :key="'tr_' + ti">
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ tax.label }}</th>
+                        <th></th>
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                           {{ $number(calculateTax(tax, false)) }}
                         </th>
                       </tr>
                       <tr v-for="(tax, ti) in compoundTaxes" :key="'ctr_' + ti">
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ tax.label }}</th>
+                        <th></th>
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                           {{ $number(calculateTax(tax, true)) }}
                         </th>
@@ -259,6 +263,7 @@
                     </template>
                     <tr v-if="form.taxes.length || form.discount">
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Grand Total') }}</th>
+                      <th></th>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                         {{ $number(totalAmount - discountAmount + taxAmount) }}
                       </th>
