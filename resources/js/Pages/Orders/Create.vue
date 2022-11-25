@@ -179,7 +179,7 @@
                       </td>
                    
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="text" v-model="service.product_id" />
+                        <text-input small class="w-20" type="text" v-model="service.product_code" />
                       </td>
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                         <text-input small class="w-20" type="text" v-model="service.color" />
@@ -554,9 +554,6 @@ export default {
       });
     }, 350),
     submit() {
-      console.log("Hello");
-      console.log(this.form.services);
-      console.log("End");
       this.sending = true;
       var data = new FormData();
       data.append('reference', this.form.reference || '');
@@ -581,13 +578,14 @@ export default {
         data.append('taxes', []);
       }
       this.form.services.map((s, i) => {
+        console.log(s);
         data.append('services[' + i + '][id]', s.id);
         data.append('services[' + i + '][qty]', s.qty);
         data.append('services[' + i + '][code]', s.code);
         data.append('services[' + i + '][name]', s.name);
         data.append('services[' + i + '][price]', s.price);
         data.append('services[' + i + '][color]', s.color);
-        data.append('services[' + i + '][product_id]', s.product_id);
+        data.append('services[' + i + '][product_code]', s.product_code);
         data.append('services[' + i + '][service_id]', s.service_id);
         data.append('services[' + i + '][measurement_id]', s.measurement_id);
       });
