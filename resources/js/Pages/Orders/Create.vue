@@ -20,7 +20,7 @@
             :errors="$page.props.errors?.date"
             class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
           /> -->
-              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <div class="ltr:pr-12 rtl:pl-12 pb-12 w-full lg:w">
                 <div class="flex items-center justify-between">
                   <label class="form-label" for="customer_id">{{ $tc('Customer') }}</label>
                   <button type="button" @click="addCustomer" class="text-blue-600 hover:text-blue-700">{{ $t('Create') }}</button>
