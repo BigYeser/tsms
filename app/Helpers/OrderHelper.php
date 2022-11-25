@@ -58,6 +58,8 @@ class OrderHelper
                 $order = Order::create($data);
             }
             foreach ($data['services'] as $item) {
+                error_log($item);
+
             //    $order->services()->create($item);
             }
             if ($data['taxes'] && $data['taxes']->isNotEmpty()) {
