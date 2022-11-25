@@ -29,7 +29,7 @@
       </div>
       <form class="mt-6 bg-white rounded-lg shadow-xl overflow-hidden" @submit.prevent="submit" autocapitalize="off">
         <div class="p-6">
-          <p>{{ $t('Please login to access your account Hello') }}</p>
+          <p>{{ $t('Please login to access your account') }}</p>
           <flash-messages class="np mt-4" />
           <tec-validation-errors class="mb-4" />
           <!-- <div class="mt-6 w-full border-b-2" /> -->
