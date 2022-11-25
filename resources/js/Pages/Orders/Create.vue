@@ -9,9 +9,9 @@
           </Link>
           <span class="text-gray-400 font-medium mx-1">/</span>{{ $t('Create') }}
         </h1>
-        <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+        <div class="bg-white rounded shadow overflow-hidden">
           <form @submit.prevent="submit" autocomplete="off">
-            <div class="p-8 ltr:-mr-6 rtl:-ml-6 ltr:ml-0 rtl:mr-0 -mb-8 flex flex-wrap">
+            <div class="p-12 ltr:-mr-12 rtl:-ml-12 ltr:ml-0 rtl:mr-0 -mb-8 flex flex-wrap">
               <!-- <text-input
             type="date"
             :label="$t('Date')"
@@ -20,7 +20,7 @@
             :errors="$page.props.errors?.date"
             class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
           /> -->
-              <div class="ltr:pr-12 rtl:pl-12 pb-12 w-full lg:w">
+              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
                 <div class="flex items-center justify-between">
                   <label class="form-label" for="customer_id">{{ $tc('Customer') }}</label>
                   <button type="button" @click="addCustomer" class="text-blue-600 hover:text-blue-700">{{ $t('Create') }}</button>
