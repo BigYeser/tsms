@@ -179,10 +179,10 @@
                         </div>
                       </td>
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="text" v-model="service.color" />
+                        <text-input small class="w-20" type="text" v-model="service.product_code" />
                       </td>
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="text" v-model="service.product_code" />
+                        <text-input small class="w-20" type="text" v-model="service.color" />
                       </td>
                       <td class="border-b px-4 py-2 no-drop">
                         <div v-if="!getServiceMeasurements(service.service_id)" class="text-center">
