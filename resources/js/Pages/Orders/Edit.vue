@@ -154,6 +154,8 @@
                     <tr>
                       <th class="border-b pl-4 pr-2 py-2 bg-gray-200 text-center">#</th>
                       <th class="border-b pl-2 pr-4 py-2 bg-gray-200 ltr:text-left rtl:text-right">{{ $tc('Service') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Code') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Color') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-40">{{ $tc('Measurement') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t('Price') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Qty') }}</th>
@@ -175,6 +177,12 @@
                           {{ service.name }}
                           <div class="text-sm font-bold">{{ service.code }}</div>
                         </div>
+                      </td>
+                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                        <text-input small class="w-20" type="text" v-model="service.color" />
+                      </td>
+                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                        <text-input small class="w-20" type="text" v-model="service.product_code" />
                       </td>
                       <td class="border-b px-4 py-2 no-drop">
                         <div v-if="!getServiceMeasurements(service.service_id)" class="text-center">
@@ -220,34 +228,38 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="4">{{ $t('Total') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Total') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 text-center">{{ $number(totalQuantity) }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                         {{ $number(totalAmount) }}
                       </th>
                     </tr>
                     <tr v-if="form.discount">
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ $t('Discount') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Discount') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                         {{ $number(discountAmount) }}
                       </th>
                     </tr>
                     <template v-if="form.taxes.length">
                       <tr v-for="(tax, ti) in nonCompoundTaxes" :key="'tr_' + ti">
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ tax.label }}</th>
+                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ tax.label }}</th>
+                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                           {{ $number(calculateTax(tax, false)) }}
                         </th>
                       </tr>
                       <tr v-for="(tax, ti) in compoundTaxes" :key="'ctr_' + ti">
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ tax.label }}</th>
+                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ tax.label }}</th>
+                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                           {{ $number(calculateTax(tax, true)) }}
                         </th>
                       </tr>
                     </template>
                     <tr v-if="form.taxes.length || form.discount">
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ $t('Grand Total') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Grand Total') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                         {{ $number(totalAmount - discountAmount + taxAmount) }}
                       </th>
@@ -557,6 +569,8 @@ export default {
         data.append('services[' + i + '][code]', s.code);
         data.append('services[' + i + '][name]', s.name);
         data.append('services[' + i + '][price]', s.price);
+        data.append('services[' + i + '][color]', s.color);
+        data.append('services[' + i + '][product_code]', s.product_code);
         data.append('services[' + i + '][service_id]', s.service_id);
         data.append('services[' + i + '][measurement_id]', s.measurement_id);
       });
