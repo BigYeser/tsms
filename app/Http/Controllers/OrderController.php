@@ -142,8 +142,8 @@ class OrderController extends Controller
     {
         $form = $request->validated();
         $data = OrderHelper::prepare($form);
-      //  $order = OrderHelper::orderTransaction($data);
-     //   \App\Helpers\OrderPayment::create($order, $request);
+        $order = OrderHelper::orderTransaction($data);
+      //  \App\Helpers\OrderPayment::create($order, $request);
         return redirect()->route('orders')->with('success', __('model_created', ['model' => __choice('Order', 1)]));
     }
 
