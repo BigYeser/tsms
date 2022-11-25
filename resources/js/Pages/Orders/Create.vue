@@ -554,7 +554,9 @@ export default {
       });
     }, 350),
     submit() {
+      console.log("Hello");
       console.log(this.form.services);
+      console.log("End");
       this.sending = true;
       var data = new FormData();
       data.append('reference', this.form.reference || '');
