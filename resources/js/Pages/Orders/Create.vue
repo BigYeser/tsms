@@ -182,7 +182,7 @@
                         <text-input small class="w-20" type="text" v-model="service.product_id" />
                       </td>
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="number" v-model="service.color" />
+                        <text-input small class="w-20" type="text" v-model="service.color" />
                       </td>
                       <td class="border-b px-4 py-2 no-drop">
                         <div v-if="!getServiceMeasurements(service.service_id).length" class="text-center">
@@ -230,7 +230,6 @@
                   <tfoot>
                     <tr>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Total') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
                       <th class="border-b px-4 py-2 bg-gray-200 text-center">
                         {{ $number(totalQuantity) }}
                       </th>
@@ -555,6 +554,7 @@ export default {
       });
     }, 350),
     submit() {
+      console.log(this.form.services);
       this.sending = true;
       var data = new FormData();
       data.append('reference', this.form.reference || '');
