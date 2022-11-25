@@ -142,8 +142,8 @@ class OrderController extends Controller
     {
         $form = $request->validated();
         $data = OrderHelper::prepare($form);
-        $order = OrderHelper::orderTransaction($data);
-        \App\Helpers\OrderPayment::create($order, $request);
+      //  $order = OrderHelper::orderTransaction($data);
+     //   \App\Helpers\OrderPayment::create($order, $request);
         return redirect()->route('orders')->with('success', __('model_created', ['model' => __choice('Order', 1)]));
     }
 
@@ -152,7 +152,7 @@ class OrderController extends Controller
         $this->authorize('update', $order);
         $form = $request->validated();
         $data = OrderHelper::prepare($form);
-     //   $order = OrderHelper::orderTransaction($data, $order);
+        $order = OrderHelper::orderTransaction($data, $order);
         return back()->with('success', __('model_updated', ['model' => __choice('Order', 1)]));
     }
 }
