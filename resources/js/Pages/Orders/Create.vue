@@ -153,6 +153,8 @@
                     <tr>
                       <th class="border-b pl-4 pr-2 py-2 bg-gray-200 text-center">#</th>
                       <th class="border-b pl-2 pr-4 py-2 bg-gray-200 ltr:text-left rtl:text-right">{{ $tc('Service') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Code') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Color') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-40">{{ $tc('Measurement') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t('Price') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Qty') }}</th>
@@ -174,6 +176,12 @@
                           {{ service.name }}
                           <div class="text-sm font-bold">{{ service.code }}</div>
                         </div>
+                      </td>
+                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                        <text-input small class="w-20" type="number" v-model="service.price" />
+                      </td>
+                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                        <text-input small class="w-20" type="text" v-model="service.product_id" />
                       </td>
                       <td class="border-b px-4 py-2 no-drop">
                         <div v-if="!getServiceMeasurements(service.service_id).length" class="text-center">
@@ -207,7 +215,7 @@
                     ></v-select> -->
                       </td>
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="number" v-model="service.price" />
+                        <text-input small class="w-20" type="number" v-model="service.color" />
                       </td>
                       <td class="border-b px-4 py-2 text-center">
                         <text-input small type="number" v-model="service.qty" class="w-16 text-center" />
@@ -569,6 +577,8 @@ export default {
         data.append('services[' + i + '][code]', s.code);
         data.append('services[' + i + '][name]', s.name);
         data.append('services[' + i + '][price]', s.price);
+        data.append('services[' + i + '][color]', s.color);
+        data.append('services[' + i + '][product_id]', s.product_id);
         data.append('services[' + i + '][service_id]', s.service_id);
         data.append('services[' + i + '][measurement_id]', s.measurement_id);
       });

@@ -9,7 +9,7 @@ class OrderService extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'code', 'qty', 'price', 'amount', 'service_id', 'measurement_id'];
+    protected $fillable = ['name', 'code', 'qty', 'price', 'amount','color', 'product_code', 'service_id', 'measurement_id'];
 
     protected $hidden = ['created_at', 'updated_at'];
 
