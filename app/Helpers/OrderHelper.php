@@ -49,6 +49,7 @@ class OrderHelper
 
     public static function orderTransaction($data, Order $order = null)
     {
+
         return DB::transaction(function () use ($data, $order) {
             if ($order) {
                 $order->update($data);
@@ -58,9 +59,7 @@ class OrderHelper
                 $order = Order::create($data);
             }
             foreach ($data['services'] as $item) {
-                error_log($item);
-                error_log("Hello");
-            //  $order->services()->create($item);
+              $order->services()->create($item);
             }
             if ($data['taxes'] && $data['taxes']->isNotEmpty()) {
                 $order->taxes()->sync($data['taxes']->toArray());

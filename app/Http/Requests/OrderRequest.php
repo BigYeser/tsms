@@ -40,6 +40,8 @@ class OrderRequest extends FormRequest
             'services.*.price'          => 'required|numeric',
             'services.*.code'           => 'required|string',
             'services.*.name'           => 'required|string',
+            'services.*.product_code'   => 'required|string',
+            'services.*.color'          => 'required|string',
             'services.*.service_id'     => 'required',
             'services.*.measurement_id' => 'required|exists:measurements,id',
         ];
