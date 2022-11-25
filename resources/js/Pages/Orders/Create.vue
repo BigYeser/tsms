@@ -215,6 +215,7 @@
                       :placeholder="$t('select_x', { x: $tc('Measurement') })"
                     ></v-select> -->
                       </td>
+
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                         <text-input small class="w-20" type="number" v-model="service.price" />
                       </td>
@@ -228,7 +229,7 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" >{{ $t('Total') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Total') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 text-center">
                         {{ $number(totalQuantity) }}
                       </th>
@@ -237,27 +238,27 @@
                       </th>
                     </tr>
                     <tr v-if="form.discount">
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" >{{ $t('Discount') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="7">{{ $t('Discount') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                         {{ $number(discountAmount) }}
                       </th>
                     </tr>
                     <template v-if="form.taxes.length">
                       <tr v-for="(tax, ti) in nonCompoundTaxes" :key="'tr_' + ti">
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" >{{ tax.label }}</th>
+                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="7">{{ tax.label }}</th>
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                           {{ $number(calculateTax(tax, false)) }}
                         </th>
                       </tr>
                       <tr v-for="(tax, ti) in compoundTaxes" :key="'ctr_' + ti">
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" >{{ tax.label }}</th>
+                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="7">{{ tax.label }}</th>
                         <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                           {{ $number(calculateTax(tax, true)) }}
                         </th>
                       </tr>
                     </template>
                     <tr v-if="form.taxes.length || form.discount">
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" >{{ $t('Grand Total') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="7">{{ $t('Grand Total') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                         {{ $number(totalAmount - discountAmount + taxAmount) }}
                       </th>
