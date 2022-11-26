@@ -256,67 +256,86 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="service in order.services" :key="'service_' + service.id">
-                  <td class="border-b px-4 py-2">
-                    <div style="min-width: 180px">
-                      <div>{{ service.name }}</div>
-                      <div>
-                        <small class="text-muted">
-                          {{ $tc('Measurement') }}:
-                          <button class="text-indigo-600 hover:fonr-bold" @click="showMeasurement(service.measurement)">
-                            {{ service.measurement.name }}
-                          </button>
-                        </small>
+                <div v-for="service in order.services" :key="'service_' + service.id">
+                  <tr >
+                    <td class="border-b px-4 py-2">
+                      <div style="min-width: 180px">
+                        <div>{{ service.name }}</div>
+                        <div>
+                          <small class="text-muted">
+                            {{ $tc('Measurement') }}:
+                            <button class="text-indigo-600 hover:fonr-bold" @click="showMeasurement(service.measurement)">
+                              {{ service.measurement.name }}
+                            </button>
+                          </small>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ $number(service.product_code) }}
-                  </td>
-                  <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ service.color }}
-                  </td>
-                  <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ $number(service.price) }}
-                  </td>
-                  <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ $number(service.qty) }}
-                  </td>
-                  <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ $number(service.amount) }}
-                  </td>
-                </tr>
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ $number(service.product_code) }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ service.color }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ $number(service.price) }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ $number(service.qty) }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ $number(service.amount) }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">
+                      <table>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                </div>
               </tbody>
               <tfoot>
                 <tr>
-                  <th colspan="3" class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">{{ $t('Total') }}</th>
+                  <th colspan="5" class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">{{ $t('Total') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                     {{ $number(order.total) }}
                   </th>
                 </tr>
                 <tr v-if="order.discount">
-                  <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="3">{{ $t('Discount') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ $t('Discount') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                     {{ $number(order.discount_amount) }}
                   </th>
                 </tr>
                 <template v-if="order.taxes.length">
                   <tr v-for="(tax, ti) in order.taxes" :key="'tr_' + ti">
-                    <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="3">{{ tax.name }}</th>
+                    <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ tax.name }}</th>
                     <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                       {{ $number(tax.pivot.total_amount) }}
                     </th>
                   </tr>
                 </template>
                 <tr v-if="order.taxes.length || order.discount">
-                  <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="3">{{ $t('Grand Total') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ $t('Grand Total') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                     {{ $number(order.grand_total) }}
                   </th>
                 </tr>
                 <template v-if="order.payments.length">
                   <tr v-for="(p, pi) in order.payments" :key="'payment_' + pi">
-                    <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left font-normal" colspan="3">
+                    <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left font-normal" colspan="5">
                       {{ $tc('Payment') }} ({{ $date(p.date) }})
                     </th>
                     <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left font-normal">
@@ -324,7 +343,7 @@
                     </th>
                   </tr>
                   <tr>
-                    <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="3">{{ $t('Balance') }}</th>
+                    <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="5">{{ $t('Balance') }}</th>
                     <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                       {{ $number(order.grand_total - this.total_paid) }}
                     </th>
