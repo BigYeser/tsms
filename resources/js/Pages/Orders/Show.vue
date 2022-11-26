@@ -293,7 +293,7 @@
                      <table>
                         <tr >
                           <td colspan="2">{{measurement}}</td>
-                          <td colspan="2">{{service.measurement}}</td>
+                          <td colspan="2"></td>
                         </tr>
                      </table> 
                     </td>
