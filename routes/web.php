@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('measurements/{measurement}', 'MeasurementController@update')->name('measurements.update');
     Route::get('measurements/{measurement}/edit', 'MeasurementController@edit')->name('measurements.edit');
     Route::get('measurements/{measurement}/view/{hash}', 'MeasurementController@show')->name('measurements.show');
+    Route::post('measurements/{measurement}/email', 'MeasurementController@email')->name('measurements.email');
 
     // Customers
     Route::get('customers', 'CustomerController@index')->name('customers');
