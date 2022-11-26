@@ -123,6 +123,7 @@ export default {
     //   this.$inertia.visit(this.route('measurements.edit', n));
     // },
     rowClicked(m) {
+      console.log(m);
       // this.$event.fire('loading', true);
       fetch(this.route('measurements.show', [m.id, md5(m.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
