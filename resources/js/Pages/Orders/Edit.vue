@@ -156,10 +156,10 @@
                       <th class="border-b pl-2 pr-4 py-2 bg-gray-200 ltr:text-left rtl:text-right">{{ $tc('Service') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Code') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Color') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 w-40">{{ $tc('Measurement') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t('Price') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-30">{{ $tc('Measurement') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Price') }}</th>
                       <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Qty') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200">{{ $t('Amount') }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Amount') }}</th>
                     </tr>
                   </thead>
                   <tbody>
