@@ -288,7 +288,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="4">
+                    <td>
                       <table>
                         <tr>
                           <td></td>
@@ -303,7 +303,6 @@
                     <td></td>
                     <td></td>
                   </tr>
-
                 </div>
               </tbody>
               <tfoot>
