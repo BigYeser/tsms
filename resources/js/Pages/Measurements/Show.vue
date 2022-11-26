@@ -114,12 +114,13 @@
         </div>
       </div>
     </div>
+    {{measurement}}
      <!--Footer-->
      <div v-if="modal" class="np block xs:flex items-end justify-between px-6 py-4 mt-4 bg-gray-100 border-t rounded-b">
       <div class="m-1 xs:m-0">
         <button
           :disabled="sending"
-          @click="emailOrder()"
+          @click="emailOrder(measurement.id)"
           class="inline-flex items-center mt-1 px-4 py-3 text-sm rounded bg-gray-200 hover:bg-gray-400 border ltr:mr-2 rtl:ml-2"
         >
           <div v-if="sending" class="btn-spinner dark ltr:mr-2 rtl:ml-2" />
@@ -136,6 +137,7 @@
 <script>
 import Logo from '@/Shared/Logo.vue';
 import Dropdown from '@/Shared/Dropdown.vue';
+import { log } from 'console';
 
 export default {
   components: { Logo, Dropdown },
@@ -193,11 +195,11 @@ export default {
       }
       return extra;
     },
-    emailOrder() {
+    emailOrder(id) {
       this.sending = true;
       this.emailing = true;
       this.$axios
-        .post(this.route('measurements.email', this.measurement.id))
+        .post(this.route('measurements.email', id))
         .then(res => {
           this.sending = false;
           this.emailing = false;
