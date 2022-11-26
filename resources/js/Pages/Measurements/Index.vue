@@ -137,13 +137,6 @@ export default {
       dialogTitle: null,
       dialogBody: null,
       viewMeasurement: false,
-      service: {
-        value: this.measurement.service.id,
-        label: this.measurement.service.name,
-      },
-      customer: { label: this.measurement.customer.name, value: this.measurement.customer.id },
-      services: [],
-      customers: [],
     };
   },
   watch: {
