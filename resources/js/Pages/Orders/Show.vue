@@ -90,7 +90,12 @@
           <div class="text-sm px-4 py-4 xs:py-0 text-center xs:ltr:text-left rtl:text-right">
             <div class="font-extrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
-            {{ order.account.email }}
+            <div class="font-bold">{{ order.account.email}}</div>
+            <div class="font-bold">{{ order.account.address}}</div>
+            <div class="font-bold">346671</div>
+            <div class="font-bold">TRN 100009122100003</div>
+
+                        
           </div>
           <!-- <div class="text-sm">
             <div class="flex">
