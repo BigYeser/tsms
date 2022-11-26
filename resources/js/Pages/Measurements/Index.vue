@@ -155,41 +155,6 @@ export default {
       }, 250),
       deep: true,
     },
-    customer: function (cv, ov) {
-      this.form.customer_id = cv ? cv.value : null;
-      if (
-        !this.form.name ||
-        (this.service && this.form.name == this.service.label) ||
-        this.form.name == (ov ? ov.label + "'s " : '') + (this.service ? this.service.label : '')
-      ) {
-        this.form.name = (cv ? cv.label : '') + (this.service ? "'s " + this.service.label : '');
-      }
-    },
-    service: function (cv, ov) {
-      this.form.service_id = cv ? cv.value : null;
-      if (
-        !this.form.name ||
-        (this.customer && this.form.name == this.customer.label) ||
-        this.form.name == (this.customer ? this.customer.label + "'s " : '') + (ov ? ov.label : '')
-      ) {
-        this.form.name = (this.customer ? this.customer.label + "'s " : '') + (cv ? cv.label : '');
-      }
-      if (ov) {
-        ov.measurement_fields.map(f => {
-          delete this.form[f.name];
-        });
-      }
-      if (cv) {
-        cv.measurement_fields.map(f => {
-          if (f.type == 'Checkbox') {
-            this.form[f.name] = {};
-            f.options.map(o => (this.form[f.name][o.value] = false));
-          } else {
-            this.form[f.name] = null;
-          }
-        });
-      }
-    },
   },
   mounted() {
     this.customers = [this.customer];
