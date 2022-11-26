@@ -99,13 +99,14 @@ import mapValues from 'lodash/mapValues';
 import Pagination from '@/Shared/Pagination.vue';
 import SearchFilter from '@/Shared/SearchFilter.vue';
 import Modal from '@/Jetstream/Modal.vue';
+import MeasurementComponent from '@/Pages/Measurements/Show.vue';
 
 import md5 from 'md5';
 
 
 export default {
   layout: Layout,
-  components: { Pagination, SearchFilter },
+  components: { Pagination, SearchFilter ,Modal, MeasurementComponent},
   props: { measurements: Object, filters: Object },
   metaInfo() {
     return { title: this.$tc('Measurement', 2) };
