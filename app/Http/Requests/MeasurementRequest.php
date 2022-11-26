@@ -20,6 +20,8 @@ class MeasurementRequest extends FormRequest
             'ajax'             => 'nullable',
             'measurement'      => 'nullable',
             'extra_attributes' => 'nullable',
+            'price'            => 'nullable',
+            'appointment'      => 'nullable',
             'service_id'       => ['required', Rule::exists('services', 'id')->where(function ($query) {
                 $query->where('account_id', auth()->user()->account_id);
             })],
