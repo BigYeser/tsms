@@ -82,6 +82,12 @@
     </div>
     <pagination :links="measurements.links" :meta="measurements.meta" />
   </div>
+  <Modal :show="viewMeasurement" max-width="2xl" :closeable="true" @close="viewMeasurement = false">
+      <MeasurementComponent
+        :measurement="measurement"
+        @close="() => (viewMeasurement = false)"
+      />
+    </Modal>
 </template>
 
 <script>
@@ -91,6 +97,8 @@ import throttle from 'lodash/throttle';
 import mapValues from 'lodash/mapValues';
 import Pagination from '@/Shared/Pagination.vue';
 import SearchFilter from '@/Shared/SearchFilter.vue';
+import Modal from '@/Jetstream/Modal.vue';
+
 import md5 from 'md5';
 
 
@@ -107,6 +115,16 @@ export default {
         search: this.filters.search,
         trashed: this.filters.trashed,
       },
+      sending: false,
+      confirm: false,
+      send_sms: false,
+      emailing: false,
+      message: null,
+      dialogButtonText: null,
+      dialogAction: null,
+      dialogTitle: null,
+      dialogBody: null,
+      viewMeasurement: false,
     };
   },
   watch: {
