@@ -257,18 +257,19 @@
               </thead>
               <tbody>
                 <template v-for="service in order.services" :key="'service_' + service.id">
+                  {{showMeasurement(service.measurement)}}
                   <tr>
                     <td class="border-b px-4 py-2">
                       <div style="min-width: 180px">
                         <div>{{ service.name }}</div>
-                        <div>
+                        <!-- <div>
                           <small class="text-muted">
                             {{ $tc('Measurement') }}:
                             <button class="text-indigo-600 hover:fonr-bold" @click="showMeasurement(service.measurement)">
                               {{ service.measurement.name }}
                             </button>
                           </small>
-                        </div>
+                        </div> -->
                       </div>
                     </td>
                     <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
@@ -290,16 +291,10 @@
                   <tr>
                     <td colspan="4">
                      <table>
-                      <tr>
-                        <td>
-                        <div class="w-50">asd</div>
-                        <div class="w-50">asd</div>
-                        <div class="w-50">asd</div>
-                        <div class="w-50">asd</div>
-                        <div class="w-50">asd</div>
-                        </td>
-                        
-                      </tr>
+                        <tr >
+                          <td colspan="2">{{measurement}}</td>
+                          <td colspan="2">{{service.measurement}}</td>
+                        </tr>
                      </table> 
                     </td>
                     <td></td>
