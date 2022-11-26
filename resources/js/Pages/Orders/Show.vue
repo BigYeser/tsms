@@ -93,7 +93,8 @@
             <div class="font-bold">{{ order.account.email}}</div>
             <div class="font-bold">{{ order.account.address}}</div>
             <div class="font-bold">346671</div>
-            <div class="font-bold">TRN 100009122100003</div>            
+            <div class="font-bold">TRN 100009122100003</div>
+                       
           </div>
         </div>
 
@@ -156,16 +157,20 @@
         <table class="table table-borderless">
             <thead>
               <th>Prepared For</th>
+              <!-- <th>Email</th>
+              <th>Phone</th> -->
               <th>Prepared In</th>
               <th>Invoce Number</th>
             </thead>
             <tr>
               <td>
-                {{ order.customer.name }}
-                {{ order.customer.address }}
-                {{ order.customer.email }}
-                {{ order.customer.phone }}
+                <div>{{ order.customer.name }}</div>
+                <div>{{ order.customer.address }}</div>
+                <div>{{ order.customer.email }}</div>
+                <div>{{ order.customer.phone }}</div>
+                
               </td>
+          
               <td>
                 {{order.delivery_date}}
               </td>
