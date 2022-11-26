@@ -56,8 +56,15 @@
               <text-input type="number" v-model="form.price" />
             </div>
             <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
-              <label class="form-label" for="appointment">{{ $tc('Appointment Time') }}</label>
-              <input type="datetime-local" name="appointment" v-model="form.appointment">
+              <label class="form-label" id="appointment" for="appointment">{{ $tc('Appointment Time') }}</label>
+              <text-input
+                type="date"
+                pattern="\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
+                :label="$t('Delivery Date')"
+                v-model="form.appointment"
+                :errors="$page.props.errors?.appointment"
+                class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
+              />
             </div>
             <div class="mb-8 ltr:mr-6 rtl:ml-6 flex flex-wrap">
               <label class="form-label" for="name">{{ $t('Type Name') }}</label>
