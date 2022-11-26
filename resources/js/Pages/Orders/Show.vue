@@ -257,7 +257,6 @@
               </thead>
               <tbody>
                 <template v-for="service in order.services" :key="'service_' + service.id">
-                  {{showMeasurement(service.measurement)}}
                   <tr>
                     <td class="border-b px-4 py-2">
                       <div style="min-width: 180px">
@@ -290,10 +289,11 @@
                   </tr>
                   <tr>
                     <td colspan="4">
+
                      <table>
-                        <tr v-for="fieldM in measurement.extra_attributes">
-                          <td colspan="2">{{fieldM}}</td>
-                          <td colspan="2">{{valueM}}</td>
+                        <tr v-for="fieldM in service.measurement.extra_attributes">
+                          <td colspan="2">{{fieldM.name}}</td>
+                          <td colspan="2">{{fieldM.value}}</td>
                         </tr>
                      </table> 
                     </td>
