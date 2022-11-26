@@ -140,7 +140,6 @@ export default {
       service: {
         value: this.measurement.service.id,
         label: this.measurement.service.name,
-        measurement_fields: this.measurement.service.measurement_fields,
       },
       customer: { label: this.measurement.customer.name, value: this.measurement.customer.id },
       services: [],
@@ -155,10 +154,6 @@ export default {
       }, 250),
       deep: true,
     },
-  },
-  mounted() {
-    this.customers = [this.customer];
-    this.services = [...this.iservices, this.service];
   },
   methods: {
     // rowClicked(n) {
