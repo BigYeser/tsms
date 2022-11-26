@@ -202,6 +202,8 @@ export default {
         service_id: this.measurement.service.id,
         customer_id: this.measurement.customer.id,
         measurement: this.measurement.measurement,
+        price: this.measurement.measurement,
+        appointment: this.measurement.measurement,
       },
       service: {
         value: this.measurement.service.id,
