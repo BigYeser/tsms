@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template >
+  <div class="w-100">
     <div>
       <h1 class="mb-6 mt-2 font-bold text-lg md:text-2xl">{{ $tc('Order', 2) }}</h1>
       <div class="np mb-6 flex justify-between items-center">
