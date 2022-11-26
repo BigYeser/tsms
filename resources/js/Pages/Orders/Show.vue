@@ -607,7 +607,7 @@ export default {
           }
         });
       }
-      if(arr.length % 2 != 0)
+      if(attr.length % 2 != 0)
         extra += `</tr>`;
       return extra;
     },
