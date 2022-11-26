@@ -81,7 +81,7 @@
 
     <!--Body-->
     <div class="print">
-      <div class="max-w-2xl h-full py-1 px-1 leading-normal">
+      <div class="max-w-2xl h-full py-3 px-3 leading-normal">
         <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
           <div class="text-gray-900 mx-auto xs:mx-0" style="width: 180px">
             <img :alt="$page.props.user.account.name" v-if="$page.props.user.account.logo_path" :src="$page.props.user.account.logo_path" />
@@ -165,17 +165,17 @@
               <th>Invoce Number</th>
             </thead>
             <tr>
-              <td>
+              <td class="align-top"> 
                 <div>{{ order.customer.name }}</div>
                 <div>{{ order.customer.address }}</div>
                 <div>{{ order.customer.email }}</div>
                 <div>{{ order.customer.phone }}</div>
               </td>
           
-              <td>
+              <td class="align-top"> 
                 {{$date(order.delivery_date)}}
               </td>
-              <td>
+              <td class="align-top"> 
                 {{ order.id }}
               </td>
             </tr>
