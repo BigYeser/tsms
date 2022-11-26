@@ -92,7 +92,7 @@
             <div class="font-bold">{{ order.account.phone }}</div>
             {{ order.account.email }}
           </div>
-          <div class="text-sm">
+          <!-- <div class="text-sm">
             <div class="flex">
               <span class="ltr:text-right rtl:text-left ltr:mr-2 rtl:ml-2" style="width: 70px">{{ $t('Order No') }}:</span>
               <span class="font-bold">{{ order.id }}</span>
@@ -108,7 +108,7 @@
               <span class="ltr:text-right rtl:text-left ltr:mr-2 rtl:ml-2" style="width: 70px">{{ $t('Reference') }}:</span>
               <span class="font-bold">{{ $reference(order.reference) }}</span>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div v-if="order.account.header" class="my-6 px-4 py-3 border rounded">
