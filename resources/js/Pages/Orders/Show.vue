@@ -167,7 +167,7 @@
                 {{ order.customer.phone }}
               </td>
               <td>
-                {{date(order.delivery_date)}}
+                {{order.delivery_date}}
               </td>
               <td>
                 {{ order.id }}
