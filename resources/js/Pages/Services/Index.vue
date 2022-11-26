@@ -49,9 +49,8 @@
             <td class="border-t px-6 py-4">
               {{ service.name }}
             </td>
-            
             <td class="border-t px-6 py-4">
-                <div class="text-right">{{ $number(service.price) }}</div>
+                {{ $number(service.price) }}
             </td>
             <td class="border-t px-6 py-4 max-w-lg truncate">
               {{ service.description }}

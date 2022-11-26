@@ -38,6 +38,8 @@
             class="cursor-pointer hover:bg-teal-200 focus-within:bg-teal-200"
           >
             <td class="border-t px-6 py-4 w-56">
+              <h1> {{measurement}}</h1>
+
               <div class="flex items-center">
                 {{ measurement.name }}
                 <Icons v-if="measurement.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ltr:ml-2 rtl:mr-2" />
