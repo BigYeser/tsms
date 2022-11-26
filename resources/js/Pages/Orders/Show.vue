@@ -81,7 +81,7 @@
 
     <!--Body-->
     <div class="print">
-      <div class="max-w-2xl h-full py-3 px-3 leading-normal">
+      <div class="max-w-2xl h-full py-1 px-1 leading-normal">
         <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
           <div class="text-gray-900 mx-auto xs:mx-0" style="width: 180px">
             <img :alt="$page.props.user.account.name" v-if="$page.props.user.account.logo_path" :src="$page.props.user.account.logo_path" />
@@ -93,8 +93,7 @@
             <div class="font-bold">{{ order.account.email}}</div>
             <div class="font-bold">{{ order.account.address}}</div>
             <div class="font-bold">346671</div>
-            <div class="font-bold">TRN 100009122100003</div>
-                       
+            <div class="font-bold">TRN 100009122100003</div>            
           </div>
         </div>
 
@@ -157,8 +156,6 @@
         <table class="table table-borderless">
             <thead>
               <th>Prepared For</th>
-              <th>Email</th>
-              <th>Phone</th>
               <th>Prepared In</th>
               <th>Invoce Number</th>
             </thead>
@@ -166,15 +163,11 @@
               <td>
                 {{ order.customer.name }}
                 {{ order.customer.address }}
-              </td>
-              <td>
                 {{ order.customer.email }}
-              </td>
-              <td>
                 {{ order.customer.phone }}
               </td>
               <td>
-                {{order.delivery_date}}
+                {{date(order.delivery_date)}}
               </td>
               <td>
                 {{ order.id }}
