@@ -19,7 +19,6 @@
         <span class="hidden md:inline">{{ $t('create_x', { x: $tc('Measurement') }) }}</span>
       </Link>
     </div>
-    {{measurements}}
     <div class="bg-white rounded shadow overflow-x-auto scroll-on-light">
       <table class="w-full whitespace-no-wrap leading-normal">
         <thead>
@@ -38,6 +37,7 @@
             v-for="measurement in measurements.data"
             class="cursor-pointer hover:bg-teal-200 focus-within:bg-teal-200"
           >
+          
             <td class="border-t px-6 py-4 w-56">
               <div class="flex items-center">
                 {{ measurement.name }}
@@ -46,12 +46,12 @@
             </td>
             <td class="border-t px-6 py-4 w-40">
               <div v-if="measurement.service">
-                {{ measurement.service.name }}
+                @{{ measurement.service.name }}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.customer">
-                {{ measurement.customer.name }}
+                @{{ measurement.customer.name }}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-56 max-w-sm" style="min-width: 250px">
