@@ -10,7 +10,7 @@
       :value="modelValue"
       class="block w-full"
       :placeholder="placeholder || label"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', $event.target.value != 'null'?$event.target.value:'')"
       :class="{ 'border-red-500 input-error': errors, 'py-0 pr-0 h-8': size == 'small', 'mt-1': label }"
     />
     <tec-input-error v-if="errors" :message="Array.isArray(errors) ? errors.join(', ') : errors" class="absolute mt-0" />
