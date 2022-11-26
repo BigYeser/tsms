@@ -51,6 +51,7 @@
             </td> -->
             <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.customer_id">
+                
                 {{ getCoustomerName(measurement)}}
               </div>
             </td>
@@ -165,7 +166,8 @@ export default {
     getCoustomerName(measurement){
       fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
-           return data.coustomer;
+            console.log(data.coustomer);
+            return data.coustomer;
         });
       }); 
     },
