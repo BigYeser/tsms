@@ -50,7 +50,7 @@
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
-              {{route('measurements.show',[measurement.id,toMd5(measurement.name)])}}
+              <h1>{{getServiceName(measurement)}}</h1>
               <div v-if="measurement.customer_id">
                 {{ measurement.customer }}
               </div>
@@ -162,10 +162,22 @@ export default {
           this.viewMeasurement = true;
         });
       });
-
     },
-    toMd5(name){
-        return md5(name); 
+    getServiceName(measurement){
+      fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
+        res.json().then(data => {
+           return data.service.name;
+           console.log(data);
+        });
+      }); 
+    },
+    getCoustomerName(measurement){
+      fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
+        res.json().then(data => {
+           return data.coustomer.name;
+           console.log(data);
+        });
+      }); 
     },
     reset() {
       this.form = mapValues(this.form, () => null);
