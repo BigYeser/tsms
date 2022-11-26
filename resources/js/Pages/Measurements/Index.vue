@@ -52,7 +52,7 @@
             <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.customer_id">
                 
-                {{ getCoustomerName(measurement)}}
+                {{ getCustomerName(measurement)}}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
@@ -163,11 +163,11 @@ export default {
         });
       });
     },
-    getCoustomerName(measurement){
+    getCustomerName(measurement){
       fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
             console.log(data);
-            return data.coustomer;
+            return data.customer;
         });
       }); 
     },
