@@ -34,7 +34,7 @@
         <tbody>
           <tr
             :key="measurement.id"
-            @click="rowClicked(measurement.id)"
+            @click="rowClicked(measurement)"
             v-for="measurement in measurements.data"
             class="cursor-pointer hover:bg-teal-200 focus-within:bg-teal-200"
           >
