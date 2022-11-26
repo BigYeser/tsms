@@ -91,6 +91,8 @@ import throttle from 'lodash/throttle';
 import mapValues from 'lodash/mapValues';
 import Pagination from '@/Shared/Pagination.vue';
 import SearchFilter from '@/Shared/SearchFilter.vue';
+import md5 from 'md5';
+
 
 export default {
   layout: Layout,
