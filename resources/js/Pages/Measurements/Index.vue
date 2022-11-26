@@ -38,10 +38,11 @@
             v-for="measurement in measurements.data"
             class="cursor-pointer hover:bg-teal-200 focus-within:bg-teal-200"
           >
-          
             <td class="border-t px-6 py-4 w-56">
               <div class="flex items-center">
                 {{ measurement.name }}
+                <h1>{{measurement}}</h1>
+
                 <Icons v-if="measurement.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ltr:ml-2 rtl:mr-2" />
               </div>
             </td>
@@ -56,12 +57,12 @@
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
-              <div v-if="measurement.customer">
+              <div v-if="measurement.price">
                 {{ measurement.price}}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
-              <div v-if="measurement.customer">
+              <div v-if="measurement.appointment">
                 {{ measurement.appointment}}
               </div>
             </td>
