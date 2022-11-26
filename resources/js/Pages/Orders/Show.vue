@@ -509,7 +509,7 @@ export default {
         res.json().then(data => {
           // this.$event.fire('loading', false);
           this.measurement = data;
-          this.viewMeasurement = true;
+          //this.viewMeasurement = true;
         });
       });
     },
