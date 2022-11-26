@@ -1,6 +1,6 @@
 <template>
   <Layout :title="$t('edit_x', { x: this.$t('Order Number', { x: this.order.id }) })">
-    <div>
+    <div width="100%">
       <div>
         <h1 class="mb-6 mt-2 font-bold text-lg md:text-2xl">
           <Link class="text-gray-600 hover:text-gray-800 inline-flex items-center" :href="route('orders')">
