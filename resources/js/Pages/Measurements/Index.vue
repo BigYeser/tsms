@@ -166,7 +166,6 @@ export default {
     getServiceName(measurement){
       fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
-           return data.service.name;
            console.log(data);
         });
       }); 
@@ -174,7 +173,6 @@ export default {
     getCoustomerName(measurement){
       fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
-           return data.coustomer.name;
            console.log(data);
         });
       }); 
