@@ -256,7 +256,8 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr v-for="service in order.services" :key="'service_' + service.id">
+                <template v-for="service in order.services" :key="'service_' + service.id">
+                  <tr>
                     <td class="border-b px-4 py-2">
                       <div style="min-width: 180px">
                         <div>{{ service.name }}</div>
@@ -293,6 +294,8 @@
                     <td>aa</td>
                     <td>zz</td>
                   </tr>
+                </template>
+                
               </tbody>
               <tfoot>
                 <tr>
