@@ -291,8 +291,8 @@
                   <tr>
                     <td colspan="4">
                      <table>
-                        <tr v-for="(nameM,valueM) in measurement.extra_attributes">
-                          <td colspan="2">{{nameM}}</td>
+                        <tr v-for="fieldM in measurement.extra_attributes">
+                          <td colspan="2">{{fieldM}}</td>
                           <td colspan="2">{{valueM}}</td>
                         </tr>
                      </table> 
