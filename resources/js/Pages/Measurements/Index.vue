@@ -46,12 +46,12 @@
             </td>
             <td class="border-t px-6 py-4 w-40">
               <div v-if="measurement.service_id">
-                {{ measurement.service.name }}
+                {{ measurement.service}}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.customer_id">
-                {{ measurement.customer.name }}
+                {{ measurement.customer }}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
