@@ -250,7 +250,6 @@
                   <th class="border-b bg-gray-200 px-4 py-2">{{ $t('Item / Details') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Code') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Color') }}</th>
-                  <th class="border-b px-4 py-2 bg-gray-200 w-40">{{ $tc('Measurement') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t('Price') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Qty') }}</th>
                   <th class="border-b px-4 py-2 bg-gray-200">{{ $t('Amount') }}</th>
@@ -272,10 +271,10 @@
                     </div>
                   </td>
                   <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ $number(service.product_code) }}
+                    {{ service.product_code }}
                   </td>
                   <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ $number(service.color) }}
+                    {{ $service.color }}
                   </td>
                   <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                     {{ $number(service.price) }}
