@@ -584,9 +584,9 @@ export default {
       let extra = '';
       if (Array.isArray(attr)) {
         attr.map((a, i) => {
-          console.log(i);
           for (let [key, value] of Object.entries(a)) {
-            extra += `</tr>`;
+            if(i % 2 == 0)
+              extra += `<tr>`;
             if (value.includes('{') && value.includes('}') && value.includes(':')) {
               extra += `<td class="w-32 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">`;
               const cbv = JSON.parse(value);
@@ -602,10 +602,13 @@ export default {
             } else {
               extra += `<td class="w-32 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">${value}</td> `;
             }
-            extra += `</tr>`;
+            if(i % 2 != 0)
+              extra += `</tr>`;
           }
         });
       }
+      if(arr.length % 2 != 0)
+        extra += `</tr>`;
       return extra;
     },
   },
