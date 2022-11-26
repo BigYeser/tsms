@@ -147,6 +147,15 @@ export default {
   metaInfo() {
     return {
       title: this.$t('Measurement Number', { x: this.measurement.id }),
+      sending: false,
+      confirm: false,
+      send_sms: false,
+      emailing: false,
+      message: null,
+      dialogButtonText: null,
+      dialogAction: null,
+      dialogTitle: null,
+      dialogBody: null,
     };
   },
   methods: {
@@ -185,8 +194,8 @@ export default {
       return extra;
     },
     emailOrder() {
-      // this.sending = true;
-      // this.emailing = true;
+      this.sending = true;
+      this.emailing = true;
       // this.$axios
       //   .post(this.route('orders.email', this.order.id))
       //   .then(res => {
