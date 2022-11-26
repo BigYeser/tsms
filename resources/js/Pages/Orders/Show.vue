@@ -291,12 +291,14 @@
                     <td colspan="4">
                      <table>
                       <tr>
-                        <td>1</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>4</td>
+                        <td>
+                        <div class="w-50">asd</div>
+                        <div class="w-50">asd</div>
+                        <div class="w-50">asd</div>
+                        <div class="w-50">asd</div>
+                        <div class="w-50">asd</div>
+                        </td>
+                        
                       </tr>
                      </table> 
                     </td>
