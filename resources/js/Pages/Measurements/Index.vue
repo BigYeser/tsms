@@ -86,7 +86,7 @@
       <MeasurementComponent
         :measurement="measurement"
         @close="() => (viewMeasurement = false)"
-        :notify="true"
+       
       />
     </Modal>
 </template>
@@ -100,10 +100,9 @@ import Pagination from '@/Shared/Pagination.vue';
 import SearchFilter from '@/Shared/SearchFilter.vue';
 import Modal from '@/Jetstream/Modal.vue';
 import MeasurementComponent from '@/Pages/Measurements/Show.vue';
-
 import md5 from 'md5';
 
-
+ 
 export default {
   layout: Layout,
   components: { Pagination, SearchFilter ,Modal, MeasurementComponent},
@@ -151,8 +150,7 @@ export default {
           this.viewMeasurement = true;
         });
       });
-      console.log( this.viewMeasurement);
-      console.log( this.measurement);
+
     },
     reset() {
       this.form = mapValues(this.form, () => null);
