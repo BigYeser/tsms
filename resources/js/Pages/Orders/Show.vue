@@ -81,13 +81,13 @@
 
     <!--Body-->
     <div class="print">
-      <div class="max-w-2xl h-full py-0 px-0 leading-normal">
+      <div class="max-w-2xl h-full py-6 px-6 leading-normal">
         <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full items-center">
           <div class="text-gray-900 mx-auto xs:mx-0" style="width: 180px">
             <img :alt="$page.props.user.account.name" v-if="$page.props.user.account.logo_path" :src="$page.props.user.account.logo_path" />
             <logo v-else />
           </div>
-          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-right rtl:text-right">
+          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-left rtl:text-right">
             <div class="font-extrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
             <div class="font-bold">{{ order.account.email}}</div>
@@ -119,7 +119,7 @@
           {{ order.account.header }}
         </div>
 
-        <div
+        <!-- <div
           class="my-6 px-4 py-3 rounded text-sm flex justify-between"
           :class="{
             'bg-gray-200': order.status == $t('Received'),
@@ -141,7 +141,7 @@
             {{ $t('Delivery Date') }}:
             <span class="font-extrabold inline-block">{{ $date(order.delivery_date) }}</span>
           </div>
-        </div>
+        </div> -->
 
         <!-- :href="`/orders/${order.id}/photo/${$page.props.user.id + '_' + order.hash}`" -->
         <a
