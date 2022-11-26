@@ -82,13 +82,7 @@
     </div>
     <pagination :links="measurements.links" :meta="measurements.meta" />
   </div>
-  <Modal :show="viewMeasurement" max-width="2xl" :closeable="true" @close="viewMeasurement = false">
-      <MeasurementComponent
-        :measurement="measurement"
-        @close="() => (viewMeasurement = false)"
-       
-      />
-    </Modal>
+ 
 </template>
 
 <script>
