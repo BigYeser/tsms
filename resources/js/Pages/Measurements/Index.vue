@@ -86,6 +86,7 @@
       <MeasurementComponent
         :measurement="measurement"
         @close="() => (viewMeasurement = false)"
+        :notify="true"
       />
     </Modal>
 </template>
@@ -141,7 +142,6 @@ export default {
     //   this.$inertia.visit(this.route('measurements.edit', n));
     // },
     rowClicked(m) {
-      console.log(m);
       // this.$event.fire('loading', true);
       fetch(this.route('measurements.show', [m.id, md5(m.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
@@ -150,6 +150,8 @@ export default {
           this.viewMeasurement = true;
         });
       });
+      console.log( this.viewMeasurement);
+      console.log( this.measurement);
     },
     reset() {
       this.form = mapValues(this.form, () => null);
