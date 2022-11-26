@@ -115,7 +115,7 @@
       </div>
     </div>
      <!--Footer-->
-     <div v-if="modal" class="np block xs:flex items-end justify-between px-6 py-4 mt-4 bg-gray-100 border-t rounded-b">
+     <!-- <div v-if="modal" class="np block xs:flex items-end justify-between px-6 py-4 mt-4 bg-gray-100 border-t rounded-b">
       <div class="m-1 xs:m-0">
         <button
           @click="editOrder()"
@@ -145,7 +145,7 @@
       <button @click="hide()" class="btn-gray">
         {{ $t('Close') }}
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -200,6 +200,28 @@ export default {
       }
       return extra;
     },
+    // emailOrder() {
+    //   this.sending = true;
+    //   this.emailing = true;
+    //   this.$axios
+    //     .post(this.route('orders.email', this.order.id))
+    //     .then(res => {
+    //       this.sending = false;
+    //       this.emailing = false;
+    //       this.message =
+    //         res.data.message ||
+    //         this.$t('System is unable to sent email, either customer do not have email or system settings are not correct.');
+    //     })
+    //     .catch(err => {
+    //       this.sending = false;
+    //       this.emailing = false;
+    //       this.message =
+    //         err.response.data.message || this.$t('Request has been failed, please check the logs in storage folder and contact developer.');
+    //     });
+    // },
+    // hide() {
+    //   this.$emit('close');
+    // },
   },
 };
 </script>
