@@ -56,11 +56,12 @@
               <text-input  type="number" v-model="form.price" />
             </div>
             <h1>{{measurement}}</h1>
-            <h1>{{form}}</h1>
             <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
               <label class="form-label" for="appointment">{{ $tc('Appointment Time') }}</label>
               <input type="datetime-local" name="appointment" v-model="form.appointment">
             </div>
+            <h1>{{form}}</h1>
+
           <div
             class="ltr:pr-6 rtl:pl-6 ltr:-mr-12 rtl:-ml-12 w-full"
             v-if="service && service.measurement_fields && service.measurement_fields.length"

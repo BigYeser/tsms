@@ -43,6 +43,8 @@ class MeasurementController extends Controller
                 'name'             => $measurement->name,
                 'deleted_at'       => $measurement->deleted_at,
                 'measurement'      => $measurement->measurement,
+                'price'            => $measurement->price,
+                'appointment'      => $measurement->appointment,
                 'extra_attributes' => $measurement->extra_attributes,
                 'customer'         => $measurement->customer()->first(['id', 'name', 'phone']),
                 'service'          => $measurement->service()->with('measurementFields')->first(['id', 'name', 'price']),
