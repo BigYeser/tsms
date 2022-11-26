@@ -53,7 +53,7 @@
             </div>
             <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
               <label class="form-label" for="price">{{ $tc('Price') }}</label>
-              <text-input  type="number" v-model="form.price" />
+              <text-input type="number" v-model="form.price" />
             </div>
 
             <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">

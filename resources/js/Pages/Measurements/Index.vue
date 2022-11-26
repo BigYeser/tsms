@@ -117,8 +117,18 @@ export default {
     },
   },
   methods: {
-    rowClicked(n) {
-      this.$inertia.visit(this.route('measurements.edit', n));
+    // rowClicked(n) {
+    //   this.$inertia.visit(this.route('measurements.edit', n));
+    // },
+    rowClicked(m) {
+      // this.$event.fire('loading', true);
+      fetch(this.route('measurements.show', [m.id, md5(m.name)]) + '?ajax=1').then(res => {
+        res.json().then(data => {
+          // this.$event.fire('loading', false);
+          this.measurement = data;
+          this.viewMeasurement = true;
+        });
+      });
     },
     reset() {
       this.form = mapValues(this.form, () => null);
