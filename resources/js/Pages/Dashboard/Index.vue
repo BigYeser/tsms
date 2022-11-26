@@ -114,7 +114,7 @@
       <div id="no" class="w-full lg:w-1/2">
         <div class="bg-green-to-teal rounded shadow py-4 px-6 mb-6 lg:mb-0 ltr:mr-0 lg:ltr:mr-3 rtl:ml-0 lg:rtl:ml-3">
           <div class="font-extrabold text-white mb-6 -my-4 -mx-6 py-4 px-6 border-b border-o2 text-lg">
-            {{ $t('Today Order') }}
+            {{ $t('Today Orders') }}
           </div>
           <div class="pb-4 overflow-auto scroll-on-dark">
             <div v-if="new_today.length === 0" class="text-white">

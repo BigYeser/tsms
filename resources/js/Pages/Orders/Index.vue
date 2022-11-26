@@ -76,12 +76,12 @@
                 </div>
                 <div>{{ $date(order.delivery_date) }}</div>
               </td>
-              <td class="border-t px-6 py-4 text-center">
+              <td class="border-t px-6 py-4 leading-normal" >
                 <div>{{ $t(order.status) }}</div>
                 <div v-if="order.priority" class="pt-3" v-html="PriorityCol(order.priority)"></div>
                 <div v-if="order.due" class="pt-3">{{ order.due }}</div>
               </td>
-              <td class="border-t text-right font-bold pl-6 py-4">
+              <td class="border-t font-bold pl-6 py-4 leading-normal">
                 <div class="inline-flex items-center justify-end">
                   <Icons v-if="order.paid" name="check" class="flex-shrink-0 w-3 h-3 fill-green-600 ltr:mr-2 rtl:ml-2" />
                   <a v-else @click.stop="addPayment(order)" class="p-1 text-green-700">

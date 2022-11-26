@@ -48,7 +48,7 @@
             <td class="border-t px-6 py-4">
               <div class="flex items-center justify-end">
                 <Icons v-if="service.active" name="check" class="flex-shrink-0 w-3 h-3 fill-green-600 ltr:mr-2 rtl:ml-2" />
-                <div class="text-right">{{ $number(service.price) }}</div>
+                <div class="text-right">{{ service.price }}</div>
               </div>
             </td>
             <td class="border-t px-6 py-4 max-w-lg truncate">
