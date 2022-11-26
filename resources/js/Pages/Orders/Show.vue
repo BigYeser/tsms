@@ -289,11 +289,10 @@
                   </tr>
                   <tr>
                     <td colspan="4">
-                      {{service.measurement}}
                      <table>
-                        <tr v-for=" (m,index) in service.measurement.extra_attributes" :key="'m_' + index">
-                          <td colspan="2">{{m.key}}</td>
-                          <td colspan="2">{{m[index]}}</td>
+                        <tr v-for=" (vallue,key) in service.measurement.extra_attributes">
+                          <td colspan="2">{{key}}</td>
+                          <td colspan="2">{{value}}</td>
                         </tr>
                      </table> 
                     </td>
