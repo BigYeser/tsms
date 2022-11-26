@@ -291,9 +291,9 @@
                     <td colspan="4">
                       {{service.measurement}}
                      <table>
-                        <tr v-for="fieldM in service.measurement.extra_attributes">
-                          <td colspan="2">{{fieldM}}</td>
-                          <td colspan="2">{{fieldM.value}}</td>
+                        <tr v-for=" (mk,mv) in service.measurement.extra_attributes" :key="'mk_' + mv">
+                          <td colspan="2">{{mk}}</td>
+                          <td colspan="2">{{mv}}</td>
                         </tr>
                      </table> 
                     </td>
