@@ -81,6 +81,21 @@
       </table>
     </div>
     <pagination :links="measurements.links" :meta="measurements.meta" />
+    <Modal :show="viewMeasurement" max-width="2xl" :closeable="true" @close="viewMeasurement = false">
+      <MeasurementComponent
+        :measurement="measurement"
+        @close="() => (viewMeasurement = false)"
+      />
+    </Modal>
+    <Dialog :show="message" :content="message" :close="() => (message = null)" />
+    <Dialog
+      :show="confirm"
+      :close="() => (confirm = false)"
+      :action-text="dialogButtonText"
+      :action="dialogAction"
+      :title="dialogTitle"
+      :content="dialogBody"
+    />
   </div>
  
 </template>
@@ -94,6 +109,8 @@ import Pagination from '@/Shared/Pagination.vue';
 import SearchFilter from '@/Shared/SearchFilter.vue';
 import Modal from '@/Jetstream/Modal.vue';
 import MeasurementComponent from '@/Pages/Measurements/Show.vue';
+import Dialog from '@/Shared/Dialog.vue';
+
 import md5 from 'md5';
 
  
