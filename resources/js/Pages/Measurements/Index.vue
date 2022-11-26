@@ -47,12 +47,12 @@
             </td>
             <td class="border-t px-6 py-4 w-40">
               <div v-if="measurement.service">
-                {{ measurement.service.name }}
+                {{ service.name }}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.customer">
-                {{ measurement.customer.name }}
+                {{ customer.name }}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
@@ -65,9 +65,9 @@
                 {{ measurement.appointment}}
               </div>
             </td>
-            <td class="border-t px-6 py-4 w-56 max-w-sm" style="min-width: 250px">
+            <!-- <td class="border-t px-6 py-4 w-56 max-w-sm" style="min-width: 250px">
               <span class="whitespace-normal" v-html="displayExtra(measurement.extra_attributes)"></span>
-            </td>
+            </td> -->
             <td class="border-t px-6 py-4 max-w-lg truncate">
               {{ measurement.measurement }}
             </td>
@@ -109,7 +109,6 @@ export default {
       service: {
         value: this.measurement.service.id,
         label: this.measurement.service.name,
-        measurement_fields: this.measurement.service.measurement_fields,
       },
       customer: { label: this.measurement.customer.name, value: this.measurement.customer.id },
       services: [],
