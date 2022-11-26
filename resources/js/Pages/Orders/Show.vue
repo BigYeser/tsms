@@ -257,10 +257,15 @@
               </thead>
               <tbody>
                 <template v-for="service in order.services" :key="'service_' + service.id">
-                  <tr>
+                  <tr class="align-top">
                     <td class="border-b px-4 py-2">
                       <div style="min-width: 180px">
                         <div>{{ service.name }}</div>
+                        <div v-if="service.measurement.extra_attributes && service.measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
+                      <div class="rounded overflow-x-auto scroll-on-light">
+                          <table class="table table-borderless" v-html="displayExtra(service.measurement.extra_attributes)"></table>
+                        </div>
+                      </div>
                         <!-- <div>
                           <small class="text-muted">
                             {{ $tc('Measurement') }}:
@@ -273,11 +278,6 @@
                     </td>
                     <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                       {{ $number(service.product_code) }}
-                      <div v-if="service.measurement.extra_attributes && service.measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
-                      <div class="rounded overflow-x-auto scroll-on-light">
-                          <table class="table table-borderless  w-full all max-w-full min-w-0" v-html="displayExtra(service.measurement.extra_attributes)"></table>
-                        </div>
-                      </div>
                     </td>
                     <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                       {{ service.color }}
