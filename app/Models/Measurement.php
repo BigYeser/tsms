@@ -11,7 +11,7 @@ class Measurement extends Base
 
     public $casts = ['extra_attributes' => 'array'];
 
-    protected $fillable = ['name', 'service_id', 'customer_id', 'measurement', 'extra_attributes'];
+    protected $fillable = ['name','price','appointment', 'service_id', 'customer_id', 'measurement', 'extra_attributes',];
 
     public function account()
     {
