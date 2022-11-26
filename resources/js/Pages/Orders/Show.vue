@@ -153,13 +153,15 @@
         >
           {{ $t('View Order Photo') }}
         </a>
+        <br/>
         <hr/>
+        <b/>
         <table class="table table-borderless">
             <thead>
-              <th>Prepared For</th>
+              <th width="40%">Prepared For</th>
               <!-- <th>Email</th>
               <th>Phone</th> -->
-              <th>Prepared In</th>
+              <th width="40%">Prepared In</th>
               <th>Invoce Number</th>
             </thead>
             <tr>
@@ -168,11 +170,10 @@
                 <div>{{ order.customer.address }}</div>
                 <div>{{ order.customer.email }}</div>
                 <div>{{ order.customer.phone }}</div>
-                
               </td>
           
               <td>
-                {{order.delivery_date}}
+                {{$date(order.delivery_date)}}
               </td>
               <td>
                 {{ order.id }}
