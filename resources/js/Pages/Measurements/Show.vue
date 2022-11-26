@@ -27,7 +27,6 @@
             <img :alt="$page.props.user.account.name" v-if="$page.props.user.account.logo_path" :src="$page.props.user.account.logo_path" />
             <logo v-else />
           </div>
-          <h1>{{measurement}}</h1>
           <div class="text-sm px-4 py-4 xs:py-0 text-center xs:text-left">
             <div class="font-extrabold">{{ measurement.account.name }}</div>
             <div class="font-bold">{{ measurement.account.phone }}</div>
