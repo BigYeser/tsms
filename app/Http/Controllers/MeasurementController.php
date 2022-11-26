@@ -87,9 +87,9 @@ class MeasurementController extends Controller
     public function store(MeasurementRequest $request)
     {
         $v = $request->validated();
-        $m = Measurement::create($v);
+       // $m = Measurement::create($v);
         if ($v['ajax'] ?? false) {
-            return response()->json($m);
+       //     return response()->json($m);
         }
         return redirect()->route('measurements')->with('success', __('model_created', ['model' => __choice('Measurement', 1)]));
     }
