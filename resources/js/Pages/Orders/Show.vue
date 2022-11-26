@@ -256,8 +256,7 @@
                 </tr>
               </thead>
               <tbody>
-                <div v-for="service in order.services" :key="'service_' + service.id">
-                  <tr>
+                  <tr v-for="service in order.services" :key="'service_' + service.id">
                     <td class="border-b px-4 py-2">
                       <div style="min-width: 180px">
                         <div>{{ service.name }}</div>
@@ -287,8 +286,13 @@
                       {{ $number(service.amount) }}
                     </td>
                   </tr>
-                 
-                </div>
+                  <tr>
+                    <td colspan="4">
+                     sas 
+                    </td>
+                    <td>aa</td>
+                    <td>zz</td>
+                  </tr>
               </tbody>
               <tfoot>
                 <tr>
