@@ -577,6 +577,33 @@ export default {
     hide() {
       this.$emit('close');
     },
+    displayExtra(attr) {
+      let extra = '';
+      if (Array.isArray(attr)) {
+        attr.map((a, i) => {
+          for (let [key, value] of Object.entries(a)) {
+            extra += `</tr>`;
+            if (value.includes('{') && value.includes('}') && value.includes(':')) {
+              extra += `<td class="w-32 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">`;
+              const cbv = JSON.parse(value);
+              for (let [k, v] of Object.entries(cbv)) {
+                if (v) {
+                  extra += k + ' ';
+                  //   extra += `<span class="inline-block text-green-600 ltr:mr-2 rtl:ml-2">&#10003; ${k} </span> `;
+                  // } else {
+                  //   extra += `<span class="inline-block text-red-500 ltr:mr-2 rtl:ml-2">&#10005; ${k},</span> `;
+                }
+              }
+              extra += `</td>`;
+            } else {
+              extra += `<td class="w-32 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">${value}</td> `;
+            }
+            extra += `</tr>`;
+          }
+        });
+      }
+      return extra;
+    },
   },
 };
 </script>
