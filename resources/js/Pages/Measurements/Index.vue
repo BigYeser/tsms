@@ -26,7 +26,8 @@
             <th class="px-6 pt-6 pb-4">{{ $t('Name') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $tc('Service') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $tc('Customer') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $tc('Field', 2) }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $tc('Price') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $tc('Appointment Time') }}</th>
             <th class="px-6 pt-6 pb-4" colspan="2">{{ $t('Description') }}</th>
           </tr>
         </thead>
@@ -46,12 +47,22 @@
             </td>
             <td class="border-t px-6 py-4 w-40">
               <div v-if="measurement.service">
-                @{{ measurement.service.name }}
+                {{ measurement.service.name }}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.customer">
-                @{{ measurement.customer.name }}
+                {{ measurement.customer.name }}
+              </div>
+            </td>
+            <td class="border-t px-6 py-4 w-48">
+              <div v-if="measurement.customer">
+                {{ measurement.price}}
+              </div>
+            </td>
+            <td class="border-t px-6 py-4 w-48">
+              <div v-if="measurement.customer">
+                {{ measurement.appointment}}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-56 max-w-sm" style="min-width: 250px">
@@ -95,6 +106,14 @@ export default {
         search: this.filters.search,
         trashed: this.filters.trashed,
       },
+      service: {
+        value: this.measurement.service.id,
+        label: this.measurement.service.name,
+        measurement_fields: this.measurement.service.measurement_fields,
+      },
+      customer: { label: this.measurement.customer.name, value: this.measurement.customer.id },
+      services: [],
+      customers: [],
     };
   },
   watch: {
