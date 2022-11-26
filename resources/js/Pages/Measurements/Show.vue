@@ -114,7 +114,6 @@
         </div>
       </div>
     </div>
-    {{measurement}}
      <!--Footer-->
      <div v-if="modal" class="np block xs:flex items-end justify-between px-6 py-4 mt-4 bg-gray-100 border-t rounded-b">
       <div class="m-1 xs:m-0">
@@ -131,6 +130,16 @@
         {{ $t('Close') }}
       </button>
     </div>
+    <Dialog :show="message" :content="message" :close="() => (message = null)" />
+    <Dialog
+      :show="confirm"
+      :close="() => (confirm = false)"
+      :action-text="dialogButtonText"
+      :action="dialogAction"
+      :title="dialogTitle"
+      :content="dialogBody"
+    />
+    
   </div>
 </template>
 
