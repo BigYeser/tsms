@@ -113,7 +113,8 @@ class MeasurementController extends Controller
             $message = __('Measurement has been sent to the customer email address');
         } catch (\Exception $e) {
             $message = $e->getMessage();
-        
+        }
         return response()->json(['success' => $result, 'message' => $message]);
     }
+    
 }
