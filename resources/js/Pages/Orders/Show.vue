@@ -584,6 +584,7 @@ export default {
       let extra = '';
       if (Array.isArray(attr)) {
         attr.map((a, i) => {
+          console.log(i);
           for (let [key, value] of Object.entries(a)) {
             extra += `</tr>`;
             if (value.includes('{') && value.includes('}') && value.includes(':')) {
