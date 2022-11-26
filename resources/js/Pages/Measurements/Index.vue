@@ -50,7 +50,7 @@
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
-              {{route('measurements.show',[measurement.id,md5(measurement.name)])}}
+              {{route('measurements.show',[measurement.id,toMd5(measurement.name)])}}
               <div v-if="measurement.customer_id">
                 {{ measurement.customer }}
               </div>
@@ -163,6 +163,9 @@ export default {
         });
       });
 
+    },
+    toMd5(name){
+        return md5(name); 
     },
     reset() {
       this.form = mapValues(this.form, () => null);
