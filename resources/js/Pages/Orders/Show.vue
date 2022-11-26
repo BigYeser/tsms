@@ -82,20 +82,22 @@
     <!--Body-->
     <div class="print">
       <div class="max-w-2xl h-full py-6 px-6 leading-normal">
-        <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full items-center">
+        <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
           <div class="text-gray-900 mx-auto xs:mx-0" style="width: 180px">
             <img :alt="$page.props.user.account.name" v-if="$page.props.user.account.logo_path" :src="$page.props.user.account.logo_path" />
             <logo v-else />
           </div>
-          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-left rtl:text-right">
+          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-right rtl:text-right">
             <div class="font-extrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
             <div class="font-bold">{{ order.account.email}}</div>
             <div class="font-bold">{{ order.account.address}}</div>
             <div class="font-bold">346671</div>
             <div class="font-bold">TRN 100009122100003</div>
-                        
+                       
           </div>
+        </div>
+
           <!-- <div class="text-sm">
             <div class="flex">
               <span class="ltr:text-right rtl:text-left ltr:mr-2 rtl:ml-2" style="width: 70px">{{ $t('Order No') }}:</span>
@@ -113,7 +115,6 @@
               <span class="font-bold">{{ $reference(order.reference) }}</span>
             </div>
           </div> -->
-        </div>
 
         <div v-if="order.account.header" class="my-6 px-4 py-3 border rounded">
           {{ order.account.header }}
@@ -152,9 +153,36 @@
         >
           {{ $t('View Order Photo') }}
         </a>
-
+        <table class="table table-borderless">
+            <thead>
+              <th>Prepared For</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Prepared In</th>
+              <th>Invoce Number</th>
+            </thead>
+            <tr>
+              <td>
+                {{ order.customer.name }}
+                {{ order.customer.address }}
+              </td>
+              <td>
+                {{ order.customer.email }}
+              </td>
+              <td>
+                {{ order.customer.phone }}
+              </td>
+              <td>
+                {{order.delivery_date}}
+              </td>
+              <td>
+                {{ order.id }}
+              </td>
+            </tr>
+            
+        </table>
         <div id="details" class="block xs:flex my-6">
-          <div id="company" class="ltr:pr-0 rtl:pl-0 xs:ltr:pr-3 xs:rtl:pl-3 w-full xs:max-w-1/2">
+          <!-- <div id="company" class="ltr:pr-0 rtl:pl-0 xs:ltr:pr-3 xs:rtl:pl-3 w-full xs:max-w-1/2">
             <div class="px-2 py-2 border rounded-t font-bold">
               {{ $t('Company Details') }}
             </div>
@@ -178,8 +206,8 @@
                 <span>{{ order.account.email }}</span>
               </div>
             </div>
-          </div>
-          <div id="customer" class="mt-4 xs:mt-0 ltr:pl-0 rtl:pr-0 xs:ltr:pl-3 xs:rtl:pr-3 w-full xs:max-w-1/2">
+          </div> -->
+          <!-- <div id="customer" class="mt-4 xs:mt-0 ltr:pl-0 rtl:pr-0 xs:ltr:pl-3 xs:rtl:pr-3 w-full xs:max-w-1/2">
             <div class="px-2 py-2 border rounded-t font-bold">
               {{ $t('Customer Details') }}
             </div>
@@ -204,7 +232,7 @@
                 <span>{{ order.customer.email }}</span>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="border rounded leading-tight">
@@ -288,7 +316,7 @@
                     <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
                       {{ $number(order.grand_total - this.total_paid) }}
                     </th>
-                  </tr>
+                  </tr> 
                 </template>
               </tfoot>
             </table>
