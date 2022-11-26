@@ -197,7 +197,7 @@ export default {
       this.sending = true;
       this.emailing = true;
       this.$axios
-        .post(this.route('orders.email', this.order.id))
+        .post(this.route('measurements.email', this.measurement.id))
         .then(res => {
           this.sending = false;
           this.emailing = false;
