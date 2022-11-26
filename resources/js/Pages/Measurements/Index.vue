@@ -24,7 +24,7 @@
         <thead>
           <tr class="text-left font-bold">
             <th class="px-6 pt-6 pb-4">{{ $t('Name') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $tc('Service') }}</th>
+            <!-- <th class="px-6 pt-6 pb-4">{{ $tc('Service') }}</th> -->
             <th class="px-6 pt-6 pb-4">{{ $tc('Customer') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $tc('Price') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $tc('Appointment Time') }}</th>
@@ -44,15 +44,14 @@
                 <Icons v-if="measurement.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ltr:ml-2 rtl:mr-2" />
               </div>
             </td>
-            <td class="border-t px-6 py-4 w-40">
+            <!-- <td class="border-t px-6 py-4 w-40">
               <div v-if="measurement.service_id">
                 {{ measurement.service}}
               </div>
-            </td>
+            </td> -->
             <td class="border-t px-6 py-4 w-48">
-              <h1>{{getServiceName(measurement)}}</h1>
               <div v-if="measurement.customer_id">
-                {{ measurement.customer }}
+                {{ getCoustomerName(measurement)}}
               </div>
             </td>
             <td class="border-t px-6 py-4 w-48">
@@ -163,17 +162,10 @@ export default {
         });
       });
     },
-    getServiceName(measurement){
-      fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
-        res.json().then(data => {
-           console.log(data);
-        });
-      }); 
-    },
     getCoustomerName(measurement){
       fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
-           console.log(data);
+           return data.coustomer.name;
         });
       }); 
     },
