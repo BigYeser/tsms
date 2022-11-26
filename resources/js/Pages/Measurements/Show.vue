@@ -89,10 +89,7 @@
                 <strong>{{ measurement.name }}</strong>
               </span>
             </div>
-            <div class="flex">
-              <span class="text-right ltr:mr-2 rtl:ml-2" style="min-width: 70px">{{ $t('service name') }}:</span>
-              <span>{{ measurement.service.name }}</span>
-            </div>
+
             <div v-if="measurement.appointment" class="flex">
               <span class="text-right ltr:mr-2 rtl:ml-2" style="min-width: 70px">{{ $t('Appointment Time') }}:</span>
               <span>{{ measurement.appointment }}</span>
