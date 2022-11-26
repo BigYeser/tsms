@@ -273,6 +273,11 @@
                     </td>
                     <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                       {{ $number(service.product_code) }}
+                      <div v-if="service.measurement.extra_attributes && service.measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
+                      <div class="rounded overflow-x-auto scroll-on-light">
+                          <table class="table table-borderless  w-full all max-w-full min-w-0" v-html="displayExtra(service.measurement.extra_attributes)"></table>
+                        </div>
+                      </div>
                     </td>
                     <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                       {{ service.color }}
@@ -287,17 +292,15 @@
                       {{ $number(service.amount) }}
                     </td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <td colspan="4">
                       <div v-if="service.measurement.extra_attributes && service.measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
                       <div class="rounded overflow-x-auto scroll-on-light">
-                          <table class="table w-full all max-w-full min-w-0" v-html="displayExtra(service.measurement.extra_attributes)"></table>
+                          <table class="table table-borderless  w-full all max-w-full min-w-0" v-html="displayExtra(service.measurement.extra_attributes)"></table>
                         </div>
                       </div>
                     </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                  </tr> -->
                 </template>
                 
               </tbody>
