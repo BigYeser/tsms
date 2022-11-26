@@ -40,16 +40,15 @@
             <div class="flex">
               <span class="text-right ltr:mr-2 rtl:ml-2" style="width: 90px">Date:</span>
               <span class="font-bold">
-                <span class="inline-block">{{ $date(measurement.created_at) }}</span>
-                <span class="inline-block">{{ $time(measurement.created_at) }}</span>
+                <span class="inline-block">{{ measurement.appointment}}</span>
               </span>
             </div>
           </div>
         </div>
 
-        <div v-if="notify" class="mt-6 px-4 py-3 bg-red-500 text-white rounded">
+        <!-- <div v-if="notify" class="mt-6 px-4 py-3 bg-red-500 text-white rounded">
           {{ $t('This measurement does not belong to the order customer.') }}
-        </div>
+        </div> -->
 
         <div id="customer" class="mt-6 w-full">
           <div class="px-2 py-2 border rounded-t font-bold">
@@ -77,12 +76,40 @@
             </div>
           </div>
         </div>
+        
+        <div id="measurement" class="mt-6 w-full">
+          <div class="px-2 py-2 border rounded-t font-bold">
+            {{ $t('Measurement Details') }}
+          </div>
 
-        <div v-if="measurement.extra_attributes && measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
+          <div class="border rounded-b border-t-0 px-2 py-2">
+            <div class="flex">
+              <span class="text-right ltr:mr-2 rtl:ml-2" style="min-width: 70px">{{ $t('Name') }}:</span>
+              <span>
+                <strong>{{ measurement.name }}</strong>
+              </span>
+            </div>
+            <div class="flex">
+              <span class="text-right ltr:mr-2 rtl:ml-2" style="min-width: 70px">{{ $t('service name') }}:</span>
+              <span>{{ measurement.service.name }}</span>
+            </div>
+            <div v-if="measurement.appointment" class="flex">
+              <span class="text-right ltr:mr-2 rtl:ml-2" style="min-width: 70px">{{ $t('Appointment Time') }}:</span>
+              <span>{{ measurement.appointment }}</span>
+            </div>
+
+            <div v-if="measurement.price" class="flex">
+              <span class="text-right ltr:mr-2 rtl:ml-2" style="min-width: 70px">{{ $t('Price') }}:</span>
+              <span>{{ measurement.price }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div v-if="measurement.extra_attributes && measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
           <div class="rounded overflow-x-auto scroll-on-light">
             <table class="table w-full all max-w-full min-w-0" v-html="displayExtra(measurement.extra_attributes)"></table>
           </div>
-        </div>
+        </div> -->
 
         <div class="pt-6" v-if="measurement.measurement">
           <h4 class="font-bold">{{ $t('Description') }}</h4>
