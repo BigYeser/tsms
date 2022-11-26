@@ -289,10 +289,10 @@
                   </tr>
                   <tr>
                     <td colspan="4">
-
+                      {{service.measurement}}
                      <table>
                         <tr v-for="fieldM in service.measurement.extra_attributes">
-                          <td colspan="2">{{fieldM.name}}</td>
+                          <td colspan="2">{{fieldM}}</td>
                           <td colspan="2">{{fieldM.value}}</td>
                         </tr>
                      </table> 
