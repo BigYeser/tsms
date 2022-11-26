@@ -175,14 +175,15 @@
               <td class="align-top"> 
                 {{$date(order.delivery_date)}}
               </td>
-              <td class="align-top"> 
+              <td class="align-top align-text-center"> 
                 {{ order.id }}
               </td>
             </tr>
             
         </table>
+        <!-- 
         <div id="details" class="block xs:flex my-6">
-          <!-- <div id="company" class="ltr:pr-0 rtl:pl-0 xs:ltr:pr-3 xs:rtl:pl-3 w-full xs:max-w-1/2">
+          <div id="company" class="ltr:pr-0 rtl:pl-0 xs:ltr:pr-3 xs:rtl:pl-3 w-full xs:max-w-1/2">
             <div class="px-2 py-2 border rounded-t font-bold">
               {{ $t('Company Details') }}
             </div>
@@ -232,9 +233,12 @@
                 <span>{{ order.customer.email }}</span>
               </div>
             </div>
-          </div> -->
+          </div> 
         </div>
-
+      -->
+        <br/>
+        <hr/>
+        <br/>
         <div class="border rounded leading-tight">
           <p class="px-4 py-3 border-b rounded-t font-bold">
             {{ $tc('Service', 2) }}
@@ -244,16 +248,19 @@
               <thead>
                 <tr>
                   <th class="border-b bg-gray-200 px-4 py-2">{{ $t('Item / Details') }}</th>
-                  <th class="border-b bg-gray-200 px-4 py-2 text-center">{{ $t('Price') }}</th>
-                  <th class="border-b bg-gray-200 px-4 py-2 text-center">{{ $t('Qty') }}</th>
-                  <th class="border-b bg-gray-200 px-4 py-2 text-center">{{ $t('Amount') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Code') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Color') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-40">{{ $tc('Measurement') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t('Price') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Qty') }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200">{{ $t('Amount') }}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="service in order.services" :key="'service_' + service.id">
                   <td class="border-b px-4 py-2">
                     <div style="min-width: 180px">
-                      <div>{{ service.name }} ({{ service.code }})</div>
+                      <div>{{ service.name }}</div>
                       <div>
                         <small class="text-muted">
                           {{ $tc('Measurement') }}:
@@ -263,6 +270,12 @@
                         </small>
                       </div>
                     </div>
+                  </td>
+                  <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                    {{ $number(service.product_code) }}
+                  </td>
+                  <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                    {{ $number(service.color) }}
                   </td>
                   <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                     {{ $number(service.price) }}
