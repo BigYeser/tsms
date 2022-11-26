@@ -166,7 +166,7 @@ export default {
     getCoustomerName(measurement){
       fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
-            console.log(data.coustomer);
+            console.log(data);
             return data.coustomer;
         });
       }); 
