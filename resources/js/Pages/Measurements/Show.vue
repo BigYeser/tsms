@@ -114,6 +114,38 @@
         </div>
       </div>
     </div>
+     <!--Footer-->
+     <div v-if="modal" class="np block xs:flex items-end justify-between px-6 py-4 mt-4 bg-gray-100 border-t rounded-b">
+      <div class="m-1 xs:m-0">
+        <button
+          @click="editOrder()"
+          v-if="$page.props.user.edit_all || $page.props.user.id == order.user.id"
+          class="px-4 py-3 text-sm rounded bg-gray-200 hover:bg-gray-400 border ltr:mr-2 rtl:ml-2"
+        >
+          {{ $t('Edit') }}
+        </button>
+        <button
+          :disabled="sending"
+          @click="smsToCustomer()"
+          v-if="$page.props.user.account.sms_enabled && ($page.props.user.can_sms || $page.props.user.owner)"
+          class="inline-flex items-center mt-1 px-4 py-3 text-sm rounded bg-gray-200 hover:bg-gray-400 border ltr:mr-2 rtl:ml-2"
+        >
+          <div v-if="sending" class="btn-spinner dark ltr:mr-2 rtl:ml-2" />
+          {{ $t('SMS') }}
+        </button>
+        <button
+          :disabled="sending"
+          @click="emailOrder()"
+          class="inline-flex items-center mt-1 px-4 py-3 text-sm rounded bg-gray-200 hover:bg-gray-400 border ltr:mr-2 rtl:ml-2"
+        >
+          <div v-if="sending" class="btn-spinner dark ltr:mr-2 rtl:ml-2" />
+          Notify
+        </button>
+      </div>
+      <button @click="hide()" class="btn-gray">
+        {{ $t('Close') }}
+      </button>
+    </div>
   </div>
 </template>
 

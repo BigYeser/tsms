@@ -9,6 +9,7 @@ use App\Models\Measurement;
 use Illuminate\Http\Request;
 use App\Http\Requests\MeasurementRequest;
 use App\Http\Resources\MeasurementCollection;
+use App\Notifications\MeasurementCreated;
 
 class MeasurementController extends Controller
 {
@@ -101,5 +102,18 @@ class MeasurementController extends Controller
         $v = $request->validated();
         $measurement->update($v);
         return back()->with('success', __('model_updated', ['model' => __choice('Measurement', 1)]));
+    }
+    
+    public function email(Request $request, Measurement $measurement)
+    {
+        $result = false;
+        try {
+            $measurement->customer->notify(new MeasurementCreated($measurement));
+            $result = true;
+            $message = __('Measurement has been sent to the customer email address');
+        } catch (\Exception $e) {
+            $message = $e->getMessage();
+        
+        return response()->json(['success' => $result, 'message' => $message]);
     }
 }

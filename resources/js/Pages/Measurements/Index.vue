@@ -25,7 +25,7 @@
           <tr class="text-left font-bold">
             <th class="px-6 pt-6 pb-4">{{ $t('Name') }}</th>
             <!-- <th class="px-6 pt-6 pb-4">{{ $tc('Service') }}</th> -->
-            <th class="px-6 pt-6 pb-4">{{ $tc('Customer') }}</th>
+            <!-- <th class="px-6 pt-6 pb-4">{{ $tc('Customer') }}</th> -->
             <th class="px-6 pt-6 pb-4">{{ $tc('Price') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $tc('Appointment Time') }}</th>
             <th class="px-6 pt-6 pb-4" colspan="2">{{ $t('Description') }}</th>
@@ -49,11 +49,11 @@
                 {{ measurement.service}}
               </div>
             </td> -->
-            <td class="border-t px-6 py-4 w-48">
+            <!-- <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.customer_id">
                 {{ getCustomerName(measurement)}}
               </div>
-            </td>
+            </td> -->
             <td class="border-t px-6 py-4 w-48">
               <div v-if="measurement.price">
                 {{ measurement.price}}
@@ -165,8 +165,6 @@ export default {
     getCustomerName(measurement){
       fetch(this.route('measurements.show', [measurement.id, md5(measurement.name)]) + '?ajax=1').then(res => {
         res.json().then(data => {
-            console.log(data);
-            console.log(data.customer.name);
             return data.customer.name;
         });
       }); 
