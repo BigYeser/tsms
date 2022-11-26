@@ -50,7 +50,15 @@
             ></v-select>
             <div v-if="$page.props.errors?.service_id" class="form-error">{{ $page.props.errors?.service_id[0] }}</div>
           </div>
+          <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <label class="form-label" for="price">{{ $tc('Price') }}</label>
+              <text-input  type="number" v-model="form.price" />
+            </div>
 
+            <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <label class="form-label" for="appointment">{{ $tc('Appointment Time') }}</label>
+              <input type="datetime-local" name="appointment" v-model="form.appointment">
+            </div>
           <div
             class="ltr:pr-6 rtl:pl-6 ltr:-mr-12 rtl:-ml-12 w-full"
             v-if="service && service.measurement_fields && service.measurement_fields.length"
