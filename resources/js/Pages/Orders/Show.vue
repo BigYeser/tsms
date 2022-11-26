@@ -274,7 +274,7 @@
                     {{ $number(service.product_code) }}
                   </td>
                   <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                    {{ $service.color }}
+                    {{ service.color }}
                   </td>
                   <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
                     {{ $number(service.price) }}
