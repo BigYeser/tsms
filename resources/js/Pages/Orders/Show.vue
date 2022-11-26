@@ -81,13 +81,13 @@
 
     <!--Body-->
     <div class="print">
-      <div class="max-w-2xl h-full py-6 px-6 leading-normal">
+      <div class="max-w-2xl h-full py-0 px-0 leading-normal">
         <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full items-center">
           <div class="text-gray-900 mx-auto xs:mx-0" style="width: 180px">
             <img :alt="$page.props.user.account.name" v-if="$page.props.user.account.logo_path" :src="$page.props.user.account.logo_path" />
             <logo v-else />
           </div>
-          <div class="text-sm px-6 py-6 xs:py-0 xs:ltr:text-left rtl:text-right">
+          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-right rtl:text-right">
             <div class="font-extrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
             <div class="font-bold">{{ order.account.email}}</div>
