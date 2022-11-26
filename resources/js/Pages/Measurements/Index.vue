@@ -38,7 +38,7 @@
             class="cursor-pointer hover:bg-teal-200 focus-within:bg-teal-200"
           >
             <td class="border-t px-6 py-4 w-56">
-              <h1> {{measurement}}</h1>
+              <h1> {{measurement.service()}}</h1>
 
               <div class="flex items-center">
                 {{ measurement.name }}
