@@ -51,6 +51,18 @@
                 {{ $page.props.errors?.service_id[0] }}
               </div>
             </div>
+            <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <label class="form-label" for="price">{{ $tc('Price') }}</label>
+              <text-input small class="w-20" type="number" v-model="form.price" />
+            </div>
+            <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <label class="form-label" for="price">{{ $tc('Price') }}</label>
+              <text-input id="name" small class="w-20" type="number"  v-model="form.price" />
+            </div>
+            <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <label class="form-label" for="appointment">{{ $tc('Appointment Time') }}</label>
+              <input type="datetime-local" name="appointment" v-model="form.appointment">
+            </div>
             <div class="mb-8 ltr:mr-6 rtl:ml-6 flex flex-wrap">
               <label class="form-label" for="name">{{ $t('Type Name') }}</label>
               <input
