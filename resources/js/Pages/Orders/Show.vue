@@ -289,9 +289,9 @@
                   </tr>
                   <tr>
                     <td colspan="4">
-                      <div v-if="measurement.extra_attributes && measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
+                      <div v-if="service.measurement.extra_attributes && service.measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
                       <div class="rounded overflow-x-auto scroll-on-light">
-                          <table class="table w-full all max-w-full min-w-0" v-html="displayExtra(measurement.extra_attributes)"></table>
+                          <table class="table w-full all max-w-full min-w-0" v-html="displayExtra(service.measurement.extra_attributes)"></table>
                         </div>
                       </div>
                     </td>
@@ -551,33 +551,6 @@ export default {
         //   ],
         // });
       }
-    },
-    displayExtra(attr) {
-      let extra = '';
-      if (Array.isArray(attr)) {
-        attr.map((a, i) => {
-          for (let [key, value] of Object.entries(a)) {
-            extra += `</tr>`;
-            if (value.includes('{') && value.includes('}') && value.includes(':')) {
-              extra += `<td class="w-32 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">`;
-              const cbv = JSON.parse(value);
-              for (let [k, v] of Object.entries(cbv)) {
-                if (v) {
-                  extra += k + ' ';
-                  //   extra += `<span class="inline-block text-green-600 ltr:mr-2 rtl:ml-2">&#10003; ${k} </span> `;
-                  // } else {
-                  //   extra += `<span class="inline-block text-red-500 ltr:mr-2 rtl:ml-2">&#10005; ${k},</span> `;
-                }
-              }
-              extra += `</td>`;
-            } else {
-              extra += `<td class="w-32 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">${value}</td> `;
-            }
-            extra += `</tr>`;
-          }
-        });
-      }
-      return extra;
     },
     smsToCustomer() {
       this.send_sms = true;
