@@ -53,11 +53,7 @@
             </div>
             <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
               <label class="form-label" for="price">{{ $tc('Price') }}</label>
-              <text-input small class="w-20" type="number" v-model="form.price" />
-            </div>
-            <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
-              <label class="form-label" for="price">{{ $tc('Price') }}</label>
-              <text-input id="name" small class="w-20" type="number"  v-model="form.price" />
+              <text-input type="number" v-model="form.price" />
             </div>
             <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
               <label class="form-label" for="appointment">{{ $tc('Appointment Time') }}</label>
