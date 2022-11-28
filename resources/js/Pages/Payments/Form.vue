@@ -1,7 +1,13 @@
 <template>
   <div v-if="c" :class="modal ? 'modal flex items-center w-full h-full' : ''">
-    <div :class="modal ? 'bg-white w-full rounded shadow-lg max-w-2xl mx-auto my-auto animate zoomIn' : ''">
-      <div class="ltr:text-left rtl:text-right">
+    <div
+      :class="
+        modal
+          ? 'bg-white w-full rounded shadow-lg max-w-2xl mx-auto my-auto animate zoomIn'
+          : ''
+      "
+    >
+      <!-- <div class="ltr:text-left rtl:text-right">
         <div v-if="modal" class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t">
           <p class="font-bold flex-1">{{ $t('add_x', { x: $tc('Payment') }) }}</p>
           <div class="flex items-center">
@@ -92,14 +98,14 @@
                   class="stripe-card w-full mt-2 mb-6 pr-6"
                 />
               </div>
-              <!-- <checkbox-input
+              <checkbox-input
                 class="mb-8"
                 id="received"
                 v-model="form.received"
                 :checked="form.received"
                 v-else-if="form.gateway != 'PayU'"
                 :label="$t('I am receiving this amount')"
-              ></checkbox-input> -->
+              ></checkbox-input>
             </div>
             <div
               :class="{ 'rounded-b': modal }"
@@ -111,23 +117,35 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import debounce from 'lodash/debounce';
-import TextInput from '@/Shared/TextInput.vue';
-import CheckboxInput from '@/Shared/CheckboxInput.vue';
-import TextareaInput from '@/Shared/TextareaInput.vue';
-import LoadingButton from '@/Shared/LoadingButton.vue';
-import { StripeElementCard } from '@vue-stripe/vue-stripe';
+import debounce from "lodash/debounce";
+import TextInput from "@/Shared/TextInput.vue";
+import CheckboxInput from "@/Shared/CheckboxInput.vue";
+import TextareaInput from "@/Shared/TextareaInput.vue";
+import LoadingButton from "@/Shared/LoadingButton.vue";
+import { StripeElementCard } from "@vue-stripe/vue-stripe";
 
 export default {
-  remember: 'form',
-  components: { CheckboxInput, LoadingButton, TextInput, TextareaInput, StripeElementCard },
-  props: { modal: Boolean, c: Object, icustomers: Array, amount: Number, oId: { default: false } },
+  remember: "form",
+  components: {
+    CheckboxInput,
+    LoadingButton,
+    TextInput,
+    TextareaInput,
+    StripeElementCard,
+  },
+  props: {
+    modal: Boolean,
+    c: Object,
+    icustomers: Array,
+    amount: Number,
+    oId: { default: false },
+  },
   data() {
     return {
       loading: false,
@@ -155,34 +173,34 @@ export default {
     };
   },
   mounted() {
-    this.customers = this.icustomers || [];
-    if (this.oId) {
-      this.$axios
-        .post(this.route('payments.order', this.oId))
-        .then(({ data }) => (this.paid = data.reduce((a, p) => a + parseFloat(p.amount), 0)))
-        .then(() => {
-          if (this.amount) {
-            this.form.amount = this.$number(this.amount - this.paid) + '';
-          }
-        })
-        .catch(err => console.log(err));
-    } else if (this.amount) {
-      this.form.amount = this.$number(this.amount) + '';
-    }
-    this.form.date = new Date().toISOString().split('T')[0];
-    this.gateways = this.$page.props.user.account.gateways.split(',');
-    if (this.c) {
-      this.customers.push(this.c);
-      this.form.customer_id = this.c.value;
-      this.customer = this.c;
-    }
-    if (this.$page.props.user.account.payu) {
-      this.gateways.push('PayU');
-    }
-    if (this.$page.props.user.account.stripe) {
-      this.gateways.push('Stripe');
-      this.publishableKey = this.$page.props.user.account.stripe_key;
-    }
+    // this.customers = this.icustomers || [];
+    // if (this.oId) {
+    //   this.$axios
+    //     .post(this.route('payments.order', this.oId))
+    //     .then(({ data }) => (this.paid = data.reduce((a, p) => a + parseFloat(p.amount), 0)))
+    //     .then(() => {
+    //       if (this.amount) {
+    //         this.form.amount = this.$number(this.amount - this.paid) + '';
+    //       }
+    //     })
+    //     .catch(err => console.log(err));
+    // } else if (this.amount) {
+    //   this.form.amount = this.$number(this.amount) + '';
+    // }
+    // this.form.date = new Date().toISOString().split('T')[0];
+    // this.gateways = this.$page.props.user.account.gateways.split(',');
+    // if (this.c) {
+    //   this.customers.push(this.c);
+    //   this.form.customer_id = this.c.value;
+    //   this.customer = this.c;
+    // }
+    // if (this.$page.props.user.account.payu) {
+    //   this.gateways.push('PayU');
+    // }
+    // if (this.$page.props.user.account.stripe) {
+    //   this.gateways.push('Stripe');
+    //   this.publishableKey = this.$page.props.user.account.stripe_key;
+    // }
   },
   methods: {
     customerChanged(c) {
@@ -197,28 +215,28 @@ export default {
       }
     },
     searchingCustomers: debounce((loading, search, vm) => {
-      fetch(vm.route('ajax.customers') + '?search=' + escape(search)).then(res => {
-        res.json().then(data => (vm.customers = data));
+      fetch(vm.route("ajax.customers") + "?search=" + escape(search)).then((res) => {
+        res.json().then((data) => (vm.customers = data));
         loading(false);
       });
     }, 350),
     submit() {
       this.sending = true;
-      if (this.form.gateway == 'Stripe' && !this.form.token_id) {
+      if (this.form.gateway == "Stripe" && !this.form.token_id) {
         this.$refs.stripeCard.submit();
       } else {
         this.$axios
-          .post(this.route('payments.store'), this.form)
-          .then(res => {
+          .post(this.route("payments.store"), this.form)
+          .then((res) => {
             this.sending = false;
             if (res.data.success) {
               // this.$page.props.flash.success = res.data.message;
               if (res.data.payu) {
-                window.location.href = this.route('payu.request', res.data.id);
+                window.location.href = this.route("payu.request", res.data.id);
                 // this.$inertia.visit(this.route('payu.request', res.data.id));
               }
               if (this.modal) {
-                this.$emit('close');
+                this.$emit("close");
                 // this.$inertia.reload({ replace: true, preserveState: true, data: { message: this.message } });
               } else {
                 this.form = {
@@ -237,7 +255,7 @@ export default {
               }
             }
           })
-          .catch(err => {
+          .catch((err) => {
             this.sending = false;
             this.form.token = null;
             this.form.token_id = null;
@@ -253,7 +271,7 @@ export default {
             //   }
             // }
             this.$nextTick(() => {
-              document.getElementById('page-contents').scrollTop = 0;
+              document.getElementById("page-contents").scrollTop = 0;
             });
           });
       }
