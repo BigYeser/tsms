@@ -131,6 +131,9 @@
         <div class="mb-4 flex items-center justify-between p-4 bg-green-100 rounded text-lg border border-green-300">
           {{ $t('Order Amount') }}: <strong>{{ $number(reportData.report.orders.total_amount) }}</strong>
         </div>
+          <div class="mb-4 flex items-center justify-between p-4 bg-green-100 rounded text-lg border border-green-300">
+          {{ $t('Measurements Amount') }}: <strong>{{ $number(reportData.report.orders.total_amount) }}</strong>
+        </div>
         <div class="mb-4 flex items-center justify-between p-4 bg-orange-100 rounded text-lg border border-orange-300">
           {{ $t('Tax Amount') }}: <strong>{{ $number(reportData.report.orders.total_tax) }}</strong>
         </div>

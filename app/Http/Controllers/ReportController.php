@@ -179,13 +179,19 @@ class ReportController extends Controller
             ->selectRaw('COUNT(id) as total_orders, SUM(grand_total) as total_amount')
             ->whereBetween('created_at', [$v['start_date'], $v['end_date']])->first();
 
+
         $assigned = $user->assignedTo()
             ->selectRaw('COUNT(id) as total_orders, SUM(grand_total) as total_amount')
+            ->whereBetween('created_at', [$v['start_date'], $v['end_date']])->first();
+
+        $measurements = $user->orders()
+            ->selectRaw('COUNT(id) as total_measurements, SUM(price) as total_measurements')
             ->whereBetween('created_at', [$v['start_date'], $v['end_date']])->first();
 
         $report = [
             'orders'          => $orders,
             'assigned_orders' => $assigned,
+            'measurements'    => $measurements,
             'salaries'        => $salaries->amount,
             'expenses'        => $expenses->amount,
             'user'            => $user->only('id', 'name', 'phone'),
