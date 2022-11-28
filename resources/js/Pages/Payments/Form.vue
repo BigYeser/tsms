@@ -1,4 +1,5 @@
 <template>
+  <h1>Hello</h1>
   <div v-if="c" :class="modal ? 'modal flex items-center w-full h-full' : ''">
     <div
       :class="
