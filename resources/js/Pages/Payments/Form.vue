@@ -191,7 +191,8 @@ export default {
   mounted() {
     this.customers = this.icustomers || [];
     console.log(this.customers);
-
+    console.log("oId: " + this.oId);
+    console.log("amount: " + this.amount);
     if (this.oId) {
       this.$axios
         .post(this.route("payments.order", this.oId))
@@ -208,7 +209,11 @@ export default {
       this.form.amount = this.$number(this.amount) + "";
     }
     this.form.date = new Date().toISOString().split("T")[0];
+    console.log("date: " + this.form.date);
+
     this.gateways = this.$page.props.user.account.gateways.split(",");
+    console.log("gateways: " + this.gateways);
+    
     if (this.c) {
       this.customers.push(this.c);
       this.form.customer_id = this.c.value;
