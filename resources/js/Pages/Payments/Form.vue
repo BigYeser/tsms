@@ -189,6 +189,7 @@ export default {
   },
   mounted() {
     this.customers = this.icustomers || [];
+    console.log("Hello");
     if (this.oId) {
       this.$axios
         .post(this.route("payments.order", this.oId))
@@ -204,6 +205,8 @@ export default {
     } else if (this.amount) {
       this.form.amount = this.$number(this.amount) + "";
     }
+    console.log("Hello2");
+
     this.form.date = new Date().toISOString().split("T")[0];
     this.gateways = this.$page.props.user.account.gateways.split(",");
     if (this.c) {
@@ -214,10 +217,13 @@ export default {
     if (this.$page.props.user.account.payu) {
       this.gateways.push("PayU");
     }
+    console.log("Hello3");
+
     if (this.$page.props.user.account.stripe) {
       this.gateways.push("Stripe");
       this.publishableKey = this.$page.props.user.account.stripe_key;
     }
+    console.log("Hello4");
   },
   methods: {
     customerChanged(c) {
