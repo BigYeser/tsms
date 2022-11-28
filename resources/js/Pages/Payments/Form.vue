@@ -173,34 +173,36 @@ export default {
     };
   },
   mounted() {
-    // this.customers = this.icustomers || [];
-    // if (this.oId) {
-    //   this.$axios
-    //     .post(this.route('payments.order', this.oId))
-    //     .then(({ data }) => (this.paid = data.reduce((a, p) => a + parseFloat(p.amount), 0)))
-    //     .then(() => {
-    //       if (this.amount) {
-    //         this.form.amount = this.$number(this.amount - this.paid) + '';
-    //       }
-    //     })
-    //     .catch(err => console.log(err));
-    // } else if (this.amount) {
-    //   this.form.amount = this.$number(this.amount) + '';
-    // }
-    // this.form.date = new Date().toISOString().split('T')[0];
-    // this.gateways = this.$page.props.user.account.gateways.split(',');
-    // if (this.c) {
-    //   this.customers.push(this.c);
-    //   this.form.customer_id = this.c.value;
-    //   this.customer = this.c;
-    // }
-    // if (this.$page.props.user.account.payu) {
-    //   this.gateways.push('PayU');
-    // }
-    // if (this.$page.props.user.account.stripe) {
-    //   this.gateways.push('Stripe');
-    //   this.publishableKey = this.$page.props.user.account.stripe_key;
-    // }
+    this.customers = this.icustomers || [];
+    if (this.oId) {
+      this.$axios
+        .post(this.route("payments.order", this.oId))
+        .then(
+          ({ data }) => (this.paid = data.reduce((a, p) => a + parseFloat(p.amount), 0))
+        )
+        .then(() => {
+          if (this.amount) {
+            this.form.amount = this.$number(this.amount - this.paid) + "";
+          }
+        })
+        .catch((err) => console.log(err));
+    } else if (this.amount) {
+      this.form.amount = this.$number(this.amount) + "";
+    }
+    this.form.date = new Date().toISOString().split("T")[0];
+    this.gateways = this.$page.props.user.account.gateways.split(",");
+    if (this.c) {
+      this.customers.push(this.c);
+      this.form.customer_id = this.c.value;
+      this.customer = this.c;
+    }
+    if (this.$page.props.user.account.payu) {
+      this.gateways.push("PayU");
+    }
+    if (this.$page.props.user.account.stripe) {
+      this.gateways.push("Stripe");
+      this.publishableKey = this.$page.props.user.account.stripe_key;
+    }
   },
   methods: {
     customerChanged(c) {
