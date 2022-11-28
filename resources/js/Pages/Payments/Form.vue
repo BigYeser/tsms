@@ -1,6 +1,8 @@
 <template>
   <h1>Hello</h1>
   <div v-if="c" :class="modal ? 'modal flex items-center w-full h-full' : ''">
+    <h1>Hello2</h1>
+
     <div
       :class="
         modal
@@ -8,6 +10,8 @@
           : ''
       "
     >
+      <h1>Hello3</h1>
+
       <div class="ltr:text-left rtl:text-right">
         <!-- <div
           v-if="modal"
