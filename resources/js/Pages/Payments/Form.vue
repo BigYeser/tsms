@@ -189,8 +189,9 @@ export default {
     };
   },
   mounted() {
-    console.log(this.customers);
     this.customers = this.icustomers || [];
+    console.log(this.customers);
+
     if (this.oId) {
       this.$axios
         .post(this.route("payments.order", this.oId))
