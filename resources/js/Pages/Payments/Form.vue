@@ -7,6 +7,7 @@
           : ''
       "
     >
+      <h1>Hello</h1>
       <!-- <div class="ltr:text-left rtl:text-right">
         <div v-if="modal" class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t">
           <p class="font-bold flex-1">{{ $t('add_x', { x: $tc('Payment') }) }}</p>
