@@ -22,9 +22,9 @@ class PaymentController extends Controller
 
     public function create()
     {
-        return Inertia::render('Payments/Create', [
-            'icustomers' => Customer::selectRaw('id as value, name as label, id')->with('measurements')->take(20)->get(),
-        ]);
+        // return Inertia::render('Payments/Create', [
+        //     'icustomers' => Customer::selectRaw('id as value, name as label, id')->with('measurements')->take(20)->get(),
+        // ]);
     }
 
     public function delete(Payment $payment)
