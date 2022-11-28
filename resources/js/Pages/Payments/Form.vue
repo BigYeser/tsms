@@ -1,5 +1,5 @@
 <template>
-  <div v-if="c" :class="modal ? 'modal flex items-center w-full h-full' : ''">
+  <div :class="modal ? 'modal flex items-center w-full h-full' : ''">
     <div
       :class="
         modal
@@ -213,7 +213,7 @@ export default {
 
     this.gateways = this.$page.props.user.account.gateways.split(",");
     console.log("gateways: " + this.gateways);
-    
+
     if (this.c) {
       this.customers.push(this.c);
       this.form.customer_id = this.c.value;
