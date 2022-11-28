@@ -1,12 +1,5 @@
 <template>
-  <h1>Hello1</h1>
-  <h1>
-    {{ c }}
-  </h1>
-  <h1>Hello Hello</h1>
   <div v-if="c" :class="modal ? 'modal flex items-center w-full h-full' : ''">
-    <h1>Hello2</h1>
-
     <div
       :class="
         modal
@@ -14,12 +7,11 @@
           : ''
       "
     >
-      <h1>Hello3</h1>
-
       <div class="ltr:text-left rtl:text-right">
-        <!-- <div
+        <div
           v-if="modal"
-          class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t">
+          class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t"
+        >
           <p class="font-bold flex-1">{{ $t("add_x", { x: $tc("Payment") }) }}</p>
           <div class="flex items-center">
             <a class="modal-close cursor-pointer z-50" @click="$emit('close')">
@@ -36,9 +28,9 @@
               </svg>
             </a>
           </div>
-        </div> -->
-        <h1>Hello</h1>
-        <!-- <div :class="modal ? 'print' : ''">
+        </div>
+
+        <div :class="modal ? 'print' : ''">
           <form @submit.prevent="submit" autocomplete="off">
             <div class="p-8 ltr:-mr-6 rtl:-ml-6 ltr:ml-0 rtl:mr-0 -mb-8 flex flex-wrap">
               <text-input
@@ -124,7 +116,7 @@
               <checkbox-input
                 class="mb-8"
                 id="received"
-                v-model="form.received"
+                v-model:checked="form.received"
                 :checked="form.received"
                 v-else-if="form.gateway != 'PayU'"
                 :label="$t('I am receiving this amount')"
@@ -139,7 +131,7 @@
               </loading-button>
             </div>
           </form>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
@@ -151,10 +143,11 @@ import TextInput from "@/Shared/TextInput.vue";
 import CheckboxInput from "@/Shared/CheckboxInput.vue";
 import TextareaInput from "@/Shared/TextareaInput.vue";
 import LoadingButton from "@/Shared/LoadingButton.vue";
+// import { StripeElements } from 'vue-stripe-checkout';
 import { StripeElementCard } from "@vue-stripe/vue-stripe";
 
 export default {
-  remember: "forxm",
+  remember: "form",
   components: {
     CheckboxInput,
     LoadingButton,
@@ -212,7 +205,6 @@ export default {
     } else if (this.amount) {
       this.form.amount = this.$number(this.amount) + "";
     }
-
     this.form.date = new Date().toISOString().split("T")[0];
     this.gateways = this.$page.props.user.account.gateways.split(",");
     if (this.c) {
@@ -223,12 +215,10 @@ export default {
     if (this.$page.props.user.account.payu) {
       this.gateways.push("PayU");
     }
-
     if (this.$page.props.user.account.stripe) {
       this.gateways.push("Stripe");
       this.publishableKey = this.$page.props.user.account.stripe_key;
     }
-    console.log("Hello");
   },
   methods: {
     customerChanged(c) {
