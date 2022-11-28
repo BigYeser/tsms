@@ -95,7 +95,7 @@
               <checkbox-input
                 class="mb-8"
                 id="received"
-                v-model:checked="form.received"
+                v-model="form.received"
                 :checked="form.received"
                 v-else-if="form.gateway != 'PayU'"
                 :label="$t('I am receiving this amount')"
