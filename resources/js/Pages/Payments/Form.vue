@@ -1,5 +1,8 @@
 <template>
   <h1>Hello</h1>
+  <h1>
+    {{ c }}
+  </h1>
   <div v-if="c" :class="modal ? 'modal flex items-center w-full h-full' : ''">
     <h1>Hello2</h1>
 
@@ -150,7 +153,7 @@ import LoadingButton from "@/Shared/LoadingButton.vue";
 import { StripeElementCard } from "@vue-stripe/vue-stripe";
 
 export default {
-  remember: "form",
+  remember: "forxm",
   components: {
     CheckboxInput,
     LoadingButton,
