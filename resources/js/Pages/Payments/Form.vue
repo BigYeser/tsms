@@ -8,10 +8,9 @@
       "
     >
       <div class="ltr:text-left rtl:text-right">
-        <div
+        <!-- <div
           v-if="modal"
-          class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t"
-        >
+          class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t">
           <p class="font-bold flex-1">{{ $t("add_x", { x: $tc("Payment") }) }}</p>
           <div class="flex items-center">
             <a class="modal-close cursor-pointer z-50" @click="$emit('close')">
@@ -28,7 +27,7 @@
               </svg>
             </a>
           </div>
-        </div>
+        </div> -->
         <h1>Hello</h1>
         <!-- <div :class="modal ? 'print' : ''">
           <form @submit.prevent="submit" autocomplete="off">
@@ -220,6 +219,7 @@ export default {
       this.gateways.push("Stripe");
       this.publishableKey = this.$page.props.user.account.stripe_key;
     }
+    console.log("Hello");
   },
   methods: {
     customerChanged(c) {
