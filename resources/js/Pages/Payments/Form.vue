@@ -7,13 +7,21 @@
           : ''
       "
     >
-      <h1>Hello</h1>
-      <!-- <div class="ltr:text-left rtl:text-right">
-        <div v-if="modal" class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t">
-          <p class="font-bold flex-1">{{ $t('add_x', { x: $tc('Payment') }) }}</p>
+      <div class="ltr:text-left rtl:text-right">
+        <div
+          v-if="modal"
+          class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t"
+        >
+          <p class="font-bold flex-1">{{ $t("add_x", { x: $tc("Payment") }) }}</p>
           <div class="flex items-center">
             <a class="modal-close cursor-pointer z-50" @click="$emit('close')">
-              <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+              <svg
+                class="fill-current text-black"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+              >
                 <path
                   d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"
                 ></path>
@@ -48,7 +56,7 @@
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
               />
               <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
-                <label class="form-label" for="gateway">{{ $t('Gateway') }}</label>
+                <label class="form-label" for="gateway">{{ $t("Gateway") }}</label>
                 <v-select
                   transition=""
                   :clearable="false"
@@ -59,10 +67,12 @@
                   :placeholder="$t('select_x', { x: $t('Gateway') })"
                   :class="{ error: errors.gateway && errors.gateway.length }"
                 ></v-select>
-                <div v-if="errors?.gateway" class="form-error">{{ errors.gateway[0] }}</div>
+                <div v-if="errors?.gateway" class="form-error">
+                  {{ errors.gateway[0] }}
+                </div>
               </div>
               <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full">
-                <label class="form-label" for="customer_id">{{ $tc('Customer') }}</label>
+                <label class="form-label" for="customer_id">{{ $tc("Customer") }}</label>
                 <v-select
                   transition=""
                   v-model="customer"
@@ -76,10 +86,14 @@
                   :placeholder="$t('search_x', { x: $tc('Customer') })"
                   :class="{ error: errors?.customer_id && errors.customer_id.length }"
                 ></v-select>
-                <div v-if="errors?.customer_id" class="form-error">{{ errors.customer_id[0] }}</div>
+                <div v-if="errors?.customer_id" class="form-error">
+                  {{ errors.customer_id[0] }}
+                </div>
               </div>
             </div>
-            <div class="px-8 pb-8 ltr:-mr-6 rtl:-ml-6 ltr:ml-0 rtl:mr-0 -mb-8 flex flex-wrap">
+            <div
+              class="px-8 pb-8 ltr:-mr-6 rtl:-ml-6 ltr:ml-0 rtl:mr-0 -mb-8 flex flex-wrap"
+            >
               <textarea-input
                 :label="$t('Description')"
                 v-model="form.description"
@@ -88,7 +102,7 @@
               />
               <div v-if="form.gateway == 'Stripe'" class="w-full">
                 <label for="card-element">
-                  {{ $t('Credit or debit card') }}
+                  {{ $t("Credit or debit card") }}
                 </label>
                 <stripe-element-card
                   :amount="amount"
@@ -113,12 +127,12 @@
               class="px-8 py-4 bg-gray-100 border-t border-gray-200 rounded-b-md flex justify-end items-center"
             >
               <loading-button :loading="sending" class="btn-gray" type="submit">
-                {{ $t('create_x', { x: $tc('Payment') }) }}
+                {{ $t("create_x", { x: $tc("Payment") }) }}
               </loading-button>
             </div>
           </form>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

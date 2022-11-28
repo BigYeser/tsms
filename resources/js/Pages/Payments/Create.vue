@@ -14,7 +14,7 @@
       <span class="text-gray-400 font-medium mx-2">/</span> {{ $t("Create") }}
     </h1>
     <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-      <p-form :modal="false" :icustomers="icustomers" />
+      <p-form :modal="true" :icustomers="icustomers" />
     </div>
   </div>
 </template>
