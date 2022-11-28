@@ -189,7 +189,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.c);
+    console.log(this.customers);
     this.customers = this.icustomers || [];
     if (this.oId) {
       this.$axios
