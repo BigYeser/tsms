@@ -92,14 +92,14 @@
                   class="stripe-card w-full mt-2 mb-6 pr-6"
                 />
               </div>
-              <checkbox-input
+              <!-- <checkbox-input
                 class="mb-8"
                 id="received"
                 v-model="form.received"
                 :checked="form.received"
                 v-else-if="form.gateway != 'PayU'"
                 :label="$t('I am receiving this amount')"
-              ></checkbox-input>
+              ></checkbox-input> -->
             </div>
             <div
               :class="{ 'rounded-b': modal }"
@@ -122,7 +122,6 @@ import TextInput from '@/Shared/TextInput.vue';
 import CheckboxInput from '@/Shared/CheckboxInput.vue';
 import TextareaInput from '@/Shared/TextareaInput.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
-// import { StripeElements } from 'vue-stripe-checkout';
 import { StripeElementCard } from '@vue-stripe/vue-stripe';
 
 export default {
