@@ -29,8 +29,8 @@
             </a>
           </div>
         </div>
-
-        <div :class="modal ? 'print' : ''">
+        <h1>Hello</h1>
+        <!-- <div :class="modal ? 'print' : ''">
           <form @submit.prevent="submit" autocomplete="off">
             <div class="p-8 ltr:-mr-6 rtl:-ml-6 ltr:ml-0 rtl:mr-0 -mb-8 flex flex-wrap">
               <text-input
@@ -131,7 +131,7 @@
               </loading-button>
             </div>
           </form>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -189,7 +189,6 @@ export default {
   },
   mounted() {
     this.customers = this.icustomers || [];
-    console.log("Hello");
     if (this.oId) {
       this.$axios
         .post(this.route("payments.order", this.oId))
@@ -205,7 +204,6 @@ export default {
     } else if (this.amount) {
       this.form.amount = this.$number(this.amount) + "";
     }
-    console.log("Hello2");
 
     this.form.date = new Date().toISOString().split("T")[0];
     this.gateways = this.$page.props.user.account.gateways.split(",");
@@ -217,13 +215,11 @@ export default {
     if (this.$page.props.user.account.payu) {
       this.gateways.push("PayU");
     }
-    console.log("Hello3");
 
     if (this.$page.props.user.account.stripe) {
       this.gateways.push("Stripe");
       this.publishableKey = this.$page.props.user.account.stripe_key;
     }
-    console.log("Hello4");
   },
   methods: {
     customerChanged(c) {
