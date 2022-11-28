@@ -1,8 +1,9 @@
 <template>
-  <h1>Hello</h1>
+  <h1>Hello1</h1>
   <h1>
     {{ c }}
   </h1>
+  <h1>Hello Hello</h1>
   <div v-if="c" :class="modal ? 'modal flex items-center w-full h-full' : ''">
     <h1>Hello2</h1>
 
