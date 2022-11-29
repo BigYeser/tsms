@@ -1,5 +1,5 @@
 <template>
-  <div v-if="order && order.id" class="w-100 ltr:text-left rtl:text-right">
+  <div v-if="order && order.id" class="w-400 ltr:text-left rtl:text-right">
     <div
       v-if="modal"
       class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t"
@@ -440,9 +440,9 @@
           {{ order.account.footer }}
         </div>
 
-        <div class="print-only mt-auto w-full text-center text-sm text-gray-600 pt-6">
+        <!-- <div class="print-only mt-auto w-full text-center text-sm text-gray-600 pt-6">
           {{ $t("This is a computer-generated document. No signature is required.") }}
-        </div>
+        </div> -->
       </div>
     </div>
 
