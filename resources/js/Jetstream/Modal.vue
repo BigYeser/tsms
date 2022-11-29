@@ -40,7 +40,7 @@
           <div
             v-show="show"
             :class="maxWidthClass"
-            class="inline-block align-bottom bg-black md:rounded-md text-left shadow-xl transform transition-all lg:my-4 md:align-middle w-full"
+            class="inline-block align-bottom bg-white md:rounded-md text-left shadow-xl transform transition-all lg:my-4 w-full"
           >
             <slot></slot>
           </div>
