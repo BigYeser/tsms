@@ -153,12 +153,12 @@ class PaymentController extends Controller
         $payment = Payment::create($v);
         return redirect()->route('payments')->with('success', __('model_created', ['model' => __choice('Payment', 1)]));
 
-        return response()->json([
-            'success' => true,
-            'id'      => $payment->id,
-            'payu'    => 'PayU' == $v['gateway'],
-            'message' => __('model_created', ['model' => __choice('Payment', 1)]),
-        ]);
+        // return response()->json([
+        //     'success' => true,
+        //     'id'      => $payment->id,
+        //     'payu'    => 'PayU' == $v['gateway'],
+        //     'message' => __('model_created', ['model' => __choice('Payment', 1)]),
+        // ]);
     }
 
     public function update(Request $request, Payment $payment)
