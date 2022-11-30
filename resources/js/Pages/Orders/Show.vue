@@ -202,7 +202,7 @@
             <td class="align-top">
               {{ $date(order.delivery_date) }}
             </td>
-            <td class="align-top align-text-center">
+            <td class="align-top">
               {{ order.id }}
             </td>
           </tr>
@@ -689,7 +689,7 @@ export default {
           for (let [key, value] of Object.entries(a)) {
             if (i % 2 == 0) extra += `<tr>`;
             if (value.includes("{") && value.includes("}") && value.includes(":")) {
-              extra += `<td class="w-16 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">`;
+              extra += `<td class="w-12 px-2 py-2"><strong>${key}</strong>:</td><td class="w-12 px-2 py-2">`;
               const cbv = JSON.parse(value);
               for (let [k, v] of Object.entries(cbv)) {
                 if (v) {
@@ -701,7 +701,7 @@ export default {
               }
               extra += `</td>`;
             } else {
-              extra += `<td class="w-16 border-b px-4 py-2"><strong>${key}</strong>:</td><td class="border-b px-4 py-2">${value}</td> `;
+              extra += `<td class="w-12 px-2 py-2"><strong>${key}</strong>:</td><td class="w-12 px-2 py-2">${value}</td> `;
             }
             if (i % 2 != 0) extra += `</tr>`;
           }
