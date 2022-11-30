@@ -104,8 +104,8 @@
     <!--Body-->
     <div class="print">
       <div class="max-w-2xl h-full py-3 px-3 leading-normal">
-        <div class="flex flex-wrap mx-0 px-0 w-full">
-          <div class="text-gray-900 ml-0 px-0" style="width: 180px">
+        <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
+          <div class="text-gray-900 ml-0 px-0 xs:mx-0" style="width: 180px">
             <img
               :alt="$page.props.user.account.name"
               v-if="$page.props.user.account.logo_path"
@@ -113,7 +113,7 @@
             />
             <logo v-else />
           </div>
-          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-right rtl:text-right">
+          <div class="text-base pr-0 py-0 mr-0 xs:py-0 xs:ltr:text-right rtl:text-right">
             <div class="font-extrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
             <div class="font-bold">{{ order.account.email }}</div>
