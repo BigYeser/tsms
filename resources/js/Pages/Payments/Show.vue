@@ -150,7 +150,7 @@
                 </div>
               </div>
             </div>
-            <div id="customer" class="mt-4 xs:mt-0 pl-0 xs:pl-3 w-full xs:max-w-1/2">
+            <div id="customer" class="pr-0 xs:pr-3 w-full xs:max-w-1/2">
               <div class="px-2 py-2 border rounded-t font-bold">
                 {{ $t("Customer Details") }}
               </div>
