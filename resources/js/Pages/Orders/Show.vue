@@ -1,5 +1,5 @@
 <template>
-  <div v-if="order && order.id" class="w-full ltr:text-left rtl:text-right" width="1000">
+  <div v-if="order && order.id" class="w-full ltr:text-left rtl:text-right">
     <div
       v-if="modal"
       class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t"
@@ -105,15 +105,7 @@
     <div class="print">
       <div class="max-w-2xl h-full py-3 px-3 leading-normal">
         <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
-          <div class="text-gray-900 ml-0 px-0 xs:mx-0" style="width: 180px">
-            <img
-              :alt="$page.props.user.account.name"
-              v-if="$page.props.user.account.logo_path"
-              :src="$page.props.user.account.logo_path"
-            />
-            <logo v-else />
-          </div>
-          <div class="text-base pr-0 py-0 mr-0 xs:py-0 xs:ltr:text-right rtl:text-right">
+           <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-right rtl:text-right">
             <div class="font-extrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
             <div class="font-bold">{{ order.account.email }}</div>
@@ -121,6 +113,15 @@
             <div class="font-bold">346671</div>
             <div class="font-bold">TRN 100009122100003</div>
           </div>
+          <div class="text-gray-900 mx-auto xs:mx-0" style="width: 180px">
+            <img
+              :alt="$page.props.user.account.name"
+              v-if="$page.props.user.account.logo_path"
+              :src="$page.props.user.account.logo_path"
+            />
+            <logo v-else />
+          </div>
+         
         </div>
 
         <!-- <div class="text-sm">
