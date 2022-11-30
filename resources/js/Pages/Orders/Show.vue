@@ -104,8 +104,8 @@
     <!--Body-->
     <div class="print">
       <div class="max-w-2xl h-full py-3 px-3 leading-normal">
-        <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
-          <div class="text-gray-900 mx-2 xs:mx-0">
+        <div class="flex flex-wrap mx-0 px-0 w-full">
+          <div class="text-gray-900 ml-0 px-0" style="width: 180px">
             <img
               :alt="$page.props.user.account.name"
               v-if="$page.props.user.account.logo_path"
