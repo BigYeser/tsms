@@ -105,7 +105,7 @@
     <div class="print">
       <div class="max-w-2xl h-full py-3 px-3 leading-normal">
         <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
-          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-right rtl:text-right">
+          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-left rtl:text-right">
             <div class="font-extrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
             <div class="font-bold">{{ order.account.email }}</div>
@@ -113,7 +113,7 @@
             <div class="font-bold">346671</div>
             <div class="font-bold">TRN 100009122100003</div>
           </div>
-          <div class="text-gray-900 mx-auto xs:mx-0" style="width: 180px">
+          <div class="text-gray-900 mx-auto xs:mx-0 w-auto">
             <img
               :alt="$page.props.user.account.name"
               v-if="$page.props.user.account.logo_path"
