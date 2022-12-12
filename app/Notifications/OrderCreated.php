@@ -27,8 +27,8 @@ class OrderCreated extends Notification implements ShouldQueue
             ->greeting("Hello {$this->order->customer->name},")
             ->line('A new order has been created. Please click the button below to view your order.')
             ->action('View Order', $url)
-            ->action('Hello',$url)
-            ->line('Thank you & we would love to do business with you again.');
+            ->line('Thank you & we would love to do business with you again.')
+            ->action('Hello',$url);
     }
 
     public function toVonage($notifiable)
