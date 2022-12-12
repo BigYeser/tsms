@@ -5,7 +5,6 @@
       class="np flex justify-between items-center px-6 py-4 mb-4 bg-gray-100 border-b rounded-t"
     >
       <p class="font-bold">{{ $t("Order Number", { x: order.id }) }}</p>
-      {{updateStatus('Preparing')}}
       <div class="flex items-center">
         <template
           v-if="
