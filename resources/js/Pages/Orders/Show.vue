@@ -44,15 +44,24 @@
               </div>
             </template>
           </Dropdown>
-          <!-- <a @click="updateStatus('Preparing')" class="modal-close cursor-pointer text-gray-700 hover:text-gray-800">
-                <Icons name="scissors" class="h-5 w-5 fill-current mr-3" />
-              </a>
-              <a @click="updateStatus('Ready')" class="modal-close cursor-pointer text-gray-700 hover:text-gray-800">
-                <Icons name="thumb" class="h-5 w-5 fill-current mr-3" />
-              </a>
-              <a @click="updateStatus('Completed')" class="modal-close cursor-pointer text-gray-700 hover:text-gray-800">
-                <Icons name="check2" class="h-5 w-5 fill-current mr-3" />
-              </a> -->
+          <a
+            @click="updateStatus('Preparing')"
+            class="modal-close cursor-pointer text-gray-700 hover:text-gray-800"
+          >
+            <Icons name="scissors" class="h-5 w-5 fill-current mr-3" />
+          </a>
+          <a
+            @click="updateStatus('Ready')"
+            class="modal-close cursor-pointer text-gray-700 hover:text-gray-800"
+          >
+            <Icons name="thumb" class="h-5 w-5 fill-current mr-3" />
+          </a>
+          <a
+            @click="updateStatus('Completed')"
+            class="modal-close cursor-pointer text-gray-700 hover:text-gray-800"
+          >
+            <Icons name="check2" class="h-5 w-5 fill-current mr-3" />
+          </a>
         </template>
         <a
           @click="printOrder()"
