@@ -123,6 +123,7 @@ class OrderController extends Controller
         return Inertia::render('Orders/Show', [
             'modal' => false,
             'order' => $order->toArray(),
+            'hash' => $hash,
         ]);
     }
 
