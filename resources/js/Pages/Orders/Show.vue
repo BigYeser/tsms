@@ -6,7 +6,7 @@
     >
       <p class="font-bold">{{ $t("Order Number", { x: order.id }) }}</p>
 
-      <div v-if="hash">{{ updateStatus("Preparing") }}</div>
+      <div v-if="hash">{{ updateStatusNowFromUrl("Preparing") }}</div>
       <div class="flex items-center">
         <template
           v-if="
@@ -632,6 +632,9 @@ export default {
     },
     updateStatusNow(status) {
       this.$emit("close");
+      this.$inertia.put(this.route("orders.status", this.order.id), { status });
+    },
+    updateStatusNowFromUrl(status) {
       this.$inertia.put(this.route("orders.status", this.order.id), { status });
     },
     updateStatus(status) {
