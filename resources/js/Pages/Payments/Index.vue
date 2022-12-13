@@ -53,7 +53,7 @@
               <th class="px-6 pt-6 pb-4">{{ $t("Created at") }}</th>
               <th class="px-6 pt-6 pb-4">{{ $t("Customer") }}</th>
               <th class="px-6 pt-6 pb-4">{{ $t("Amount") }}</th>
-              <th class="px-6 pt-6 pb-4">$t("Gateway")</th>
+              <th class="px-6 pt-6 pb-4">{{ $t("Gateway") }}</th>
               <th class="px-6 pt-6 pb-4" colspan="2">{{ $t("Description") }}</th>
               <th></th>
             </tr>
@@ -81,7 +81,6 @@
                 <!-- {{ getCustomer($payment.customer_id) }} -->
               </td>
               <td class="border-t px-6 py-4">
-                <div class="ltr:mr-2 rtl:ml-2">{{ payment.gateway }}</div>
                 <div class="text-right font-bold flex items-center justify-end">
                   <Icons
                     v-if="payment.received"
@@ -92,7 +91,7 @@
                 </div>
               </td>
               <td class="border-t px-6 py-4 text-center">
-                {{ payment.gateway }}
+                <div class="ltr:mr-2 rtl:ml-2">{{ payment.gateway }}</div>
               </td>
               <td class="border-t px-6 py-4 max-w-lg truncate">
                 {{ payment.description }}
