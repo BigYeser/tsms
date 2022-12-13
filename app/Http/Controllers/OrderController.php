@@ -157,9 +157,8 @@ class OrderController extends Controller
         return back()->with('success', __('model_updated', ['model' => __choice('Order', 1)]));
     }
 
-    public function byCustomer(Request $request){
-        echo $request;
-        $orders = Order::where('id',$request->id);
+    public function byCustomer(Request $request, $id){
+        $orders = Order::where('id',$id);
         return response()->json($orders);
     }
 }
