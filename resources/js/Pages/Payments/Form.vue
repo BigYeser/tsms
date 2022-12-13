@@ -268,6 +268,8 @@ export default {
       this.$axios
         .get(`/orders/customer/${c.id}`)
         .then((res) => {
+          console.log(res.data.orders.reference);
+          console.log(res.data.orders);
           this.references.push(res.data.orders.reference);
         })
         .catch((err) => console.log(err));
