@@ -68,8 +68,8 @@
                 :errors="$page.props.errors?.delivery_date"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
               />
-              <!-- <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
-                <label class="form-label" for="status">{{ $t('Status') }}</label>
+              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+                <label class="form-label" for="status">{{ $t("Status") }}</label>
                 <v-select
                   transition=""
                   input-id="status"
@@ -77,17 +77,29 @@
                   v-model="form.status"
                   :dir="$page.props.user.account.direction"
                   :placeholder="$t('select_x', { x: $t('Status') })"
-                  :class="{ error: $page.props.errors?.status && $page.props.errors?.status.length }"
-                  :options="[$t('Received'), $t('Preparing'), $t('Ready'), $t('Completed')]"
+                  :class="{
+                    error:
+                      $page.props.errors?.status && $page.props.errors?.status.length,
+                  }"
+                  :options="[
+                    $t('Received'),
+                    $t('Preparing'),
+                    $t('Ready'),
+                    $t('Completed'),
+                  ]"
+                  style="display: hidden"
                 ></v-select>
-                <div v-if="$page.props.errors?.status" class="form-error">{{ $page.props.errors?.status }}</div>
+                <div v-if="$page.props.errors?.status" class="form-error">
+                  {{ $page.props.errors?.status }}
+                </div>
               </div>
               <text-input
                 :label="$t('Reference')"
                 v-model="form.reference"
                 :errors="$page.props.errors?.reference"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
-              /> -->
+                style="display: hidden"
+              />
               <div
                 v-if="$page.props.user.owner"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
