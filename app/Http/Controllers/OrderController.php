@@ -156,4 +156,11 @@ class OrderController extends Controller
         $order = OrderHelper::orderTransaction($data, $order);
         return back()->with('success', __('model_updated', ['model' => __choice('Order', 1)]));
     }
+
+    public function byCustomer(Request $request){
+        $orders = Order::where('id',$request->id);
+        return response()->json([
+            'orders' => $orders
+        ]);
+    }
 }

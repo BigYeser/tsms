@@ -22,6 +22,7 @@ class AjaxController extends Controller
         return response()->json($customers);
     }
 
+
     public function fields(Request $request, Service $service)
     {
         return response()->json($service->measurementFields);

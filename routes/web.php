@@ -99,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Orders
     Route::get('orders', 'OrderController@index')->name('orders');
+    Route::get('/orders/{id}', 'OrderController@byCustomer')->name('orders.customer');
     Route::post('orders', 'OrderController@store')->name('orders.store');
     Route::get('orders/new', 'OrderController@create')->name('orders.new');
     Route::put('orders/{order}', 'OrderController@update')->name('orders.update');

@@ -95,7 +95,7 @@
                 <span class="text-right ltr:mr-2 rtl:ml-2" style="width: 90px">
                   {{ $t("Reference") }}:
                 </span>
-                <span class="font-bold">{{ $reference(payment.reference) }}</span>
+                <span class="font-bold">{{ $t(payment.reference) }}</span>
               </div>
             </div>
           </div>
