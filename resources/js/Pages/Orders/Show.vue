@@ -110,14 +110,16 @@
         </a>
       </div>
     </div>
-    <div v-if="hash">{{ updateStatusNowFromUrl("Preparing") }}</div>
-    {{hash}}
+    <div v-if="hash && order.status == $t('Received')">
+      {{ updateStatusNowFromUrl("Preparing") }}
+    </div>
+    {{ hash }}
     <!--Body-->
     <div class="print">
       <div class="max-w-2xl h-full py-3 px-3 leading-normal">
         <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
           <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-left rtl:text-right">
-            <div class="font-extrabold">{{ order.account.name }}</div>
+            <div class="font-e xtrabold">{{ order.account.name }}</div>
             <div class="font-bold">{{ order.account.phone }}</div>
             <div class="font-bold">{{ order.account.email }}</div>
             <div class="font-bold">{{ order.account.address }}</div>

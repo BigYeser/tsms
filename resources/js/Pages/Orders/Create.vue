@@ -3,11 +3,17 @@
     <div>
       <div>
         <h1 class="mb-6 mt-2 font-bold text-lg md:text-2xl">
-          <Link class="text-gray-600 hover:text-gray-800 inline-flex items-center" :href="route('orders')">
-            <Icons name="back" class="flex-shrink-0 w-3 h-3 md:w-5 md:h-5 fill-current ltr:mr-2 rtl:ml-2 rtl:rotate" />
-            {{ $tc('Order', 2) }}
+          <Link
+            class="text-gray-600 hover:text-gray-800 inline-flex items-center"
+            :href="route('orders')"
+          >
+            <Icons
+              name="back"
+              class="flex-shrink-0 w-3 h-3 md:w-5 md:h-5 fill-current ltr:mr-2 rtl:ml-2 rtl:rotate"
+            />
+            {{ $tc("Order", 2) }}
           </Link>
-          <span class="text-gray-400 font-medium mx-1">/</span>{{ $t('Create') }}
+          <span class="text-gray-400 font-medium mx-1">/</span>{{ $t("Create") }}
         </h1>
         <div class="bg-white rounded shadow overflow-hidden">
           <form @submit.prevent="submit" autocomplete="off">
@@ -22,8 +28,16 @@
           /> -->
               <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
                 <div class="flex items-center justify-between">
-                  <label class="form-label" for="customer_id">{{ $tc('Customer') }}</label>
-                  <button type="button" @click="addCustomer" class="text-blue-600 hover:text-blue-700">{{ $t('Create') }}</button>
+                  <label class="form-label" for="customer_id">{{
+                    $tc("Customer")
+                  }}</label>
+                  <button
+                    type="button"
+                    @click="addCustomer"
+                    class="text-blue-600 hover:text-blue-700"
+                  >
+                    {{ $t("Create") }}
+                  </button>
                 </div>
                 <v-select
                   transition=""
@@ -36,9 +50,15 @@
                   @option:selected="customerChanged"
                   :dir="$page.props.user.account.direction"
                   :placeholder="$t('search_x', { x: $tc('Customer') })"
-                  :class="{ error: $page.props.errors?.customer_id && $page.props.errors?.customer_id.length }"
+                  :class="{
+                    error:
+                      $page.props.errors?.customer_id &&
+                      $page.props.errors?.customer_id.length,
+                  }"
                 ></v-select>
-                <div v-if="$page.props.errors?.customer_id" class="form-error">{{ $page.props.errors?.customer_id }}</div>
+                <div v-if="$page.props.errors?.customer_id" class="form-error">
+                  {{ $page.props.errors?.customer_id }}
+                </div>
               </div>
               <text-input
                 type="date"
@@ -48,7 +68,7 @@
                 :errors="$page.props.errors?.delivery_date"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
               />
-              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <!-- <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
                 <label class="form-label" for="status">{{ $t('Status') }}</label>
                 <v-select
                   transition=""
@@ -67,9 +87,12 @@
                 v-model="form.reference"
                 :errors="$page.props.errors?.reference"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
-              />
-              <div v-if="$page.props.user.owner" class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
-                <label class="form-label" for="assigned_to">{{ $t('Assign to') }}</label>
+              /> -->
+              <div
+                v-if="$page.props.user.owner"
+                class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
+              >
+                <label class="form-label" for="assigned_to">{{ $t("Assign to") }}</label>
                 <v-select
                   transition=""
                   :value="staff"
@@ -81,12 +104,18 @@
                   @option:selected="staffChanged"
                   :dir="$page.props.user.account.direction"
                   :placeholder="$t('search_x', { x: $t('Staff') })"
-                  :class="{ error: $page.props.errors?.assigned_to && $page.props.errors?.assigned_to.length }"
+                  :class="{
+                    error:
+                      $page.props.errors?.assigned_to &&
+                      $page.props.errors?.assigned_to.length,
+                  }"
                 ></v-select>
-                <div v-if="$page.props.errors?.assigned_to" class="form-error">{{ $page.props.errors?.assigned_to }}</div>
+                <div v-if="$page.props.errors?.assigned_to" class="form-error">
+                  {{ $page.props.errors?.assigned_to }}
+                </div>
               </div>
               <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
-                <label class="form-label" for="priority">{{ $t('Priority') }}</label>
+                <label class="form-label" for="priority">{{ $t("Priority") }}</label>
                 <v-select
                   transition=""
                   :clearable="false"
@@ -97,77 +126,127 @@
                   :dir="$page.props.user.account.direction"
                   :placeholder="$t('select_x', { x: $t('Priority') })"
                 ></v-select>
-                <div v-if="$page.props.errors?.priority" class="form-error">{{ $page.props.errors?.priority }}</div>
+                <div v-if="$page.props.errors?.priority" class="form-error">
+                  {{ $page.props.errors?.priority }}
+                </div>
               </div>
-              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full no-drop">
-                <v-select
-                  label="name"
-                  transition=""
-                  :value="service"
-                  input-id="service"
-                  :options="services"
-                  @input="addToOrder"
-                  @search="searchServices"
-                  @option:selected="addToOrder"
-                  :dir="$page.props.user.account.direction"
-                  :placeholder="$t('Search service to add to order')"
-                >
-                  <!-- :class="{ error: $page.props.errors?.services && $page.props.errors?.services.length }" -->
-                  <template slot="no-options">
-                    <div class="text-left px-4 py-2 text-gray-700 hover:text-gray-200">
-                      {{ $t('Type to search services') }}
+              <div v-if="!form.customer_id">
+                <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full no-drop">
+                  <v-select
+                    label="name"
+                    transition=""
+                    :value="service"
+                    input-id="service"
+                    :options="services"
+                    @input="addToOrder"
+                    @search="searchServices"
+                    @option:selected="addToOrder"
+                    :dir="$page.props.user.account.direction"
+                    :placeholder="$t('Search service to add to order')"
+                  >
+                    <!-- :class="{ error: $page.props.errors?.services && $page.props.errors?.services.length }" -->
+                    <template slot="no-options">
+                      <div class="text-left px-4 py-2 text-gray-700 hover:text-gray-200">
+                        {{ $t("Type to search services") }}
+                      </div>
+                    </template>
+                  </v-select>
+                  <template v-for="(s, i) in form.services" :key="'se_' + i">
+                    <div>
+                      <div
+                        v-if="$page.props.errors['services.' + i + '.measurement_id']"
+                        class="px-4 py-2 rounded mt-4 text-white bg-red-500"
+                      >
+                        {{ $page.props.errors["services." + i + ".measurement_id"] }}
+                      </div>
+                      <div
+                        v-if="$page.props.errors['services.' + i + '.price']"
+                        class="px-4 py-2 rounded mt-4 text-white bg-red-500"
+                      >
+                        {{ $page.props.errors["services." + i + ".price"] }}
+                      </div>
+                      <div
+                        v-if="$page.props.errors['services.' + i + '.qty']"
+                        class="px-4 py-2 rounded mt-4 text-white bg-red-500"
+                      >
+                        {{ $page.props.errors["services." + i + ".qty"] }}
+                      </div>
                     </div>
                   </template>
-                </v-select>
-                <template v-for="(s, i) in form.services" :key="'se_' + i">
-                  <div>
-                    <div
-                      v-if="$page.props.errors['services.' + i + '.measurement_id']"
-                      class="px-4 py-2 rounded mt-4 text-white bg-red-500"
-                    >
-                      {{ $page.props.errors['services.' + i + '.measurement_id'] }}
-                    </div>
-                    <div v-if="$page.props.errors['services.' + i + '.price']" class="px-4 py-2 rounded mt-4 text-white bg-red-500">
-                      {{ $page.props.errors['services.' + i + '.price'] }}
-                    </div>
-                    <div v-if="$page.props.errors['services.' + i + '.qty']" class="px-4 py-2 rounded mt-4 text-white bg-red-500">
-                      {{ $page.props.errors['services.' + i + '.qty'] }}
-                    </div>
-                  </div>
-                </template>
+                </div>
               </div>
-              <div class="ltr:mr-6 rtl:ml-6 mb-8 w-full border rounded overflow-x-auto lg:overflow-x-hidden pb-4 lg:pb-0">
-                <div v-if="!form.customer_id" class="px-4 py-3 bg-orange-200 text-orange-500">
-                  {{ $t('Please select the customer first') }}
+              <div
+                class="ltr:mr-6 rtl:ml-6 mb-8 w-full border rounded overflow-x-auto lg:overflow-x-hidden pb-4 lg:pb-0"
+              >
+                <div
+                  v-if="!form.customer_id"
+                  class="px-4 py-3 bg-orange-200 text-orange-500"
+                >
+                  {{ $t("Please select the customer first") }}
                 </div>
                 <div
                   v-if="!form.services.length"
                   class="px-4 py-3 bg-gray-200 text-gray-500"
-                  :class="{ 'bg-red-200 text-red-500': $page.props.errors?.services && $page.props.errors?.services.length }"
+                  :class="{
+                    'bg-red-200 text-red-500':
+                      $page.props.errors?.services && $page.props.errors?.services.length,
+                  }"
                 >
-                  <div v-if="$page.props.errors?.services">{{ $page.props.errors?.services }}</div>
-                  <div v-else>{{ $t('Please add at least one service to order by selecting from above dropdown.') }}</div>
+                  <div v-if="$page.props.errors?.services">
+                    {{ $page.props.errors?.services }}
+                  </div>
+                  <div v-else>
+                    {{
+                      $t(
+                        "Please add at least one service to order by selecting from above dropdown."
+                      )
+                    }}
+                  </div>
                 </div>
                 <table v-else class="w-full">
                   <thead>
                     <tr>
                       <th class="border-b pl-4 pr-2 py-2 bg-gray-200 text-center">#</th>
-                      <th class="border-b pl-2 pr-4 py-2 bg-gray-200 ltr:text-left rtl:text-right">{{ $tc('Service') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Code') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Color') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 w-40">{{ $tc('Measurement') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t('Price') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t('Qty') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200">{{ $t('Amount') }}</th>
+                      <th
+                        class="border-b pl-2 pr-4 py-2 bg-gray-200 ltr:text-left rtl:text-right"
+                      >
+                        {{ $tc("Service") }}
+                      </th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">
+                        {{ $t("Code") }}
+                      </th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">
+                        {{ $t("Color") }}
+                      </th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-40">
+                        {{ $tc("Measurement") }}
+                      </th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-16">
+                        {{ $t("Price") }}
+                      </th>
+                      <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t("Qty") }}</th>
+                      <th class="border-b px-4 py-2 bg-gray-200">{{ $t("Amount") }}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(service, si) in form.services" :key="'servicse_' + service.id">
+                    <tr
+                      v-for="(service, si) in form.services"
+                      :key="'servicse_' + service.id"
+                    >
                       <td class="border-b pl-4 pr-2 py-2">
-                        <div class="flex flex-col content-center items-center justify-around w-6">
+                        <div
+                          class="flex flex-col content-center items-center justify-around w-6"
+                        >
                           <div class="pt-1">{{ si + 1 }}</div>
-                          <button type="button" @click="deleteService(si)" class="mt-1 p-1 text-gray-500 hover:text-red-600">
-                            <Icons name="trash" class="flex-shrink-0 w-3 h-3 fill-current" />
+                          <button
+                            type="button"
+                            @click="deleteService(si)"
+                            class="mt-1 p-1 text-gray-500 hover:text-red-600"
+                          >
+                            <Icons
+                              name="trash"
+                              class="flex-shrink-0 w-3 h-3 fill-current"
+                            />
                           </button>
                         </div>
                       </td>
@@ -177,21 +256,34 @@
                           <div class="text-sm font-bold">{{ service.code }}</div>
                         </div>
                       </td>
-                   
+
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="text" v-model="service.product_code" />
+                        <text-input
+                          small
+                          class="w-20"
+                          type="text"
+                          v-model="service.product_code"
+                        />
                       </td>
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="text" v-model="service.color" />
+                        <text-input
+                          small
+                          class="w-20"
+                          type="text"
+                          v-model="service.color"
+                        />
                       </td>
                       <td class="border-b px-4 py-2 no-drop">
-                        <div v-if="!getServiceMeasurements(service.service_id).length" class="text-center">
+                        <div
+                          v-if="!getServiceMeasurements(service.service_id).length"
+                          class="text-center"
+                        >
                           <button
                             type="button"
                             @click="addMeasurement(service.service_id)"
                             class="bg-gray-200 hover:bg-gray-400 border rounded px-4 py-2"
                           >
-                            {{ $t('Add') }}
+                            {{ $t("Add") }}
                           </button>
                         </div>
                         <select-input
@@ -200,7 +292,11 @@
                           v-model="service.measurement_id"
                           :placeholder="$t('select_x', { x: $tc('Measurement') })"
                         >
-                          <option v-for="(o, i) in getServiceMeasurements(service.service_id)" :key="'mo_' + si + i" :value="o.id">
+                          <option
+                            v-for="(o, i) in getServiceMeasurements(service.service_id)"
+                            :key="'mo_' + si + i"
+                            :value="o.id"
+                          >
                             {{ o.name }}
                           </option>
                         </select-input>
@@ -217,53 +313,108 @@
                       </td>
 
                       <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        <text-input small class="w-20" type="number" v-model="service.price" />
+                        <text-input
+                          small
+                          class="w-20"
+                          type="number"
+                          v-model="service.price"
+                        />
                       </td>
                       <td class="border-b px-4 py-2 text-center">
-                        <text-input small type="number" v-model="service.qty" class="w-16 text-center" />
+                        <text-input
+                          small
+                          type="number"
+                          v-model="service.qty"
+                          class="w-16 text-center"
+                        />
                       </td>
-                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left font-bold">
+                      <td
+                        class="border-b px-4 py-2 ltr:text-right rtl:text-left font-bold"
+                      >
                         {{ $decimals(service.price * service.qty) }}
                       </td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Total') }}</th>
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                        colspan="6"
+                      >
+                        {{ $t("Total") }}
+                      </th>
                       <th class="border-b px-4 py-2 bg-gray-200 text-center">
                         {{ $number(totalQuantity) }}
                       </th>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                      >
                         {{ $number(totalAmount) }}
                       </th>
                     </tr>
                     <tr v-if="form.discount">
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Discount') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                        colspan="6"
+                      >
+                        {{ $t("Discount") }}
+                      </th>
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                      ></th>
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                      >
                         {{ $number(discountAmount) }}
                       </th>
                     </tr>
                     <template v-if="form.taxes.length">
                       <tr v-for="(tax, ti) in nonCompoundTaxes" :key="'tr_' + ti">
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ tax.label }}</th>
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                        <th
+                          class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                          colspan="6"
+                        >
+                          {{ tax.label }}
+                        </th>
+                        <th
+                          class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                        ></th>
+                        <th
+                          class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                        >
                           {{ $number(calculateTax(tax, false)) }}
                         </th>
                       </tr>
                       <tr v-for="(tax, ti) in compoundTaxes" :key="'ctr_' + ti">
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ tax.label }}</th>
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
-                        <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                        <th
+                          class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                          colspan="6"
+                        >
+                          {{ tax.label }}
+                        </th>
+                        <th
+                          class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                        ></th>
+                        <th
+                          class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                        >
                           {{ $number(calculateTax(tax, true)) }}
                         </th>
                       </tr>
                     </template>
                     <tr v-if="form.taxes.length || form.discount">
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left" colspan="6">{{ $t('Grand Total') }}</th>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"></th>
-                      <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                        colspan="6"
+                      >
+                        {{ $t("Grand Total") }}
+                      </th>
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                      ></th>
+                      <th
+                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                      >
                         {{ $number(totalAmount - discountAmount + taxAmount) }}
                       </th>
                     </tr>
@@ -271,7 +422,7 @@
                 </table>
               </div>
               <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
-                <label class="form-label" for="taxes">{{ $tc('Tax', 2) }}</label>
+                <label class="form-label" for="taxes">{{ $tc("Tax", 2) }}</label>
                 <v-select
                   multiple
                   transition=""
@@ -281,7 +432,9 @@
                   :dir="$page.props.user.account.direction"
                   :placeholder="$t('add_x', { x: $tc('Tax', 2) })"
                 ></v-select>
-                <div v-if="$page.props.errors?.taxes" class="form-error">{{ $page.props.errors?.taxes }}</div>
+                <div v-if="$page.props.errors?.taxes" class="form-error">
+                  {{ $page.props.errors?.taxes }}
+                </div>
               </div>
               <text-input
                 v-model="form.discount"
@@ -305,13 +458,22 @@
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full"
               />
             </div>
-            <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex justify-end items-center">
-              <loading-button :loading="sending" class="btn-gray" type="submit">{{ $t('create_x', { x: $tc('Order') }) }}</loading-button>
+            <div
+              class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex justify-end items-center"
+            >
+              <loading-button :loading="sending" class="btn-gray" type="submit">{{
+                $t("create_x", { x: $tc("Order") })
+              }}</loading-button>
             </div>
           </form>
         </div>
       </div>
-      <Modal :show="addMM" max-width="2xl" :closeable="true" @close="() => (addMM = false)">
+      <Modal
+        :show="addMM"
+        max-width="2xl"
+        :closeable="true"
+        @close="() => (addMM = false)"
+      >
         <MeasurementForm
           :modal="addMM"
           :ddData="ddData"
@@ -322,24 +484,28 @@
       </Modal>
 
       <Modal :show="addC" max-width="2xl" :closeable="true" @close="() => (addC = false)">
-        <CustomerForm :modal="addC" :action="updateCustomer" @close="() => (addC = false)" />
+        <CustomerForm
+          :modal="addC"
+          :action="updateCustomer"
+          @close="() => (addC = false)"
+        />
       </Modal>
     </div>
   </Layout>
 </template>
 
 <script>
-import debounce from 'lodash/debounce';
-import Layout from '@/Shared/Layout.vue';
-import Modal from '@/Jetstream/Modal.vue';
-import FileInput from '@/Shared/FileInput.vue';
-import TextInput from '@/Shared/TextInput.vue';
-import SelectInput from '@/Shared/SelectInput.vue';
-import CustomerForm from '@/Pages/Customers/Form.vue';
-import TextareaInput from '@/Shared/TextareaInput.vue';
-import LoadingButton from '@/Shared/LoadingButton.vue';
-import TrashedMessage from '@/Shared/TrashedMessage.vue';
-import MeasurementForm from '@/Pages/Measurements/Form.vue';
+import debounce from "lodash/debounce";
+import Layout from "@/Shared/Layout.vue";
+import Modal from "@/Jetstream/Modal.vue";
+import FileInput from "@/Shared/FileInput.vue";
+import TextInput from "@/Shared/TextInput.vue";
+import SelectInput from "@/Shared/SelectInput.vue";
+import CustomerForm from "@/Pages/Customers/Form.vue";
+import TextareaInput from "@/Shared/TextareaInput.vue";
+import LoadingButton from "@/Shared/LoadingButton.vue";
+import TrashedMessage from "@/Shared/TrashedMessage.vue";
+import MeasurementForm from "@/Pages/Measurements/Form.vue";
 
 export default {
   // layout: Layout,
@@ -379,7 +545,7 @@ export default {
         taxes: [],
         discount: null,
         discount_amount: null,
-        status: this.$t('Received'),
+        status: this.$t("Received"),
       },
       tax: null,
       allTaxes: [],
@@ -391,9 +557,9 @@ export default {
       customer: null,
       staff: null,
       priorities: [
-        { label: this.$t('Normal'), value: 1 },
-        { label: this.$t('High'), value: 2 },
-        { label: this.$t('Urgent'), value: 3 },
+        { label: this.$t("Normal"), value: 1 },
+        { label: this.$t("High"), value: 2 },
+        { label: this.$t("Urgent"), value: 3 },
       ],
     };
   },
@@ -402,26 +568,32 @@ export default {
       if (!this.form.discount) {
         return 0;
       }
-      if (this.form.discount.indexOf('%') !== -1) {
-        var discount = this.form.discount.split('%');
+      if (this.form.discount.indexOf("%") !== -1) {
+        var discount = this.form.discount.split("%");
         return parseFloat(this.totalAmount * (parseFloat(discount) / 100), 4);
       }
       return parseFloat(this.form.discount);
     },
     compoundTaxes() {
-      return this.form.taxes.filter(t => t.compound);
+      return this.form.taxes.filter((t) => t.compound);
     },
     nonCompoundTaxes() {
-      return this.form.taxes.filter(t => !t.compound);
+      return this.form.taxes.filter((t) => !t.compound);
     },
     nonCompoundTaxesAmount() {
       return this.nonCompoundTaxes.reduce((a, t) => a + this.calculateTax(t, false), 0);
     },
     taxAmount() {
-      return this.nonCompoundTaxesAmount + this.compoundTaxes.reduce((a, t) => a + this.calculateTax(t, true), 0);
+      return (
+        this.nonCompoundTaxesAmount +
+        this.compoundTaxes.reduce((a, t) => a + this.calculateTax(t, true), 0)
+      );
     },
     totalAmount() {
-      return this.form.services.reduce((a, s) => parseFloat(s.price) * parseFloat(s.qty) + a, 0);
+      return this.form.services.reduce(
+        (a, s) => parseFloat(s.price) * parseFloat(s.qty) + a,
+        0
+      );
     },
     totalQuantity() {
       return this.form.services.reduce((a, s) => parseFloat(s.qty) + a, 0);
@@ -432,7 +604,9 @@ export default {
     this.customers = this.icustomers;
     this.staff_members = this.members;
     if (this.$page.props.user.account.default_tax) {
-      this.tax = this.taxes.find(t => t.value == this.$page.props.user.account.default_tax);
+      this.tax = this.taxes.find(
+        (t) => t.value == this.$page.props.user.account.default_tax
+      );
       this.form.taxes = [{ ...this.tax }];
     }
     if (!this.$page.props.user.owner) {
@@ -455,19 +629,26 @@ export default {
         ...s,
         service_id: s.id,
         qty: 1,
-        measurement_id: measurements && measurements.length ? measurements[0]['id'] : null,
+        measurement_id:
+          measurements && measurements.length ? measurements[0]["id"] : null,
       });
     },
     calculateTax(tax, compound = false) {
       if (compound) {
-        return (this.totalAmount - this.discountAmount + this.nonCompoundTaxesAmount) * (parseFloat(tax.rate) / 100);
+        return (
+          (this.totalAmount - this.discountAmount + this.nonCompoundTaxesAmount) *
+          (parseFloat(tax.rate) / 100)
+        );
       }
       return (this.totalAmount - this.discountAmount) * (parseFloat(tax.rate) / 100);
     },
     updateCustomerMeasurement(m) {
-      this.form.customer = { ...this.form.customer, measurements: [...this.form.customer.measurements, m] };
+      this.form.customer = {
+        ...this.form.customer,
+        measurements: [...this.form.customer.measurements, m],
+      };
 
-      let services = this.form.services.map(s => {
+      let services = this.form.services.map((s) => {
         if (s.service_id == m.service_id) {
           s.measurement_id = m.id;
         }
@@ -478,21 +659,27 @@ export default {
       });
     },
     addMeasurement(sid) {
-      let service = this.services.find(os => os.id == sid);
+      let service = this.services.find((os) => os.id == sid);
       if (service && this.customer) {
-        service = { label: service.name, value: service.id, measurement_fields: service.measurement_fields };
+        service = {
+          label: service.name,
+          value: service.id,
+          measurement_fields: service.measurement_fields,
+        };
         let customer = this.customer;
         let name = customer.label + "'s " + service.label;
         this.ddData = { name, service, customer };
         this.addMM = true;
       } else {
-        document.getElementById('page-contents').scrollTop = 0;
+        document.getElementById("page-contents").scrollTop = 0;
         // this.$page.props.flash.error = this.$t('Please select the customer first');
       }
     },
     getServiceMeasurements(sid) {
       if (this.form.customer) {
-        let measurements = this.form.customer.measurements.filter(m => m.service_id == sid);
+        let measurements = this.form.customer.measurements.filter(
+          (m) => m.service_id == sid
+        );
         return measurements.length ? measurements : [];
       }
     },
@@ -511,7 +698,7 @@ export default {
       this.customer = c ? c : null;
       this.form.customer = c ? c : null;
       this.form.customer_id = c ? c.value : null;
-      this.form.services = this.form.services.map(s => {
+      this.form.services = this.form.services.map((s) => {
         s.measurement = null;
         s.measurement_id = null;
         return s;
@@ -524,10 +711,12 @@ export default {
       }
     },
     searchingCustomers: debounce((loading, search, vm) => {
-      fetch(vm.route('ajax.customers') + '?measurements=1&search=' + escape(search)).then(res => {
-        res.json().then(data => (vm.customers = data));
-        loading(false);
-      });
+      fetch(vm.route("ajax.customers") + "?measurements=1&search=" + escape(search)).then(
+        (res) => {
+          res.json().then((data) => (vm.customers = data));
+          loading(false);
+        }
+      );
     }, 350),
     searchServices(search, loading) {
       if (search) {
@@ -536,10 +725,12 @@ export default {
       }
     },
     searchingServices: debounce((loading, search, vm) => {
-      fetch(vm.route('ajax.services') + '?full=1&search=' + escape(search)).then(res => {
-        res.json().then(data => (vm.services = data));
-        loading(false);
-      });
+      fetch(vm.route("ajax.services") + "?full=1&search=" + escape(search)).then(
+        (res) => {
+          res.json().then((data) => (vm.services = data));
+          loading(false);
+        }
+      );
     }, 350),
     searchStaff(search, loading) {
       if (search) {
@@ -548,49 +739,49 @@ export default {
       }
     },
     searchingStaff: debounce((loading, search, vm) => {
-      fetch(vm.route('ajax.staff') + '?search=' + escape(search)).then(res => {
-        res.json().then(data => (vm.staff_members = data));
+      fetch(vm.route("ajax.staff") + "?search=" + escape(search)).then((res) => {
+        res.json().then((data) => (vm.staff_members = data));
         loading(false);
       });
     }, 350),
     submit() {
       this.sending = true;
       var data = new FormData();
-      data.append('reference', this.form.reference || '');
-      data.append('customer_id', this.form.customer_id || '');
-      data.append('assigned_to', this.form.assigned_to || '');
-      data.append('delivery_date', this.form.delivery_date || '');
-      data.append('status', this.form.status || '');
-      data.append('priority', this.form.priority ? this.form.priority.value : '' || '');
-      data.append('note', this.form.note || '');
-      data.append('discount', this.form.discount || '');
-      data.append('photo', this.form.photo || '');
+      data.append("reference", this.form.reference || "");
+      data.append("customer_id", this.form.customer_id || "");
+      data.append("assigned_to", this.form.assigned_to || "");
+      data.append("delivery_date", this.form.delivery_date || "");
+      data.append("status", this.form.status || "");
+      data.append("priority", this.form.priority ? this.form.priority.value : "" || "");
+      data.append("note", this.form.note || "");
+      data.append("discount", this.form.discount || "");
+      data.append("photo", this.form.photo || "");
       // data.append('_method', 'put');
       if (this.form.taxes.length) {
         this.form.taxes.map((t, i) => {
-          data.append('taxes[' + i + '][id]', t.id);
-          data.append('taxes[' + i + '][code]', t.code);
-          data.append('taxes[' + i + '][name]', t.name);
-          data.append('taxes[' + i + '][rate]', t.rate);
-          data.append('taxes[' + i + '][compound]', t.compound);
+          data.append("taxes[" + i + "][id]", t.id);
+          data.append("taxes[" + i + "][code]", t.code);
+          data.append("taxes[" + i + "][name]", t.name);
+          data.append("taxes[" + i + "][rate]", t.rate);
+          data.append("taxes[" + i + "][compound]", t.compound);
         });
       } else {
-        data.append('taxes', []);
+        data.append("taxes", []);
       }
       this.form.services.map((s, i) => {
         console.log(s);
-        data.append('services[' + i + '][id]', s.id);
-        data.append('services[' + i + '][qty]', s.qty);
-        data.append('services[' + i + '][code]', s.code);
-        data.append('services[' + i + '][name]', s.name);
-        data.append('services[' + i + '][price]', s.price);
-        data.append('services[' + i + '][color]', s.color);
-        data.append('services[' + i + '][product_code]', s.product_code);
-        data.append('services[' + i + '][service_id]', s.service_id);
-        data.append('services[' + i + '][measurement_id]', s.measurement_id);
+        data.append("services[" + i + "][id]", s.id);
+        data.append("services[" + i + "][qty]", s.qty);
+        data.append("services[" + i + "][code]", s.code);
+        data.append("services[" + i + "][name]", s.name);
+        data.append("services[" + i + "][price]", s.price);
+        data.append("services[" + i + "][color]", s.color);
+        data.append("services[" + i + "][product_code]", s.product_code);
+        data.append("services[" + i + "][service_id]", s.service_id);
+        data.append("services[" + i + "][measurement_id]", s.measurement_id);
       });
 
-      this.$inertia.post(this.route('orders.store'), data, {
+      this.$inertia.post(this.route("orders.store"), data, {
         onFinish: () => (this.sending = false),
       });
     },
