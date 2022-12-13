@@ -271,6 +271,7 @@ export default {
           this.references.push(res.data.orders.reference);
         })
         .catch((err) => console.log(err));
+      console.log(this.references);
     },
     searchCustomers(search, loading) {
       if (search) {
