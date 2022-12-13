@@ -158,7 +158,9 @@ class OrderController extends Controller
     }
 
     public function byCustomer(Request $request){
+
         $orders = Order::where('id',$request->id);
+        echo '<script>console.log('.$orders.')</script>';
         return response()->json([
             'orders' => $orders
         ]);
