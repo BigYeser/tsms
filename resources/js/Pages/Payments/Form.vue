@@ -199,6 +199,7 @@ export default {
       gateways: [],
       customers: [],
       references: [],
+      orders: [],
       message: null,
       customer: null,
       publishableKey: null,
@@ -268,8 +269,8 @@ export default {
       this.$axios
         .get(`/orders/customer/${c.id}`)
         .then((res) => {
-          this.references = res;
-          console.log(res);
+          this.orders = res.data.orders;
+          console.log(res.data.orderes);
         })
         .catch((err) => console.log(err));
       console.log(this.references);
