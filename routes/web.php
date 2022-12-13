@@ -99,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Orders
     Route::get('orders', 'OrderController@index')->name('orders');
+    Route::get('orders/customer/{id}', 'OrderController@byCustomer')->name('orders.customer');
     Route::post('orders', 'OrderController@store')->name('orders.store');
     Route::get('orders/new', 'OrderController@create')->name('orders.new');
     Route::put('orders/{order}', 'OrderController@update')->name('orders.update');
@@ -106,9 +107,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orders/{order}/edit', 'OrderController@edit')->name('orders.edit');
     Route::post('orders/{order}/email', 'OrderController@email')->name('orders.email');
     Route::put('orders/{order}/status', 'OrderController@status')->name('orders.status');
-    Route::get('orders/customer/{id}', function ($id) {
-        return App\Models\Order::where('id', $id) ?? abort(404);
-    });
+
     Route::middleware(['owner'])->group(function () {
         Route::get('update/database', 'Update\UpdateController');
         Route::get('logs', 'AccountController@logs')->name('logs');
