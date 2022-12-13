@@ -263,10 +263,9 @@ export default {
     // }, 350),
 
     customerChanged(c) {
-      console.log(c);
       this.customer = c ? c : null;
       this.form.customer_id = c ? c.value : null;
-      console.log(c);
+      console.log(c.id);
       this.$axios
         .get(`/orders/${c}`)
         .then((res) => (this.references = res))
