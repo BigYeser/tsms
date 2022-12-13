@@ -131,7 +131,8 @@
                 </div>
               </div>
               <!-- <div v-if="form.customer_id"> -->
-                <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full no-drop">
+              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full no-drop">
+                <div v-if="form.customer_id">
                   <v-select
                     label="name"
                     transition=""
@@ -151,29 +152,30 @@
                       </div>
                     </template>
                   </v-select>
-                  <template v-for="(s, i) in form.services" :key="'se_' + i">
-                    <div>
-                      <div
-                        v-if="$page.props.errors['services.' + i + '.measurement_id']"
-                        class="px-4 py-2 rounded mt-4 text-white bg-red-500"
-                      >
-                        {{ $page.props.errors["services." + i + ".measurement_id"] }}
-                      </div>
-                      <div
-                        v-if="$page.props.errors['services.' + i + '.price']"
-                        class="px-4 py-2 rounded mt-4 text-white bg-red-500"
-                      >
-                        {{ $page.props.errors["services." + i + ".price"] }}
-                      </div>
-                      <div
-                        v-if="$page.props.errors['services.' + i + '.qty']"
-                        class="px-4 py-2 rounded mt-4 text-white bg-red-500"
-                      >
-                        {{ $page.props.errors["services." + i + ".qty"] }}
-                      </div>
-                    </div>
-                  </template>
                 </div>
+                <template v-for="(s, i) in form.services" :key="'se_' + i">
+                  <div>
+                    <div
+                      v-if="$page.props.errors['services.' + i + '.measurement_id']"
+                      class="px-4 py-2 rounded mt-4 text-white bg-red-500"
+                    >
+                      {{ $page.props.errors["services." + i + ".measurement_id"] }}
+                    </div>
+                    <div
+                      v-if="$page.props.errors['services.' + i + '.price']"
+                      class="px-4 py-2 rounded mt-4 text-white bg-red-500"
+                    >
+                      {{ $page.props.errors["services." + i + ".price"] }}
+                    </div>
+                    <div
+                      v-if="$page.props.errors['services.' + i + '.qty']"
+                      class="px-4 py-2 rounded mt-4 text-white bg-red-500"
+                    >
+                      {{ $page.props.errors["services." + i + ".qty"] }}
+                    </div>
+                  </div>
+                </template>
+              </div>
               <div
                 class="ltr:mr-6 rtl:ml-6 mb-8 w-full border rounded overflow-x-auto lg:overflow-x-hidden pb-4 lg:pb-0"
               >
