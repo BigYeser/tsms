@@ -143,4 +143,13 @@ class CustomerController extends Controller
         $customer->update($v);
         return back()->with('success', __('model_updated', ['model' => __choice('Customer', 1)]));
     }
+
+    public function get(Request $request){
+        $customer = Customer::find($request->id);
+        return response()->json([
+            'customer'=> $customer,
+          ], 200);
+    }
+
+
 }

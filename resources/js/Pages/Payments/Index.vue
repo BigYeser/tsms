@@ -46,7 +46,6 @@
           }}</span>
         </Link>
       </div>
-      {{ payments }}
       <div class="bg-white rounded shadow leading-normal overflow-x-auto scroll-on-light">
         <table class="w-full whitespace-no-wrap">
           <thead>
@@ -68,20 +67,16 @@
               <td class="border-t px-6 py-4">
                 <div class="flex items-center">
                   {{ $date(payment.date) }}
+                  <br />{{ $t("Ref") }}: {{ payment.reference }}
                   <Icons
                     v-if="payment.deleted_at"
                     name="trash"
                     class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2"
                   />
-                  <br />
-                  {{ $reference(payment.reference) }}
                 </div>
               </td>
               <td class="border-t px-6 py-4">
-                <div v-if="payment.customer">
-                  {{ payment.customer.name }}
-                  <div>{{ payment.customer.phone }}</div>
-                </div>
+                {{ getCustomer($payment.customer_id) }}
               </td>
               <td class="border-t px-6 py-4">
                 <div class="ltr:mr-2 rtl:ml-2">{{ payment.gateway }}</div>
@@ -191,6 +186,15 @@ export default {
     },
     reset() {
       this.form = mapValues(this.form, () => null);
+    },
+    getCustomer(id) {
+      var customer = null;
+      this.$axios.post(this.route("customer.get", id)).then((res) => {
+        res.json().then((data) => {
+          customer = data;
+        });
+      });
+      return customer.name;
     },
   },
 };
