@@ -113,7 +113,6 @@
     <div v-if="hash && order.status == $t('Received')">
       {{ updateStatusNowFromUrl("Preparing") }}
     </div>
-    {{ hash }}
     <!--Body-->
     <div class="print">
       <div class="max-w-2xl h-full py-3 px-3 leading-normal">
@@ -640,7 +639,6 @@ export default {
       this.$inertia.put(this.route("orders.status", this.order.id), { status });
     },
     updateStatusNowFromUrl(status) {
-      console.log(status);
       this.$inertia.put(this.route("orders.status", this.order.id), { status });
     },
     updateStatus(status) {
