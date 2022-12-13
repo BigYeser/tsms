@@ -117,8 +117,8 @@
     <div class="w-50 ml-0 mr-0 mx-auto text-center">
       <h1>Hello</h1>
       <div class="print">
-        <div class="max-w-2xl h-full py-3 px-3 leading-normal">
-          <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
+        <div>
+          <div>
             <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-left rtl:text-right">
               <div class="font-e xtrabold">{{ order.account.name }}</div>
               <div class="font-bold">{{ order.account.phone }}</div>
