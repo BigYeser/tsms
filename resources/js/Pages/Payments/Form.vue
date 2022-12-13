@@ -265,13 +265,17 @@ export default {
     customerChanged(c) {
       this.customer = c ? c : null;
       this.form.customer_id = c ? c.value : null;
+      this.references = [];
       this.$axios
         .get(`/orders/customer/${c.id}`)
         .then((res) => {
-          console.log("res: " + res.data.orders.reference);
-          this.references.push(res.data.orders.reference);
+          res.data.orders.array.forEach((order) => {
+            console.log(order);
+            this.references.push(order.reference);
+          });
         })
         .catch((err) => console.log(err));
+      console.log(this.references);
     },
     searchCustomers(search, loading) {
       if (search) {
