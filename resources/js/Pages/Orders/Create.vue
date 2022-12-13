@@ -68,7 +68,7 @@
                 :errors="$page.props.errors?.delivery_date"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
               />
-              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2">
+              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2" v-show="false">
                 <label class="form-label" for="status">{{ $t("Status") }}</label>
                 <v-select
                   transition=""
@@ -87,7 +87,6 @@
                     $t('Ready'),
                     $t('Completed'),
                   ]"
-                  v-show="false"
                 ></v-select>
                 <div v-if="$page.props.errors?.status" class="form-error">
                   {{ $page.props.errors?.status }}
