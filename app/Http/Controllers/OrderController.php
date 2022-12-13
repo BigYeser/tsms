@@ -158,6 +158,7 @@ class OrderController extends Controller
     }
 
     public function byCustomer(Request $request, $id){
-        return Order::where('id',$id);
+        $orders = Order::where('id',$id);
+        return response()->json($orders);
     }
 }

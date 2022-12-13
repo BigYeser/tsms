@@ -107,7 +107,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orders/{order}/edit', 'OrderController@edit')->name('orders.edit');
     Route::post('orders/{order}/email', 'OrderController@email')->name('orders.email');
     Route::put('orders/{order}/status', 'OrderController@status')->name('orders.status');
-
+    Route::get('orders/{id}', function ($id) {
+        return App\Models\Order::where('id', $id) ?? abort(404);
+    });
     Route::middleware(['owner'])->group(function () {
         Route::get('update/database', 'Update\UpdateController');
         Route::get('logs', 'AccountController@logs')->name('logs');
