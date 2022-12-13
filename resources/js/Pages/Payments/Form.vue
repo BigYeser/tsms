@@ -269,7 +269,7 @@ export default {
       this.$axios
         .get(`/orders/customer/${c.id}`)
         .then((res) => {
-          res.data.orders.array.forEach((order) => {
+          res.data.orders.forEach((order) => {
             console.log(order);
             this.references.push(order.reference);
           });
