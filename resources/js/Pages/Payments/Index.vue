@@ -77,7 +77,7 @@
               </td>
               <td class="border-t px-6 py-4">
                 {{ $payment }}
-                {{ getCustomer($payment.customer_id) }}
+                <!-- {{ getCustomer($payment.customer_id) }} -->
               </td>
               <td class="border-t px-6 py-4">
                 <div class="ltr:mr-2 rtl:ml-2">{{ payment.gateway }}</div>
@@ -188,15 +188,15 @@ export default {
     reset() {
       this.form = mapValues(this.form, () => null);
     },
-    getCustomer(id) {
-      var customer = null;
-      this.$axios.get(this.route("customer.get", id)).then((res) => {
-        res.json().then((data) => {
-          customer = data;
-        });
-      });
-      return customer.name;
-    },
+    // getCustomer(id) {
+    //   var customer = null;
+    //   this.$axios.get(this.route("customer.get", id)).then((res) => {
+    //     res.json().then((data) => {
+    //       customer = data;
+    //     });
+    //   });
+    //   return customer.name;
+    // },
   },
 };
 </script>
