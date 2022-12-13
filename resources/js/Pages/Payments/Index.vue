@@ -51,10 +51,11 @@
           <thead>
             <tr class="text-left font-bold">
               <th class="px-6 pt-6 pb-4">{{ $t("Created at") }}</th>
-              <!-- <th class="px-6 pt-6 pb-4">{{ $t("Customer") }}</th> -->
+              <th class="px-6 pt-6 pb-4">{{ $t("Customer") }}</th>
               <th class="px-6 pt-6 pb-4">{{ $t("Amount") }}</th>
-              <th class="px-6 pt-6 pb-4">Gateway</th>
+              <th class="px-6 pt-6 pb-4">$t("Gateway")</th>
               <th class="px-6 pt-6 pb-4" colspan="2">{{ $t("Description") }}</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
