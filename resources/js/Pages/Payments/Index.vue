@@ -51,9 +51,9 @@
           <thead>
             <tr class="text-left font-bold">
               <th class="px-6 pt-6 pb-4">{{ $t("Created at") }}</th>
-              <th class="px-6 pt-6 pb-4">{{ $t("Customer") }}</th>
+              <!-- <th class="px-6 pt-6 pb-4">{{ $t("Customer") }}</th> -->
               <th class="px-6 pt-6 pb-4">{{ $t("Amount") }}</th>
-              <!-- <th class="px-6 pt-6 pb-4">Gateway</th> -->
+              <th class="px-6 pt-6 pb-4">Gateway</th>
               <th class="px-6 pt-6 pb-4" colspan="2">{{ $t("Description") }}</th>
             </tr>
           </thead>
@@ -76,6 +76,7 @@
                 </div>
               </td>
               <td class="border-t px-6 py-4">
+                {{ $payment }}
                 {{ getCustomer($payment.customer_id) }}
               </td>
               <td class="border-t px-6 py-4">
@@ -89,9 +90,9 @@
                   {{ $number(payment.amount) }}
                 </div>
               </td>
-              <!-- <td class="border-t px-6 py-4 text-center">
-              {{ payment.gateway }}
-            </td> -->
+              <td class="border-t px-6 py-4 text-center">
+                {{ payment.gateway }}
+              </td>
               <td class="border-t px-6 py-4 max-w-lg truncate">
                 {{ payment.description }}
               </td>
