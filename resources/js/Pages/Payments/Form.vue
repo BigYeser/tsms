@@ -67,10 +67,9 @@
                   v-model="form.reference"
                   :errors="errors?.reference"
                   :clearable="false"
-                  :options="reference"
+                  :options="references"
                   input-id="reference"
                   @input="referenceChanged"
-                  @option:selected="referenceChanged"
                   :placeholder="$t('search_x', { x: $tc('Reference') })"
                   :class="{ error: errors?.reference && errors.reference.length }"
                 ></v-select>
@@ -269,8 +268,7 @@ export default {
       this.$axios
         .get(`/orders/customer/${c.id}`)
         .then((res) => {
-          this.orders = res.data.orders;
-          console.log(res.data);
+          this.references.push(res.data.orders.reference);
         })
         .catch((err) => console.log(err));
     },
