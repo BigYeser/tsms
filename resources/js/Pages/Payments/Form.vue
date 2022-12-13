@@ -41,12 +41,46 @@
                 :errors="errors?.date"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
               />
-              <text-input
+              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-1/2">
+                <label class="form-label" for="customer_id">{{ $tc("Customer") }}</label>
+                <v-select
+                  transition=""
+                  v-model="customer"
+                  :clearable="false"
+                  :options="customers"
+                  input-id="customer_id"
+                  @input="customerChanged"
+                  @search="searchCustomers"
+                  :dir="$user.account.direction"
+                  @option:selected="customerChanged"
+                  :placeholder="$t('search_x', { x: $tc('Customer') })"
+                  :class="{ error: errors?.customer_id && errors.customer_id.length }"
+                ></v-select>
+                <div v-if="errors?.customer_id" class="form-error">
+                  {{ errors.customer_id[0] }}
+                </div>
+              </div>
+              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-1/2">
+                <label class="form-label" for="reference">{{ $tc("Reference") }}</label>
+                <v-select
+                  transition=""
+                  v-model="form.reference"
+                  :errors="errors?.reference"
+                  :clearable="false"
+                  :options="reference"
+                  input-id="reference"
+                  @input="referenceChanged"
+                  @option:selected="referenceChanged"
+                  :placeholder="$t('search_x', { x: $tc('Reference') })"
+                  :class="{ error: errors?.reference && errors.reference.length }"
+                ></v-select>
+              </div>
+              <!-- <text-input
                 :label="$t('Reference')"
                 v-model="form.reference"
                 :errors="errors?.reference"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
-              />
+              /> -->
               <text-input
                 step="0.01"
                 type="number"
@@ -69,25 +103,6 @@
                 ></v-select>
                 <div v-if="errors?.gateway" class="form-error">
                   {{ errors.gateway[0] }}
-                </div>
-              </div>
-              <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full">
-                <label class="form-label" for="customer_id">{{ $tc("Customer") }}</label>
-                <v-select
-                  transition=""
-                  v-model="customer"
-                  :clearable="false"
-                  :options="customers"
-                  input-id="customer_id"
-                  @input="customerChanged"
-                  @search="searchCustomers"
-                  :dir="$user.account.direction"
-                  @option:selected="customerChanged"
-                  :placeholder="$t('search_x', { x: $tc('Customer') })"
-                  :class="{ error: errors?.customer_id && errors.customer_id.length }"
-                ></v-select>
-                <div v-if="errors?.customer_id" class="form-error">
-                  {{ errors.customer_id[0] }}
                 </div>
               </div>
             </div>
@@ -183,6 +198,7 @@ export default {
       error: null,
       gateways: [],
       customers: [],
+      references: [],
       message: null,
       customer: null,
       publishableKey: null,
@@ -190,9 +206,10 @@ export default {
   },
   mounted() {
     this.customers = this.icustomers || [];
-    console.log(this.customers);
-    console.log("oId: " + this.oId);
-    console.log("amount: " + this.amount);
+    this.references = [];
+    // console.log(this.customers);
+    // console.log("oId: " + this.oId);
+    // console.log("amount: " + this.amount);
     if (this.oId) {
       this.$axios
         .post(this.route("payments.order", this.oId))
@@ -228,10 +245,32 @@ export default {
     }
   },
   methods: {
+    referenceChanged(r) {
+      this.reference = r ? r : null;
+      this.form.reference = r ? r.value : null;
+    },
+    // searchReference(search, loading) {
+    //   if (search) {
+    //     loading(true);
+    //     this.searcingReference(loading, search, this);
+    //   }
+    // },
+    // searcingReference: debounce((loading, search, vm) => {
+    //   fetch(vm.route("ajax.customers").then((res) => {
+    //     res.json().then((data) => (vm.customers = data));
+    //     loading(false);
+    //   });
+    // }, 350),
+
     customerChanged(c) {
       console.log(c);
       this.customer = c ? c : null;
       this.form.customer_id = c ? c.value : null;
+      this.$axios
+        .get(`/orders/${c}`)
+        .then((res) => (this.references = res))
+        .catch((err) => console.log(err));
+      console.log(this.references);
     },
     searchCustomers(search, loading) {
       if (search) {

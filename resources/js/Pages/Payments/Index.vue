@@ -90,7 +90,7 @@
                 </div>
               </td>
               <td class="border-t px-6 py-4 text-center">
-                <div class="ltr:mr-2 rtl:ml-2">{{ payment.gateway }}</div>
+                {{ payment.gateway }}
               </td>
               <td class="border-t px-6 py-4 max-w-lg truncate">
                 {{ payment.description }}
