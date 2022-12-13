@@ -158,7 +158,7 @@ class OrderController extends Controller
     }
 
     public function byCustomer(Request $request, $id){
-        $orders = Order::where('customer_id',2);
+        $orders = Order::where('customer_id',2)->first();
         if($orders){
             return response()->json(['status'=>true,'orders'=>$orders]);
         }else{
