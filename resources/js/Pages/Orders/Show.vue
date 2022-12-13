@@ -111,7 +111,7 @@
       </div>
     </div>
     <div v-if="hash">{{ updateStatusNowFromUrl("Preparing") }}</div>
-
+    {{hash}}
     <!--Body-->
     <div class="print">
       <div class="max-w-2xl h-full py-3 px-3 leading-normal">
@@ -586,6 +586,9 @@ export default {
       default: true,
     },
     edit: { type: Function },
+    hash: {
+      type: String,
+    },
   },
   components: { Logo, Dropdown, Dialog, Modal, MeasurementComponent, SmsDialog },
   computed: {
