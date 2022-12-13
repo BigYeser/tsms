@@ -130,7 +130,7 @@
                   {{ $page.props.errors?.priority }}
                 </div>
               </div>
-              <div v-if="!form.customer_id">
+              <div v-if="form.customer_id">
                 <div class="ltr:pr-6 rtl:pl-6 pb-8 w-full no-drop">
                   <v-select
                     label="name"
