@@ -87,7 +87,7 @@
                     $t('Ready'),
                     $t('Completed'),
                   ]"
-                  style="display: hidden"
+                  v-show="false"
                 ></v-select>
                 <div v-if="$page.props.errors?.status" class="form-error">
                   {{ $page.props.errors?.status }}
@@ -98,7 +98,7 @@
                 v-model="form.reference"
                 :errors="$page.props.errors?.reference"
                 class="ltr:pr-6 rtl:pl-6 pb-8 w-full lg:w-1/2"
-                style="display: hidden"
+                v-show="false"
               />
               <div
                 v-if="$page.props.user.owner"
