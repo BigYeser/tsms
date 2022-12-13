@@ -189,7 +189,7 @@ export default {
     },
     getCustomer(id) {
       var customer = null;
-      this.$axios.post(this.route("customer.get", id)).then((res) => {
+      this.$axios.get(this.route("customer.get", id)).then((res) => {
         res.json().then((data) => {
           customer = data;
         });
