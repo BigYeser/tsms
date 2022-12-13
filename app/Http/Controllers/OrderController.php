@@ -158,7 +158,6 @@ class OrderController extends Controller
     }
 
     public function byCustomer(Request $request, $id){
-        $orders = Order::where('id',$id)->get();
-        return $orders;
+        return Order::where('id',$id);
     }
 }
