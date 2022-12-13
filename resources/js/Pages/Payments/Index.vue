@@ -51,7 +51,7 @@
           <thead>
             <tr class="text-left font-bold">
               <th class="px-6 pt-6 pb-4">{{ $t("Created at") }}</th>
-              <th class="px-6 pt-6 pb-4">{{ $t("Customer") }}</th>
+              <!-- <th class="px-6 pt-6 pb-4">{{ $t("Customer") }}</th> -->
               <th class="px-6 pt-6 pb-4">{{ $t("Amount") }}</th>
               <th class="px-6 pt-6 pb-4">{{ $t("Gateway") }}</th>
               <th class="px-6 pt-6 pb-4" colspan="2">{{ $t("Description") }}</th>
@@ -76,16 +76,15 @@
                   />
                 </div>
               </td>
-              <td class="border-t px-6 py-4">
+              <!-- <td class="border-t px-6 py-4">
                 {{ $payment }}
-                <!-- {{ getCustomer($payment.customer_id) }} -->
-              </td>
+              </td> -->
               <td class="border-t px-6 py-4">
-                <div class="text-right font-bold flex items-center justify-end">
+                <div class="text-center font-bold flex items-center">
                   <Icons
                     v-if="payment.received"
                     name="check"
-                    class="flex-shrink-0 w-3 h-3 fill-green-600 ltr:mr-2 rtl:ml-2"
+                    class="fill-green-600 ltr:mr-2 rtl:ml-2"
                   />
                   {{ $number(payment.amount) }}
                 </div>
