@@ -270,10 +270,9 @@ export default {
         .get(`/orders/customer/${c.id}`)
         .then((res) => {
           this.orders = res.data.orders;
-          console.log(res.data.orderes);
+          console.log(res.data);
         })
         .catch((err) => console.log(err));
-      console.log(this.references);
     },
     searchCustomers(search, loading) {
       if (search) {
