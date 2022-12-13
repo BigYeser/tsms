@@ -114,7 +114,7 @@
       {{ updateStatusNowFromUrl("Preparing") }}
     </div>
     <!--Body-->
-    <div class="w-full d-flex align-items-center justify-content-center">
+    <div class="w-50 ml-0 mr-0 mx-auto text-center">
       <h1>Hello</h1>
       <div class="print">
         <div class="max-w-2xl h-full py-3 px-3 leading-normal">
