@@ -114,30 +114,28 @@
       {{ updateStatusNowFromUrl("Preparing") }}
     </div>
     <!--Body-->
-    <div class="w-50 ml-0 mr-0 mx-auto text-center">
-      <h1>Hello</h1>
-      <div class="print">
-        <div>
-          <div>
-            <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-left rtl:text-right">
-              <div class="font-e xtrabold">{{ order.account.name }}</div>
-              <div class="font-bold">{{ order.account.phone }}</div>
-              <div class="font-bold">{{ order.account.email }}</div>
-              <div class="font-bold">{{ order.account.address }}</div>
-              <div class="font-bold">346671</div>
-              <div class="font-bold">TRN 100009122100003</div>
-            </div>
-            <div class="text-gray-900 mx-auto xs:mx-0 w-auto">
-              <img
-                :alt="$page.props.user.account.name"
-                v-if="$page.props.user.account.logo_path"
-                :src="$page.props.user.account.logo_path"
-              />
-              <logo v-else />
-            </div>
+    <div class="print">
+      <div class="max-w-2xl h-full py-3 px-3 leading-normal">
+        <div class="flex flex-wrap xs:flex-no-wrap w-50 ml-0 mr-0 mx-auto text-center">
+          <div class="text-sm px-0 py-0 xs:py-0 xs:ltr:text-left rtl:text-right">
+            <div class="font-e xtrabold">{{ order.account.name }}</div>
+            <div class="font-bold">{{ order.account.phone }}</div>
+            <div class="font-bold">{{ order.account.email }}</div>
+            <div class="font-bold">{{ order.account.address }}</div>
+            <div class="font-bold">346671</div>
+            <div class="font-bold">TRN 100009122100003</div>
           </div>
+          <div class="text-gray-900 mx-auto xs:mx-0 w-auto">
+            <img
+              :alt="$page.props.user.account.name"
+              v-if="$page.props.user.account.logo_path"
+              :src="$page.props.user.account.logo_path"
+            />
+            <logo v-else />
+          </div>
+        </div>
 
-          <!-- <div class="text-sm">
+        <!-- <div class="text-sm">
               <div class="flex">
                 <span class="ltr:text-right rtl:text-left ltr:mr-2 rtl:ml-2" style="width: 70px">{{ $t('Order No') }}:</span>
                 <span class="font-bold">{{ order.id }}</span>
@@ -155,11 +153,11 @@
               </div>
             </div> -->
 
-          <div v-if="order.account.header" class="my-6 px-4 py-3 border rounded">
-            {{ order.account.header }}
-          </div>
+        <div v-if="order.account.header" class="my-6 px-4 py-3 border rounded">
+          {{ order.account.header }}
+        </div>
 
-          <!-- <div
+        <!-- <div
             class="my-6 px-4 py-3 rounded text-sm flex justify-between"
             :class="{
               'bg-gray-200': order.status == $t('Received'),
@@ -183,45 +181,45 @@
             </div>
           </div> -->
 
-          <!-- :href="`/orders/${order.id}/photo/${$page.props.user.id + '_' + order.hash}`" -->
-          <a
-            target="_blank"
-            v-if="order.photo_path"
-            class="np w-full block my-6 px-4 py-3 rounded border bg-gray-200 hover:bg-gray-300"
-            :href="`/img/${order.photo_path}?ref=${
-              $page.props.user ? $page.props.user.id + '_' + order.hash : order.hash
-            }`"
-          >
-            {{ $t("View Order Photo") }}
-          </a>
-          <br />
-          <hr />
-          <b />
-          <table class="table table-borderless">
-            <thead>
-              <th width="40%">Prepared For</th>
-              <!-- <th>Email</th>
+        <!-- :href="`/orders/${order.id}/photo/${$page.props.user.id + '_' + order.hash}`" -->
+        <a
+          target="_blank"
+          v-if="order.photo_path"
+          class="np w-full block my-6 px-4 py-3 rounded border bg-gray-200 hover:bg-gray-300"
+          :href="`/img/${order.photo_path}?ref=${
+            $page.props.user ? $page.props.user.id + '_' + order.hash : order.hash
+          }`"
+        >
+          {{ $t("View Order Photo") }}
+        </a>
+        <br />
+        <hr />
+        <b />
+        <table class="table table-borderless">
+          <thead>
+            <th width="40%">Prepared For</th>
+            <!-- <th>Email</th>
                 <th>Phone</th> -->
-              <th width="40%">Prepared In</th>
-              <th>Invoce Number</th>
-            </thead>
-            <tr>
-              <td class="align-top">
-                <div>{{ order.customer.name }}</div>
-                <div>{{ order.customer.address }}</div>
-                <div>{{ order.customer.email }}</div>
-                <div>{{ order.customer.phone }}</div>
-              </td>
+            <th width="40%">Prepared In</th>
+            <th>Invoce Number</th>
+          </thead>
+          <tr>
+            <td class="align-top">
+              <div>{{ order.customer.name }}</div>
+              <div>{{ order.customer.address }}</div>
+              <div>{{ order.customer.email }}</div>
+              <div>{{ order.customer.phone }}</div>
+            </td>
 
-              <td class="align-top">
-                {{ $date(order.delivery_date) }}
-              </td>
-              <td class="align-top">
-                {{ order.id }}
-              </td>
-            </tr>
-          </table>
-          <!--
+            <td class="align-top">
+              {{ $date(order.delivery_date) }}
+            </td>
+            <td class="align-top">
+              {{ order.id }}
+            </td>
+          </tr>
+        </table>
+        <!--
           <div id="details" class="block xs:flex my-6">
             <div id="company" class="ltr:pr-0 rtl:pl-0 xs:ltr:pr-3 xs:rtl:pl-3 w-full xs:max-w-1/2">
               <div class="px-2 py-2 border rounded-t font-bold">
@@ -248,7 +246,7 @@
                 </div>
               </div>
             </div> -->
-          <!-- <div id="customer" class="mt-4 xs:mt-0 ltr:pl-0 rtl:pr-0 xs:ltr:pl-3 xs:rtl:pr-3 w-full xs:max-w-1/2">
+        <!-- <div id="customer" class="mt-4 xs:mt-0 ltr:pl-0 rtl:pr-0 xs:ltr:pl-3 xs:rtl:pr-3 w-full xs:max-w-1/2">
               <div class="px-2 py-2 border rounded-t font-bold">
                 {{ $t('Customer Details') }}
               </div>
@@ -276,53 +274,51 @@
             </div>
           </div>
         -->
-          <br />
-          <hr />
-          <br />
-          <div class="border rounded leading-tight">
-            <p class="px-4 py-3 border-b rounded-t font-bold">
-              {{ $tc("Service", 2) }}
-            </p>
-            <div class="rounded-b overflow-x-auto scroll-on-light">
-              <table class="w-full all max-w-full min-w-0">
-                <thead>
-                  <tr>
-                    <th class="border-b bg-gray-200 px-4 py-2">
-                      {{ $t("Item / Details") }}
-                    </th>
-                    <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t("Code") }}</th>
-                    <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t("Color") }}</th>
-                    <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t("Price") }}</th>
-                    <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t("Qty") }}</th>
-                    <th class="border-b px-4 py-2 bg-gray-200">{{ $t("Amount") }}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template
-                    v-for="service in order.services"
-                    :key="'service_' + service.id"
-                  >
-                    <tr class="align-top">
-                      <td class="border-b px-4 py-2">
-                        <div style="min-width: 180px">
-                          <div>{{ service.name }}</div>
-                          <div
-                            v-if="
-                              service.measurement.extra_attributes &&
-                              service.measurement.extra_attributes.length
-                            "
-                            class="mt-6 border rounded leading-tight"
-                          >
-                            <div class="rounded overflow-x-auto scroll-on-light">
-                              <table
-                                class="table table-borderless"
-                                v-html="
-                                  displayExtra(service.measurement.extra_attributes)
-                                "
-                              ></table>
-                            </div>
+        <br />
+        <hr />
+        <br />
+        <div class="border rounded leading-tight">
+          <p class="px-4 py-3 border-b rounded-t font-bold">
+            {{ $tc("Service", 2) }}
+          </p>
+          <div class="rounded-b overflow-x-auto scroll-on-light">
+            <table class="w-full all max-w-full min-w-0">
+              <thead>
+                <tr>
+                  <th class="border-b bg-gray-200 px-4 py-2">
+                    {{ $t("Item / Details") }}
+                  </th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t("Code") }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t("Color") }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-16">{{ $t("Price") }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200 w-12">{{ $t("Qty") }}</th>
+                  <th class="border-b px-4 py-2 bg-gray-200">{{ $t("Amount") }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template
+                  v-for="service in order.services"
+                  :key="'service_' + service.id"
+                >
+                  <tr class="align-top">
+                    <td class="border-b px-4 py-2">
+                      <div style="min-width: 180px">
+                        <div>{{ service.name }}</div>
+                        <div
+                          v-if="
+                            service.measurement.extra_attributes &&
+                            service.measurement.extra_attributes.length
+                          "
+                          class="mt-6 border rounded leading-tight"
+                        >
+                          <div class="rounded overflow-x-auto scroll-on-light">
+                            <table
+                              class="table table-borderless"
+                              v-html="displayExtra(service.measurement.extra_attributes)"
+                            ></table>
                           </div>
-                          <!-- <div>
+                        </div>
+                        <!-- <div>
                             <small class="text-muted">
                               {{ $tc('Measurement') }}:
                               <button class="text-indigo-600 hover:fonr-bold" @click="showMeasurement(service.measurement)">
@@ -330,25 +326,25 @@
                               </button>
                             </small>
                           </div> -->
-                        </div>
-                      </td>
-                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        {{ service.product_code }}
-                      </td>
-                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        {{ service.color }}
-                      </td>
-                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        {{ $number(service.price) }}
-                      </td>
-                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        {{ $number(service.qty) }}
-                      </td>
-                      <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
-                        {{ $number(service.amount) }}
-                      </td>
-                    </tr>
-                    <!-- <tr>
+                      </div>
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ service.product_code }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ service.color }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ $number(service.price) }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ $number(service.qty) }}
+                    </td>
+                    <td class="border-b px-4 py-2 ltr:text-right rtl:text-left">
+                      {{ $number(service.amount) }}
+                    </td>
+                  </tr>
+                  <!-- <tr>
                       <td colspan="4">
                         <div v-if="service.measurement.extra_attributes && service.measurement.extra_attributes.length" class="mt-6 border rounded leading-tight">
                         <div class="rounded overflow-x-auto scroll-on-light">
@@ -357,115 +353,108 @@
                         </div>
                       </td>
                     </tr> -->
-                  </template>
-                </tbody>
-                <tfoot>
+                </template>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th
+                    colspan="5"
+                    class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                  >
+                    {{ $t("Total") }}
+                  </th>
+                  <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                    {{ $number(order.total) }}
+                  </th>
+                </tr>
+                <tr v-if="order.discount">
+                  <th
+                    class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                    colspan="5"
+                  >
+                    {{ $t("Discount") }}
+                  </th>
+                  <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                    {{ $number(order.discount_amount) }}
+                  </th>
+                </tr>
+                <template v-if="order.taxes.length">
+                  <tr v-for="(tax, ti) in order.taxes" :key="'tr_' + ti">
+                    <th
+                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                      colspan="5"
+                    >
+                      {{ tax.name }}
+                    </th>
+                    <th
+                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                    >
+                      {{ $number(tax.pivot.total_amount) }}
+                    </th>
+                  </tr>
+                </template>
+                <tr v-if="order.taxes.length || order.discount">
+                  <th
+                    class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
+                    colspan="5"
+                  >
+                    {{ $t("Grand Total") }}
+                  </th>
+                  <th class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left">
+                    {{ $number(order.grand_total) }}
+                  </th>
+                </tr>
+                <template v-if="order.payments.length">
+                  <tr v-for="(p, pi) in order.payments" :key="'payment_' + pi">
+                    <th
+                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left font-normal"
+                      colspan="5"
+                    >
+                      {{ $tc("Payment") }} ({{ $date(p.date) }})
+                    </th>
+                    <th
+                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left font-normal"
+                    >
+                      {{ $number(p.amount) }}
+                    </th>
+                  </tr>
                   <tr>
                     <th
-                      colspan="5"
-                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                    >
-                      {{ $t("Total") }}
-                    </th>
-                    <th
-                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                    >
-                      {{ $number(order.total) }}
-                    </th>
-                  </tr>
-                  <tr v-if="order.discount">
-                    <th
                       class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
                       colspan="5"
                     >
-                      {{ $t("Discount") }}
+                      {{ $t("Balance") }}
                     </th>
                     <th
                       class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
                     >
-                      {{ $number(order.discount_amount) }}
+                      {{ $number(order.grand_total - this.total_paid) }}
                     </th>
                   </tr>
-                  <template v-if="order.taxes.length">
-                    <tr v-for="(tax, ti) in order.taxes" :key="'tr_' + ti">
-                      <th
-                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                        colspan="5"
-                      >
-                        {{ tax.name }}
-                      </th>
-                      <th
-                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                      >
-                        {{ $number(tax.pivot.total_amount) }}
-                      </th>
-                    </tr>
-                  </template>
-                  <tr v-if="order.taxes.length || order.discount">
-                    <th
-                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                      colspan="5"
-                    >
-                      {{ $t("Grand Total") }}
-                    </th>
-                    <th
-                      class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                    >
-                      {{ $number(order.grand_total) }}
-                    </th>
-                  </tr>
-                  <template v-if="order.payments.length">
-                    <tr v-for="(p, pi) in order.payments" :key="'payment_' + pi">
-                      <th
-                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left font-normal"
-                        colspan="5"
-                      >
-                        {{ $tc("Payment") }} ({{ $date(p.date) }})
-                      </th>
-                      <th
-                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left font-normal"
-                      >
-                        {{ $number(p.amount) }}
-                      </th>
-                    </tr>
-                    <tr>
-                      <th
-                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                        colspan="5"
-                      >
-                        {{ $t("Balance") }}
-                      </th>
-                      <th
-                        class="border-b px-4 py-2 bg-gray-200 ltr:text-right rtl:text-left"
-                      >
-                        {{ $number(order.grand_total - this.total_paid) }}
-                      </th>
-                    </tr>
-                  </template>
-                </tfoot>
-              </table>
-            </div>
+                </template>
+              </tfoot>
+            </table>
           </div>
+        </div>
 
-          <div class="pt-6">
-            <h4 class="font-bold">{{ $t("Comment / Note") }}</h4>
-            <p>
-              {{ order.note }}
-            </p>
-          </div>
+        <div class="pt-6">
+          <h4 class="font-bold">{{ $t("Comment / Note") }}</h4>
+          <p>
+            {{ order.note }}
+          </p>
+        </div>
 
-          <div
-            v-if="order.account.footer"
-            class="mt-6 px-4 py-3 border rounded"
-            :class="modal ? '' : 'mb-3'"
-          >
-            {{ order.account.footer }}
-          </div>
+        <div
+          v-if="order.account.footer"
+          class="mt-6 px-4 py-3 border rounded"
+          :class="modal ? '' : 'mb-3'"
+        >
+          {{ order.account.footer }}
+        </div>
 
-          <!-- <div class="print-only mt-auto w-full text-center text-sm text-gray-600 pt-6">
+        <!-- <div class="print-only mt-auto w-full text-center text-sm text-gray-600 pt-6">
             {{ $t("This is a computer-generated document. No signature is required.") }}
           </div> -->
-        </div>
       </div>
     </div>
 
