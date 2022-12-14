@@ -82,7 +82,7 @@
                       $page.props.errors?.status && $page.props.errors?.status.length,
                   }"
                   :options="[
-                    $t('Not confirmed yet'),
+                    $t('unconfirmed'),
                     $t('Preparing'),
                     $t('Ready'),
                     $t('Completed'),
@@ -557,7 +557,7 @@ export default {
         taxes: [],
         discount: null,
         discount_amount: null,
-        status: this.$t("Not confirmed yet"),
+        status: this.$t("unconfirmed"),
       },
       tax: null,
       allTaxes: [],

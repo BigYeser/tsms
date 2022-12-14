@@ -272,7 +272,7 @@
             class="inline-flex items-center mt-1 px-4 py-3 text-sm rounded bg-gray-200 hover:bg-gray-400 border ltr:mr-2 rtl:ml-2"
           >
             <div v-if="sending" class="btn-spinner dark ltr:mr-2 rtl:ml-2" />
-            {{ $t("Mark as Not confirmed yet") }}
+            {{ $t("Mark as unconfirmed") }}
           </button>
         </div>
         <button type="button" @click="$emit('close')" class="btn-gray">

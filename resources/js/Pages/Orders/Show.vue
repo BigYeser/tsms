@@ -110,7 +110,7 @@
         </a>
       </div>
     </div>
-    <div v-if="hash && order.status == $t('Not confirmed yet')">
+    <div v-if="hash && order.status == $t('unconfirmed')">
       {{ updateStatusNowFromUrl("Preparing") }}
     </div>
     <!--Body-->
@@ -161,7 +161,7 @@
           <!-- <div
             class="my-6 px-4 py-3 rounded text-sm flex justify-between"
             :class="{
-              'bg-gray-200': order.status == $t('Not confirmed yet'),
+              'bg-gray-200': order.status == $t('unconfirmed'),
               'bg-indigo-200': order.status == $t('Preparing'),
               'bg-green-200': order.status == $t('Ready'),
               'bg-green-700 text-white': order.status == $t('Completed'),

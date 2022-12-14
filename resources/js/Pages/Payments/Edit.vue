@@ -77,7 +77,7 @@
           <checkbox-input
             class="mb-8"
             id="received"
-            :label="$t('Not confirmed yet')"
+            :label="$t('unconfirmed')"
             v-model:checked="form.received"
             :checked="form.received"
           ></checkbox-input>
