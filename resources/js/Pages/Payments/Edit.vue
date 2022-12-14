@@ -77,7 +77,7 @@
           <checkbox-input
             class="mb-8"
             id="received"
-            :label="$t('Received')"
+            :label="$t('Unpaid')"
             v-model:checked="form.received"
             :checked="form.received"
           ></checkbox-input>

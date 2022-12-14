@@ -110,12 +110,11 @@
         </a>
       </div>
     </div>
-    <div v-if="hash && order.status == $t('Received')">
+    <div v-if="hash && order.status == $t('Unpaid')">
       {{ updateStatusNowFromUrl("Preparing") }}
     </div>
     <!--Body-->
     <div class="w-50 ml-0 mr-0 mx-auto text-center">
-      <h1>Hello</h1>
       <div class="print">
         <div class="max-w-2xl h-full py-3 px-3 leading-normal">
           <div class="flex flex-wrap xs:flex-no-wrap justify-around w-full">
@@ -162,7 +161,7 @@
           <!-- <div
             class="my-6 px-4 py-3 rounded text-sm flex justify-between"
             :class="{
-              'bg-gray-200': order.status == $t('Received'),
+              'bg-gray-200': order.status == $t('Unpaid'),
               'bg-indigo-200': order.status == $t('Preparing'),
               'bg-green-200': order.status == $t('Ready'),
               'bg-green-700 text-white': order.status == $t('Completed'),

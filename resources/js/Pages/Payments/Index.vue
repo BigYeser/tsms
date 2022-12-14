@@ -13,7 +13,7 @@
             v-model="form.received"
             :options="[
               { value: '', label: 'All' },
-              { value: 'yes', label: $t('Received') },
+              { value: 'yes', label: $t('Unpaid') },
               { value: 'no', label: $t('Not received yet') },
             ]"
             :reduce="(selected) => selected.value"

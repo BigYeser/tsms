@@ -28,7 +28,7 @@ class OrderRequest extends FormRequest
             'customer_id' => ['required', Rule::exists('customers', 'id')->where(function ($query) {
                 $query->where('account_id', auth()->user()->account_id);
             })],
-            'status'    => 'required|string|in:Received,Preparing,Ready,Completed',
+            'status'    => 'required|string|in:Unpaid,Preparing,Ready,Completed',
             'reference' => 'nullable|max:250|unique:orders,reference' . ($this->route('order') ? ',' . $this->route('order')->id . ',id' : ''),
 
             'services' => 'min:1|array',
