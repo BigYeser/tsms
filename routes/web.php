@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Customers
     Route::get('customers', 'CustomerController@index')->name('customers');
-    Route::get('customers', 'CustomerController@getCustomer')->name('customer.get');
+    Route::get('customers/get', 'CustomerController@getCustomer')->name('customer.get');
     Route::post('customers', 'CustomerController@store')->name('customers.store');
     Route::get('customers/create', 'CustomerController@create')->name('customers.create');
     Route::post('customers/{customer}/sms', 'CustomerController@sms')->name('customers.sms');
