@@ -135,7 +135,7 @@ class PaymentController extends Controller
         $user = $request->user();
         if ($user && ($user->owner || $user->id == $payment->user_id)) {
             $payment->update(['received' => 1]);
-            return back()->with('success', __('model_marked', ['model' => __choice('Payment', 1), 'status' => __('Unpaid')]));
+            return back()->with('success', __('model_marked', ['model' => __choice('Payment', 1), 'status' => __('Not confirmed yet')]));
         }
         return response()->json(['success' => false]);
     }

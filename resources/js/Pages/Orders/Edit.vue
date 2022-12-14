@@ -79,7 +79,7 @@
                       $page.props.errors?.status && $page.props.errors?.status.length,
                   }"
                   :options="[
-                    $t('Unpaid'),
+                    $t('Not confirmed yet'),
                     $t('Preparing'),
                     $t('Ready'),
                     $t('Completed'),
