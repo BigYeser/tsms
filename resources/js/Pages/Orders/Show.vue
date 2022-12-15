@@ -89,7 +89,7 @@
         </a>
         <button
           type="button"
-          :disabled="emailing"
+          :disabled="emailing || sed"
           @click="emailOrder()"
           class="modal-close mx-2 cursor-pointer text-gray-700 hover:text-gray-800"
         >
@@ -494,7 +494,7 @@
           {{ $t("SMS") }}
         </button>
         <button
-          :disabled="sending"
+          :disabled="sending || emailing"
           @click="emailOrder()"
           class="inline-flex items-center mt-1 px-4 py-3 text-sm rounded bg-gray-200 hover:bg-gray-400 border ltr:mr-2 rtl:ml-2"
         >
