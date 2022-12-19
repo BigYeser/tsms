@@ -81,7 +81,6 @@
         </text>
       </g>
     </svg>
-
     <svg
       v-else-if="name == 'link'"
       class="w-full h-full fill-current"
